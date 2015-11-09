@@ -1,9 +1,4 @@
 <?php
-/**
-*Author: Ashuwp
-*Author url: http://www.ashuwp.com
-*Version: 3.2
-**/
 
 class ashu_option_import_class {
   var $options;

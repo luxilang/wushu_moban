@@ -1,29 +1,67 @@
 <?php
+//post类型
+class post_type_tp {
+	public $post_code;
+	public $post_str;
+	
+	public $post_supports = array( 'title','editor');
+	public $has_taxonomy = false;
+	public $taxonomy_arr = array();
+	public $loop_obj ;
+	function init() {
+		
+		if (!empty($this->loop_obj)  && is_array($this->loop_obj)) {
+			
+			foreach ($this->loop_obj as $key => $value) {
+				$this->post_code = $value['post_code'];
+				$this->post_str = $value['post_str'];
+				$this->post_supports= $value['post_supports'];
+				$this->has_taxonomy= $value['has_taxonomy'];
+				$this->taxonomy_code= $value['taxonomy_code'];
+				$this->has_taxonomy= $value['has_taxonomy'];
+				$this->taxonomy_arr= $value['taxonomy_arr'];
+				$this->post();
+				if ($this->has_taxonomy) {
+					
+					if (!empty($this->taxonomy_arr)) {
+						foreach ($this->taxonomy_arr as $taxonomy_arr_key => $taxonomy_arr_value) {
+								$this->taxonomy($taxonomy_arr_value);
+						}
+					}
+	
+					
+				}
+			}
 
-add_action( 'init', 'custom_post_types' );
-function custom_post_types()
-{
-	/**
-	 * 课程
-	 */
-	$args = array(
+		}
+		else{
+		
+			$this->post();
+			if ($this->has_taxonomy) {
+				$this->taxonomy();
+			}
+		}
+	}
+	function post() {
+		$post_str = $this->post_str;
+		$args = array(
 		'labels' => array(
-				'name' => '课程介绍',
-				'singular_name' => '课程介绍',
-				'menu_name' => '课程介绍',
-				'name_admin_bar' => '课程介绍',
-				'all_items' => '所有课程',
-				'add_new' => '添加课程',
-				'add_new_item' => '添加课程',
-				'edit_item' => '编辑课程',
-				'new_item' => '添加课程',
-				'view_item' => '查看课程',
-				'search_items' => '搜索课程',
-				'not_found' =>  '未找到课程',
-				'not_found_in_trash' => '回收站中没有课程',
+				'name' => $post_str,
+				'singular_name' => $post_str,
+				'menu_name' => $post_str,
+				'name_admin_bar' => $post_str,
+				'all_items' => '所有'.$post_str,
+				'add_new' => '添加'.$post_str,
+				'add_new_item' => '添加'.$post_str,
+				'edit_item' => '编辑'.$post_str,
+				'new_item' => '添加'.$post_str,
+				'view_item' => '查看'.$post_str,
+				'search_items' => '搜索'.$post_str,
+				'not_found' =>  '未找到'.$post_str,
+				'not_found_in_trash' => '回收站中没有'.$post_str,
 				'parent_item_colon' => 'Parent Page',
 			),
-		'description' => '课程介绍',
+		'description' => $post_str,
 		'public' => true,
 		'exclude_from_search' => true,
 		'publicly_queryable' => true,
@@ -38,377 +76,132 @@ function custom_post_types()
 		'rewrite' => array( 'slug' => 'courses','with_front'=>false),
 		'query_var' => true,
 		'can_export' => true,
-		'supports' => array( 'title','editor','excerpt','thumbnail' ),
-		"taxonomies" => array( "post_tag" )
-	);
-	register_post_type( 'courses', $args );
-	
-	$labels = array(
-		"name" => "课程分类",
-		"label" => "课程分类",
-		"menu_name" => "课程分类",
-		"all_items" => "课程分类",
-		"edit_item" => "编辑课程分类",
-		"view_item" => "查看课程分类",
-		"update_item" => "更新课程分类",
-		"add_new_item" => "添加课程分类",
-		"new_item_name" => "添加课程分类",
-		"search_items" => "搜索课程分类",
-		"popular_items" => "热门课程分类",
-		);
-	register_taxonomy(   
-        'courses_type',   
-        array('courses'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'courses_type' ),   
-        )   
-    ); 
-    /**
-     * 学员
-     * 
-     */
-		$args = array(
-		'labels' => array(
-				'name' => '学员信息',
-				'singular_name' => '学员信息',
-				'menu_name' => '学员信息',
-				'name_admin_bar' => '学员信息',
-				'all_items' => '所有学员',
-				'add_new' => '添加学员',
-				'add_new_item' => '添加学员',
-				'edit_item' => '编辑学员',
-				'new_item' => '添加学员',
-				'view_item' => '查看学员',
-				'search_items' => '搜索学员',
-				'not_found' =>  '未找到学员',
-				'not_found_in_trash' => '回收站中没有学员',
-				'parent_item_colon' => 'Parent Page',
-			),
-		'description' => '学员信息',
-		'public' => true,
-		'exclude_from_search' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_nav_menus' => true,
-		'show_in_menu' => true,
-		'show_in_admin_bar' => true,
-		'has_archive' => true,
-		'menu_position' => true,
-		'menu_icon' => null,
-		'hierarchical' => FALSE,
-		'rewrite' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'supports' =>array( 'title' ),
-		"taxonomies" => array( "post_tag" )
-	);
-	register_post_type( 'students', $args );
-	
-	
-	$labels = array(
-		"name" => "学员分类",
-		"label" => "学员分类",
-		"menu_name" => "学员分类",
-		"all_items" => "学员分类",
-		"edit_item" => "编辑学员分类",
-		"view_item" => "查看学员分类",
-		"update_item" => "更新学员分类",
-		"add_new_item" => "添加学员分类",
-		"new_item_name" => "添加学员分类",
-		"search_items" => "搜索学员分类",
-		"popular_items" => "热门学员分类",
-		);
-	register_taxonomy(   
-        'students_type',   
-        array('students'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'students_type' ),   
-        )   
-    ); 
-    
-    /**
-     * 教师信息
-     * 
-     */
-		$args = array(
-		'labels' => array(
-				'name' => '教师信息',
-				'singular_name' => '教师信息',
-				'menu_name' => '教师信息',
-				'name_admin_bar' => '教师信息',
-				'all_items' => '所有教师',
-				'add_new' => '添加教师',
-				'add_new_item' => '添加教师',
-				'edit_item' => '编辑教师',
-				'new_item' => '添加教师',
-				'view_item' => '查看教师',
-				'search_items' => '搜索教师',
-				'not_found' =>  '未找到教师',
-				'not_found_in_trash' => '回收站中没有教师',
-				'parent_item_colon' => 'Parent Page',
-			),
-		'description' => '教师信息',
-		'public' => true,
-		'exclude_from_search' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_nav_menus' => true,
-		'show_in_menu' => true,
-		'show_in_admin_bar' => true,
-		'has_archive' => true,
-		'menu_position' => true,
-		'menu_icon' => null,
-		'hierarchical' => FALSE,
-		'rewrite' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'supports' => array( 'title','editor','excerpt','thumbnail' ),
-		"taxonomies" => array( "post_tag" )
-	);
-	register_post_type( 'teachers', $args );
-	
-	
-	$labels = array(
-		"name" => "教练分类",
-		"label" => "教练分类",
-		"menu_name" => "教练分类",
-		"all_items" => "教练分类",
-		"edit_item" => "编辑教练分类",
-		"view_item" => "查看教练分类",
-		"update_item" => "更新教练分类",
-		"add_new_item" => "添加教练分类",
-		"new_item_name" => "添加教练分类",
-		"search_items" => "搜索教练分类",
-		"popular_items" => "热门教练分类",
-		);
-	register_taxonomy(   
-        'teachers_type',   
-        array('teachers'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'teachers_type' ),   
-        )   
-    ); 
-    
-    
-	
-	
-	$labels = array(
-		"name" => "教练分类",
-		"label" => "教练分类",
-		"menu_name" => "教练分类",
-		"all_items" => "教练分类",
-		"edit_item" => "编辑教练分类",
-		"view_item" => "查看教练分类",
-		"update_item" => "更新教练分类",
-		"add_new_item" => "添加教练分类",
-		"new_item_name" => "添加教练分类",
-		"search_items" => "搜索教练分类",
-		"popular_items" => "热门教练分类",
-		);
-	register_taxonomy(   
-        'teachers_type',   
-        array('teachers'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'teachers_type' ),   
-        )   
-    ); 
-    
-     /**
-     * 上课环境
-     * 
-     */
-		$args = array(
-		'labels' => array(
-				'name' => '上课环境',
-				'singular_name' => '上课环境',
-				'menu_name' => '上课环境',
-				'name_admin_bar' => '上课环境',
-				'all_items' => '所有上课环境',
-				'add_new' => '添加上课环境',
-				'add_new_item' => '添加上课环境',
-				'edit_item' => '编辑上课环境',
-				'new_item' => '添加上课环境',
-				'view_item' => '查看上课环境',
-				'search_items' => '搜索上课环境',
-				'not_found' =>  '未找到上课环境',
-				'not_found_in_trash' => '回收站中没有上课环境',
-				'parent_item_colon' => 'Parent Page',
-				
-			),
-		'description' => '上课环境',
-		'public' => true,
-		'exclude_from_search' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_nav_menus' => true,
-		'show_in_menu' => true,
-		'show_in_admin_bar' => true,
-		'has_archive' => true,
-		'menu_position' => true,
-		'menu_icon' => null,
-		'hierarchical' => FALSE,
-		'rewrite' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'supports' =>array( 'title','editor' ),
-		"taxonomies" => array( "post_tag" )
-	);
-	register_post_type( 'class_env', $args );
-	
-	$labels = array(
-		"name" => "上课环境分类",
-		"label" => "上课环境分类",
-		"menu_name" => "上课环境分类",
-		"all_items" => "上课环境分类",
-		"edit_item" => "编辑上课环境分类",
-		"view_item" => "查看上课环境分类",
-		"update_item" => "更新上课环境分类",
-		"add_new_item" => "添加上课环境分类",
-		"new_item_name" => "添加上课环境分类",
-		"search_items" => "搜索上课环境分类",
-		"popular_items" => "热门上课环境分类",
-		);
-	register_taxonomy(   
-        'class_env_type',   
-        array('class_env'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'class_env_type' ),   
-        )   
-    ); 
-	
-  /**
-     * 上课时间
-     * 
-     */
-		$args = array(
-		'labels' => array(
-				'name' => '上课时间',
-				'singular_name' => '上课时间',
-				'menu_name' => '上课时间',
-				'name_admin_bar' => '上课时间',
-				'all_items' => '所有上课时间',
-				'add_new' => '添加上课时间',
-				'add_new_item' => '添加上课时间',
-				'edit_item' => '编辑上课时间',
-				'new_item' => '添加上课时间',
-				'view_item' => '查看上课时间',
-				'search_items' => '搜索上课时间',
-				'not_found' =>  '未找到上课时间',
-				'not_found_in_trash' => '回收站中没有上课时间',
-				'parent_item_colon' => 'Parent Page',
-				
-			),
-		'description' => '上课时间',
-		'public' => true,
-		'exclude_from_search' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_nav_menus' => true,
-		'show_in_menu' => true,
-		'show_in_admin_bar' => true,
-		'has_archive' => true,
-		'menu_position' => true,
-		'menu_icon' => null,
-		'hierarchical' => FALSE,
-		'rewrite' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'supports' => array( 'title','editor' ),
-		"taxonomies" => array( "post_tag" )
-	);
-	register_post_type( 'class_time', $args );
-	
-	$labels = array(
-		"name" => "上课时间分类",
-		"label" => "上课时间分类",
-		"menu_name" => "上课时间分类",
-		"all_items" => "上课时间分类",
-		"edit_item" => "编辑上课时间分类",
-		"view_item" => "查看上课时间分类",
-		"update_item" => "更新上课时间分类",
-		"add_new_item" => "添加上课时间分类",
-		"new_item_name" => "添加上课时间分类",
-		"search_items" => "搜索上课时间分类",
-		"popular_items" => "热门上课时间分类",
-		);
-	register_taxonomy(   
-        'class_time_type',   
-        array('class_time'),   
-        array(   
-            'hierarchical' => true,   
-            'labels' => $labels,   
-            'show_ui' => true,   
-            'query_var' => true,   
-            'rewrite' => array( 'slug' => 'class_time_type' ),   
-        )   
-    ); 
-  /**
-     * 体验名单
-     * 
-     */
-		$args = array(
-		'labels' => array(
-				'name' => '体验名单',
-				'singular_name' => '体验名单',
-				'menu_name' => '体验名单',
-				'name_admin_bar' => '体验名单',
-				'all_items' => '所有体验名单',
-				'add_new' => '添加体验名单',
-				'add_new_item' => '添加体验名单',
-				'edit_item' => '编辑体验名单',
-				'new_item' => '添加体验名单',
-				'view_item' => '查看体验名单',
-				'search_items' => '搜索体验名单',
-				'not_found' =>  '未找到体验名单',
-				'not_found_in_trash' => '回收站中没有体验名单',
-				'parent_item_colon' => 'Parent Page',
-				
-			),
-		'description' => '体验名单',
-		'public' => true,
-		'exclude_from_search' => true,
-		'publicly_queryable' => true,
-		'show_ui' => true,
-		'show_in_nav_menus' => true,
-		'show_in_menu' => true,
-		'show_in_admin_bar' => true,
-		'has_archive' => true,
-		'menu_position' => true,
-		'menu_icon' => null,
-		'hierarchical' => FALSE,
-		'rewrite' => true,
-		'query_var' => true,
-		'can_export' => true,
-		'supports' => array( 'title'),
+		'supports' => $this->post_supports,
 		//"taxonomies" => array( "post_tag" )
 	);
-	register_post_type( 'tiyan', $args );
-
+	register_post_type( $this->post_code, $args );
+	}
+	function taxonomy($taxonomy_arr_value) {
+		
+		$post_str = $taxonomy_arr_value['name'];
+		$labels = array(
+				"name" => "{$post_str}分类",
+				"label" => "{$post_str}分类",
+				"menu_name" => "{$post_str}分类",
+				"all_items" => "{$post_str}分类",
+				"edit_item" => "编辑{$post_str}分类",
+				"view_item" => "查看{$post_str}分类",
+				"update_item" => "更新{$post_str}分类",
+				"add_new_item" => "添加{$post_str}分类",
+				"new_item_name" => "添加{$post_str}分类",
+				"search_items" => "搜索{$post_str}分类",
+				"popular_items" => "热门{$post_str}分类",
+				);
+			register_taxonomy(   
+		        $taxonomy_arr_value['code'],   
+		        array("{$this->post_code}"),   
+		        array(   
+		            'hierarchical' => true,   
+		            'labels' => $labels,   
+		            'show_ui' => true,   
+		            'query_var' => true,   
+		            'rewrite' => array( 'slug' => $taxonomy_arr_value['code'] ),   
+		        )   
+		    ); 
+	}
 }
+$post_type_conf = array(
+	array(
+		'post_code'=>'courses',
+		'post_str'=>'课程介绍',
+		'post_supports'=>array( 'title','editor','excerpt','thumbnail' ),
+		'has_taxonomy'=>true,
+		'taxonomy_arr'=>array(
+			array('name'=>'课程介绍','code'=>'courses_type'),
+			
+		),
+		
+	),
+	array(
+		'post_code'=>'students',
+		'post_str'=>'学员风采',
+		'post_supports'=>array( 'title'),
+		'has_taxonomy'=>true,
+		'taxonomy_arr'=>array(
+			array('name'=>'学员风采','code'=>'students_type')
+		),
 
+	),
+	array(
+		'post_code'=>'teachers',
+		'post_str'=>'教练信息',
+		'post_supports'=>array( 'title','editor','excerpt','thumbnail' ),
+		'has_taxonomy'=>true,
+		'taxonomy_arr'=>array(
+			array('name'=>'教练信息','code'=>'teachers_type')
+		),
+	
+	),
+	array(
+		'post_code'=>'class_env',
+		'post_str'=>'上课环境',
+		'post_supports'=>array( 'title','editor' ),
+		'has_taxonomy'=>true,
+		'taxonomy_arr'=>array(
+			array('name'=>'上课环境','code'=>'class_env_type')
+		),
+		
+	),
+	array(
+		'post_code'=>'class_time',
+		'post_str'=>'上课时间',
+		'post_supports'=>array( 'title','editor' ),
+		'has_taxonomy'=>true,
+				'taxonomy_arr'=>array(
+			array('name'=>'上课时间','code'=>'class_time_type')
+		),
+		
+	),
+	array(
+		'post_code'=>'class_fee',
+		'post_str'=>'课程费用',
+		'post_supports'=>array( 'title','editor' ),
+		'has_taxonomy'=>true,
+			'taxonomy_arr'=>array(
+			array('name'=>'上课费用','code'=>'class_fee_type')
+		),
+		
+	),
+	array(
+		'post_code'=>'class_activities',
+		'post_str'=>'优惠活动',
+		'post_supports'=>array( 'title','editor' ),
+		'has_taxonomy'=>false
+	),
+	array(
+		'post_code'=>'tiyan',
+		'post_str'=>'体验名单',
+		'post_supports'=>array( 'title'),
+		'has_taxonomy'=>false
+	),
+	/*
+	array(
+		'post_code'=>'tab_cont',
+		'post_str'=>'选项卡',
+		'post_supports'=>array( 'title'),
+		'has_taxonomy'=>true,
+		'taxonomy_code'=>'tab_cont_type'
+	),*/
+);
+$post_type_tp = new post_type_tp();
+$post_type_tp->loop_obj = $post_type_conf;
+$post_type_tp->init();
 
 class liebiao {
-	function init() {
+	public $wpdb;
+	function init($wpdb) {
+		
+		$this->wpdb;
 		$obj_mm_arr = array(
 			array(
 					'name' =>'课程名',
@@ -442,14 +235,16 @@ class liebiao {
 	function filter_lie_fun( $tiyan_columns ){
 	    	$tiyan_columns['cb'] = '<input type="checkbox" />';//这个是前面那个选框，不要丢了   
 	   	   
-	        $tiyan_columns['title'] = '课程名';   
+	        $tiyan_columns['title'] = '课程名';  
+	        
 			$tiyan_columns['_id_upload']  = '图片';   
-			 $tiyan_columns['id'] = __('ID'); 
+			$tiyan_columns['id'] = __('ID'); 
 			
 	      	$new_columns['date'] = _x('Date', 'column name');   
 	    return $tiyan_columns;
 	} 
 	function action_lie_fun( $column_name, $post_id ) {
+		
 	    switch( $column_name ) {
 	 		 case 'id':   
 		            echo $post_id;   
@@ -461,13 +256,15 @@ class liebiao {
 		        	echo  '<a target="_blank" href="'.$img.'" ><img name="" src="'.$img.'" width="32" height="32" alt=""></a>';
 		        	}
 		            break;
-	
+		        
 	    }
 	}
 	
 }
-$liebiao = new liebiao();
-$liebiao->init();
+
+
+//$liebiao = new liebiao();
+//$liebiao->init($wpdb);
 
 
 //体验名单列表
@@ -507,6 +304,48 @@ function output_my_tiyan_custom_columns( $column_name, $post_id ) {
     }
 }
 
+add_filter('manage_pages_columns', 'add_new_pages_columns');
+
+function add_new_pages_columns($book_columns) {
+
+
+
+
+   $new_columns['cb'] = '<input type="checkbox" />';
+
+   $new_columns['id'] = __('ID');
+
+   $new_columns['title'] = _x( 'Title', 'column name' );
+
+   $new_columns['author'] = __('Author');
+
+   $new_columns['date'] = _x('Date', 'column name');
+
+   return $new_columns;
+
+}
+
+add_action('manage_pages_custom_column', 'manage_pages_columns', 10, 2);
+
+function manage_pages_columns($column_name, $id) {
+
+   global $wpdb;
+
+   switch ($column_name) {
+
+   case 'id':
+
+       echo $id;
+
+       break;
+
+   default:
+
+       break;
+
+   }
+
+}
 
     
 

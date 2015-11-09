@@ -16,7 +16,7 @@
 
     $courses_meta[] = array(
 	  'name' => '图片上传',
-	  'id'   => '_id_upload',
+	  'id'   => '_id_upload_courses',
 	  'desc' => '请上传图片或者填入图片的URl地址',
 	  'std'  => '',
 	  'size' => 40,
@@ -31,6 +31,14 @@
 	  'media' => 1,
 	  'type'  => 'tinymce'
 	);
+	$courses_meta[] = array(
+	  'name'  => '学员保障',
+	  'id'    => '_id_tinymce_xybz',
+	  'desc'  => '请填写学员保障',
+	  'std'   => '',
+	  'media' => 1,
+	  'type'  => 'tinymce'
+	);	
 	$courses_meta[] = array(
 	  'name'  => '课程评价',
 	  'id'    => '_id_tinymce_kcpj',
@@ -70,32 +78,50 @@
       'id'=>'ext_info', 
       'page'=>array('students'), 
       'context'=>'normal', 
-      'priority'=>'high',
+      'priority'=>'low',
       'callback'=>''
     );
     $students_meta[] = array(
 	  'name' => '图片上传',
-	  'id'   => '_id_upload',
+	  'id'   => '_id_upload_students',
 	  'desc' => '请上传图片或者填入图片的URl地址',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',
 	  'type' => 'upload'
 	);
+	
+	$students_meta[] = array(
+	  'name'    => '图片类别',
+	  'id'      => '_id_imgs_type',
+	  'desc'    => '请选择图片类别',
+	  'std'     => array(),
+	  'buttons' => array(
+	    'xlhx'  => '训练花絮',
+	    'bsjj' => '比赛锦集',
+	    'hjzs' => '获奖证书',
+	    'xyby'  => '学员表演'
+	  ),
+	  'type'    => 'checkbox'
+	);
+	
+	
 	$students_box = new ashu_meta_box($students_meta, $students_info);
+	
+	
 	$teachers_meta = $teachers_info = array();
 	$teachers_info =  array(
       'title' => '扩展选项',  
       'id'=>'ext_info', 
       'page'=>array('teachers'), 
       'context'=>'normal', 
-      'priority'=>'high',
+      'priority'=>'low',
       'callback'=>'',
 	 'tab'=>true
     );
 	 $teachers_meta[] = array(
-	  'name' => '图片上传',
-	  'id'   => '_id_upload',
+	  'name' => '教练图片上传',
+	  'id'   => '_id_upload_teachers',
 	  'desc' => '请上传图片或者填入图片的URl地址',
 	  'std'  => '',
 	  'size' => 40,
@@ -126,14 +152,15 @@
 	  'media' => 1,
 	  'type'  => 'tinymce'
 	);
+	/*
 	$teachers_meta[] = array(
 	  'name'  => '课堂展示',
-	  'id'    => '_id_tinymce_jxcg',
+	  'id'    => '_id_tinymce_ktzs',
 	  'desc'  => '请填写课堂展示',
 	  'std'   => '',
 	  'media' => 1,
 	  'type'  => 'tinymce'
-	);
+	);*/
 	$teachers_meta[] = array(
 	  'name'  => '扩展阅读',
 	  'id'    => '_id_tinymce_kzyd',
@@ -144,6 +171,8 @@
 	);
 	$teachers_box = new ashu_meta_box($teachers_meta, $teachers_info);
 
+
+	
 	$tiyan_meta = $tiyan_info = array();
 
 	$tiyan_info =  array(
@@ -151,7 +180,7 @@
       'id'=>'ext_info', 
       'page'=>array('tiyan'), 
       'context'=>'normal', 
-      'priority'=>'high',
+      'priority'=>'low',
       'callback'=>'',
 	 'tab'=>true
     );
@@ -191,3 +220,52 @@
 	);
 
 	$teachers_box = new ashu_meta_box($tiyan_meta, $tiyan_info);
+	
+	$class_activities_meta = $class_activities_info = array();
+
+	$class_activities_info =  array(
+      'title' => '---',  
+      'id'=>'ext_info', 
+      'page'=>array('class_activities'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+	 'tab'=>true
+    );
+    
+	 $class_activities_meta[] = array(
+	  'name' => '活动缩略图上传',
+	  'id'   => '_id_upload_activities',
+	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'std'  => '',
+	  'size' => 40,
+	  'button_text' => '上传',
+	  'type' => 'upload'
+	);
+    
+	$teachers_box = new ashu_meta_box($class_activities_meta, $class_activities_info);
+	/***
+	$tab_cont_info =  $tab_cont_meta = array();
+	
+	$tab_cont_info =  array(
+      'title' => '&nbsp',  
+      'id'=>'ext_info', 
+      'page'=>array('tab_cont'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>''
+    );
+	
+	$tab_cont_meta[] = array(
+	  'name' => '选线卡唯一标识（必须英文）',
+	  'id'   => '_id_tab_en',
+	  'desc' => '必须英文',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	
+	
+	$tab_cont_box = new ashu_meta_box($tab_cont_meta, $tab_cont_info)
+*/
+	
