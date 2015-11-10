@@ -1,5 +1,8 @@
 <?php
-
+add_filter( 'wp_revisions_to_keep', 'specs_wp_revisions_to_keep', 10, 2 );
+function specs_wp_revisions_to_keep( $num, $post ) {
+    return 0;
+}
 require get_template_directory() . '/include/metaboxclass.php';
 require get_template_directory() . '/include/simple-term-meta.php';
 require get_template_directory() . '/include/class-taxonomy-feild.php';

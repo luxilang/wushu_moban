@@ -16,12 +16,29 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
 
 ?>
 
-图片：<img  src="<?php echo $img_url ?>" /><br />
+图片1：<img  src="<?php echo $img_url ?>" /><br />
+<?php 
+$ashu_courses_tab_arr = get_option('ashu_courses_tab');
+$courses_tab_ini = trim($ashu_courses_tab_arr['_courses_tab_ini']);
 
-课程简介: <?php echo get_post_meta($post_id,'_id_tinymce_kcjj',true); ?>  <br /><hr />
-学员保障: <?php echo get_post_meta($post_id,'_id_tinymce_xybz',true); ?>  <br /><hr />
-课程评价:<?php echo get_post_meta($post_id,'_id_tinymce_kcpj',true); ?>  <br /><hr />
-扩展阅读:<?php echo get_post_meta($post_id,'_id_tinymce_kzyd',true); ?>  <br /><hr />
+
+	if (!empty($courses_tab_ini)) {
+		
+			$courses_tab_ini_arr = array_filter(explode("\r\n", $courses_tab_ini));
+			if (!empty($courses_tab_ini_arr)) {
+				foreach ($courses_tab_ini_arr as $key => $value) {
+					if (!empty($value)) {
+						list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+						
+						echo "{$tab_option_name}:".get_post_meta($post_id,$tab_option_id,true)."<br /><hr />";
+					}
+				
+				}
+			}
+		
+		}
+?>
+
 <?php 
 //调用相关的  学员信息
 $connected = new WP_Query( array(

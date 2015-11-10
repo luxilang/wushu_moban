@@ -1,89 +1,83 @@
+<br />
 <?php
-$lei = !empty($_GET['lei']) ?  strip_tags($_GET['lei']) : 'feng1,xlhx'; 
-$url = '?post_type=students';
-if(!empty($lei)) $url .="&lei={$lei}";
 
+$terms = get_terms('students_type', 'orderby=id&hide_empty=0&parent=0' );
+$terms1 = get_terms('students_type1', 'orderby=id&hide_empty=0&parent=0' );    
+if (empty($terms[0]))  die('error 0');
+if (empty($terms1[0]))  die('error 0');
+$terms_one = $terms[0];
+$terms_one1 = $terms1[0];
+$lei = !empty($_GET['lei']) ?  strip_tags($_GET['lei']) : $terms_one->slug; 
+$lei1 = !empty($_GET['lei1']) ?  strip_tags($_GET['lei1']) : $terms_one1->slug; 
+$url_bs = '?post_type=students';
 
-$arr_str = array(
-	'武术'=>'feng1',
-	'散打'=>'feng2',
-	'跆拳道'=>'feng3',
-	'太极拳'=>'feng4',
-	'空翻'=>'feng5',
-);
-$arr_str1 = array(
-	'训练花絮'=>'xlhx',
-	'比赛锦集'=>'bsjj',
-	'获奖证书'=>'hjzs',
-	'学员表演'=>'xyby'
-);
-
-function set_url_lei($lei1,$lei2) {
+foreach ($terms as $term) 
+{
+				
+		$lei_url = ''; if (!empty($term->slug))  $lei_url = "&lei={$term->slug}";
+		$activ_sel = ($lei== trim($term->slug)) ? 'style="background:#F00; color:#FFF"' : '';	
+		
+		$leiurl = ''; if (!empty($lei1)) $leiurl =  "&lei1={$lei1}";
+		
+	 ?>
+	 <a <?php echo  $activ_sel ?> href="<?php echo $url_bs.$lei_url.$leiurl ?>">
+	 <?php echo $term->name ?>
+	 </a> 
+	 <?php 
 	
-	$url = "?post_type=students&lei={$lei1},$lei2";
-	return  $url;
+}
+?>
+<br />
+<?php 
+foreach ($terms1 as $term1) 
+{
+				
+		$lei_url1 = ''; if (!empty($term1->slug))  $lei_url1 = "&lei1={$term1->slug}";
+		$activ_sel1 = ($lei1== trim($term1->slug)) ? 'style="background:#F00; color:#FFF"' : '';
+		$leiurl = ''; if (!empty($lei)) $leiurl =  "&lei={$lei}";			
+	 ?>
+	 <a <?php echo  $activ_sel1 ?> href="<?php echo $url_bs.$lei_url1.$leiurl ?>">
+	 <?php echo $term1->name ?>
+	 </a> 
+	 <?php 
+	
+}
+?>
+
+<br />
+<ul>
+<?php 
+$args['post_type'] = 'students';
+$args['tax_query']['relation'] = 'AND';
+
+
+if (!empty($lei)) {
+	array_push($args['tax_query'], array(
+	            'taxonomy' => 'students_type',
+	            'field'    => 'slug',
+	            'terms'    => array( "$lei"),
+	));
+	
+
 }
 
- 		$post_type = get_post_type();
- 		$post_type_obj = get_post_type_object(get_post_type());
- 		?>
- 		<a href="<?php echo home_url() ?>" >首页</a>-><?php echo $post_type_obj->label ?>
- 		<br />
- 		<?php 
- 		foreach ($arr_str as $key=> $value) {
- 			?>
- 			<?php echo $key ?>   -- 
- 					<?php 
- 						foreach ($arr_str1 as $arr_str1key => $arr_str1value) {
- 							?>
- 							<a href="<?php echo  set_url_lei($value,$arr_str1value) ?>"><?php echo $arr_str1key ?></a> 
- 							|
- 							<?php 
- 						}
- 					?>
- 				<br />
- 			<?php 
- 		}
- 		
+if (!empty($lei1)) {
+		array_push($args['tax_query'], array(
+	            'taxonomy' => 'students_type1',
+	            'field'    => 'slug',
+	            'terms'    => array( "$lei1"),
+	));
 
- 		
- 		?>
- 		
-		<ul>
- 		<?php 
- 		
-		 	if (!empty($lei)) {
-				$lei_arr = explode(',', $lei);
-			}
- 			if (count($lei_arr) == 2) {
- 				
- 				list($students_type,$imgs_type) = $lei_arr;
- 				
+}
+			
+	
 
-	 				$args = array(
-					'post_type'  => 'students',
-				    'meta_key'   => '_id_imgs_type',
-				    'meta_query' => array(
-				        array(
-				            'key'     => '_id_imgs_type',
-				            'value'   => $imgs_type,
-				            'compare' => 'REGEXP',
-				        ),
-				    ),
-				    'tax_query' => array(
-				        'relation' => 'AND',
-				        array(
-				            'taxonomy' => 'students_type',
-				            'field'    => 'slug',
-				            'terms'    => array( "$students_type"),
-				        ),
-				    ),
-				);
-				$query = new WP_Query( $args );
+			$query = new WP_Query( $args );
+			
+			if (!empty($query->posts)) {
 				
-				if (!empty($query->posts)) {
 					$rs = $query->posts;
-					foreach ($rs as $rs_o) {
+								foreach ($rs as $rs_o) {
 							$img_url = get_post_meta($rs_o->ID,'_id_upload_students',true);
 						?>
 						
@@ -99,11 +93,7 @@ function set_url_lei($lei1,$lei2) {
 						
 						
 					}
-					
-					
-				}
-				wp_reset_postdata();
- 			}
- 		?>
-
-
+			}
+			wp_reset_postdata();
+?>
+</ul>

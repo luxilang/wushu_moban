@@ -18,7 +18,28 @@ $img_url = get_post_meta($post_id,'_id_upload_teachers',true); //_id_upload即�
 ?>
 
 图片：<img  src="<?php echo $img_url ?>" /><br />
+<?php 
+	$ashu_teachers_tab_arr = get_option('ashu_teachers_tab');
+	$teachers_tab_ini = trim($ashu_teachers_tab_arr['_teachers_tab_ini']);
 
+
+	if (!empty($teachers_tab_ini)) {
+		
+			$teachers_tab_ini_arr = array_filter(explode("\r\n", $teachers_tab_ini));
+			if (!empty($teachers_tab_ini_arr)) {
+				foreach ($teachers_tab_ini_arr as $key => $value) {
+					if (!empty($value)) {
+						list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+						
+						echo "{$tab_option_name}:".get_post_meta($post_id,$tab_option_id,true)."<br /><hr />";
+					}
+				
+				}
+			}
+		
+		}
+?>
+<!--  
 获奖经历: <?php echo get_post_meta($post_id,'_id_tinymce_hjjl',true); ?>  <br /><hr />
 学员中心: <?php echo get_post_meta($post_id,'_id_tinymce_xyzx',true); ?>  <br /><hr />
 教学成果:<?php echo get_post_meta($post_id,'_id_tinymce_jxcg',true); ?>  <br /><hr />
@@ -57,5 +78,5 @@ wp_reset_postdata();
 
 endif;
 ?>
-
+-->
 我要体验

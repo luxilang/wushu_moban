@@ -8,7 +8,7 @@
      <a href="?post_type=courses">课程介绍</a> | 
      <a href="?post_type=students">学员信息</a> | 
      <a href="?post_type=teachers">教练信息</a> | 
-     <a href="?page_id=17">联系我们</a> | 
+     <a href="?page_id=3">联系我们</a> | 
      <a href="/bbs" target="_blank">论坛</a> | 
-     <a href="?page_id=20">关于我们</a>
+     <a href="?page_id=1">关于我们</a>
 </div>

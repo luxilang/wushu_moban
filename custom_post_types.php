@@ -128,7 +128,8 @@ $post_type_conf = array(
 		'post_supports'=>array( 'title'),
 		'has_taxonomy'=>true,
 		'taxonomy_arr'=>array(
-			array('name'=>'学员风采','code'=>'students_type')
+			array('name'=>'武术','code'=>'students_type'),
+			array('name'=>'风采','code'=>'students_type1')
 		),
 
 	),
@@ -145,7 +146,7 @@ $post_type_conf = array(
 	array(
 		'post_code'=>'class_env',
 		'post_str'=>'上课环境',
-		'post_supports'=>array( 'title','editor' ),
+		'post_supports'=>array( 'title' ),
 		'has_taxonomy'=>true,
 		'taxonomy_arr'=>array(
 			array('name'=>'上课环境','code'=>'class_env_type')
@@ -168,7 +169,9 @@ $post_type_conf = array(
 		'post_supports'=>array( 'title','editor' ),
 		'has_taxonomy'=>true,
 			'taxonomy_arr'=>array(
-			array('name'=>'上课费用','code'=>'class_fee_type')
+				array('name'=>'集体课程','code'=>'class_fee_type'),
+				array('name'=>'私教1对1','code'=>'class_fee_type_1v1')
+				
 		),
 		
 	),

@@ -1,9 +1,8 @@
 <?php
 
- 		$post_type = get_post_type();
- 		$post_type_obj = get_post_type_object(get_post_type());
+
  		?>
- 		<a href="<?php echo home_url() ?>" >首页</a>-><?php echo $post_type_obj->label ?>
+
  		<br />
     <?php 
 			echo $content = get_post('211')->post_content;   
@@ -51,7 +50,7 @@
 				        array(
 				            'taxonomy' => 'teachers_type',
 				            'field'    => 'slug',
-				            'terms'    => array( "$students_type"),
+				            'terms'    => array( "$lei"),
 				        ),
 				);
 			}
