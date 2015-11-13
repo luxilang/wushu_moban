@@ -73,7 +73,8 @@ class post_type_tp {
 		'menu_position' => true,
 		'menu_icon' => null,
 		'hierarchical' => FALSE,
-		'rewrite' => array( 'slug' => 'courses','with_front'=>false),
+		
+		'rewrite' => array( 'slug' =>"{$this->post_code}",'with_front'=>false),
 		'query_var' => true,
 		'can_export' => true,
 		'supports' => $this->post_supports,
@@ -181,12 +182,13 @@ $post_type_conf = array(
 		'post_supports'=>array( 'title','editor' ),
 		'has_taxonomy'=>false
 	),
+	/*
 	array(
 		'post_code'=>'tiyan',
 		'post_str'=>'体验名单',
 		'post_supports'=>array( 'title'),
 		'has_taxonomy'=>false
-	),
+	),*/
 	/*
 	array(
 		'post_code'=>'tab_cont',
@@ -350,7 +352,73 @@ function manage_pages_columns($column_name, $id) {
 
 }
 
-    
+
+add_filter('post_type_link', 'custom_teachers_link', 1, 3);
+
+function custom_teachers_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'teachers' ){
+
+		return site_url( 'teachers/' . $post->ID .'.html' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
+
+ /**
+  * 
+$mytypes = array(//根据需要添加你的自定义文章类型
+
+	'type1' => 'slug1',
+
+	'type2' => 'slug2',
+
+	'type3' => 'slug3'
+
+	);
+
+add_filter('post_type_link', 'my_custom_post_type_link', 1, 3);
+
+function my_custom_post_type_link( $link, $post = 0 ){
+
+	global $mytypes;
+
+	if ( in_array( $post->post_type,array_keys($mytypes) ) ){
+
+		return home_url( $mytypes[$post->post_type].'/' . $post->ID .'.html' );
+
+	} else {
+
+		return $link;
+
+	}
+
+}
+
+add_action( 'init', 'my_custom_post_type_rewrites_init' );
+
+function my_custom_post_type_rewrites_init(){
+
+	global $mytypes;
+
+	foreach( $mytypes as $k => $v ) {
+
+		add_rewrite_rule(
+
+			$v.'/([0-9]+)?.html$',
+
+			'index.php?post_type='.$k.'&p=$matches[1]',
+
+			'top' );
+
+	}
+
+}
+  */  
 
 
 /*****

@@ -25,10 +25,11 @@ function echo_layout($html)
         	 * @var unknown_type
         	 */
         	/**
-        		$post_type = get_post_type();
+        		
  				$post_type_obj = get_post_type_object(get_post_type());
  				echo $post_type_obj->label
  				//print_R($post_type_obj);*/
+        		
         		if (!empty($post_type_conf) && !empty($_GET['post_type'])) {
         			$post_type_str_arr = array();
         			foreach ($post_type_conf as $value) {

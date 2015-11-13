@@ -1,4 +1,6 @@
-
+		<?php 
+			$post_type = get_post_type();
+		?>
  		<br />
  		<?php 
  			function out_post_type($rs) {
@@ -18,6 +20,7 @@
                 <br />;
  						<?php 
  					}
+ 					wp_reset_postdata();
  				}
  			}
  		    //少儿组的
