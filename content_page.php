@@ -1,9 +1,15 @@
-<?php
+ <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="class-title">
+            <label><?php echo $post->post_title;?></label>
+            <ol class="breadcrumb">
+              <li><a href="/">首页</a></li>
+              <li class="active"><?php echo $post->post_title;?></li>
+            </ol>
+          </div>
+        </div>
+ </div>
 
-if (empty($post->ID))  die(' no post');
-
-?>
-首页-&gt;<a href="<?php the_permalink() ?>"><?php echo $post->post_title;?></a>
 
 <?php 
 if ( have_posts() ) :
@@ -13,8 +19,8 @@ if ( have_posts() ) :
  	<?php the_content();?>
  
 <?php endwhile; ?>
-  一些HTML
+
 <?php else : ?>
-另一些HTML
+
 <?php get_template_part( 'content', 'none' ); ?>
 <?php endif; ?>

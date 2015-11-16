@@ -115,7 +115,7 @@ $post_type_conf = array(
 	array(
 		'post_code'=>'courses',
 		'post_str'=>'课程介绍',
-		'post_supports'=>array( 'title','editor','excerpt','thumbnail' ),
+		'post_supports'=>array( 'title' ),
 		'has_taxonomy'=>true,
 		'taxonomy_arr'=>array(
 			array('name'=>'课程介绍','code'=>'courses_type'),
@@ -330,6 +330,11 @@ function add_new_pages_columns($book_columns) {
 
 }
 
+
+
+
+
+
 add_action('manage_pages_custom_column', 'manage_pages_columns', 10, 2);
 
 function manage_pages_columns($column_name, $id) {
@@ -367,6 +372,22 @@ function custom_teachers_link( $link, $post = 0 ){
 	}
 
 }
+
+add_filter('post_type_link', 'custom_courses_link', 1, 3);
+
+function custom_courses_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'courses' ){
+
+		return site_url( 'courses/' . $post->ID .'.html' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
 
 
  /**

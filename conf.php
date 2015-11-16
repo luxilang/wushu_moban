@@ -90,20 +90,28 @@
 
  
     
-    $courses_meta = $courses_info = array();
-
-    $courses_info =  array(
-      'title' => '&nbsp',  
-      'id'=>'ext_info', 
+    $courses_meta = $courses_info = $courses_info_ziduan =$courses_meta_ziduan = array();
+	$courses_meta_img = $courses_info_img = array();
+    $courses_info_img =  array(
+      'title' => '图片部分',  
+      'id'=>'ext_info_img', 
       'page'=>array('courses'), 
       'context'=>'normal', 
       'priority'=>'low',
       'callback'=>'',
       'tab'=>true
     );
-
-    $courses_meta[] = array(
-	  'name' => '图片上传',
+     $courses_meta_img[] = array(
+	  'name' => '首页图片上传',
+	  'id'   => '_id_upload_home',
+	  'desc' => '图片大小(280*216)',
+	  'std'  => '',
+	  'size' => 40,
+	  'button_text' => '上传',
+	  'type' => 'upload'
+	);
+	$courses_meta_img[] = array(
+	  'name' => '详细图片上传',
 	  'id'   => '_id_upload_courses',
 	  'desc' => '请上传图片或者填入图片的URl地址',
 	  'std'  => '',
@@ -111,38 +119,7 @@
 	  'button_text' => '上传',
 	  'type' => 'upload'
 	);
-	$courses_meta = array_merge($courses_meta,$courses_tab_ini_arr);
-//	print_R($courses_meta);
-	/*
-	
-	$courses_meta[] = array(
-	  'name'  => '学员保障',
-	  'id'    => '_id_tinymce_xybz',
-	  'desc'  => '请填写学员保障',
-	  'std'   => '',
-	  'media' => 1,
-	  'type'  => 'tinymce'
-	);	
-	$courses_meta[] = array(
-	  'name'  => '课程评价',
-	  'id'    => '_id_tinymce_kcpj',
-	  'desc'  => '请填写课程评价',
-	  'std'   => '',
-	  'media' => 1,
-	  'type'  => 'tinymce'
-	);
-	
-
-	$courses_meta[] = array(
-	  'name'  => '扩展阅读',
-	  'id'    => '_id_tinymce_kzyd',
-	  'desc'  => '请填写扩展阅读',
-	  'std'   => '',
-	  'media' => 1,
-	  'type'  => 'tinymce'
-	);
-	*/
-	 $courses_meta[] = array(
+	$courses_meta_img[] = array(
 	  'name'    => '是否显示封面',
 	  'id'      => '_is_top',
 	  'desc'    => '是否显示封面？',
@@ -154,8 +131,87 @@
 	  'type'    => 'radio'
 	  
 	);
+    $courses_box_img = new ashu_meta_box($courses_meta_img, $courses_info_img);
+    $courses_info_ziduan =  array(
+      'title' => '课程详细字段',  
+      'id'=>'ext_info1', 
+      'page'=>array('courses'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+    	'tab'=>true
+    );
+     $courses_meta_ziduan[] = array(
+	  'name' => '授课方式',
+	  'id'   => '_skfs_courses',
+	  'desc' => '授课方式',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	$courses_meta_ziduan[] = array(
+	  'name' => '优惠活动',
+	  'id'   => '_yhhd_courses',
+	  'desc' => '优惠活动',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);	
+     $courses_meta_ziduan[] = array(
+	  'name' => '授课对象',
+	  'id'   => '_skdx_courses',
+	  'desc' => '授课对象',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	  $courses_meta_ziduan[] = array(
+	  'name' => '授课时间',
+	  'id'   => '_sksj_courses',
+	  'desc' => '授课时间',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+     $courses_meta_ziduan[] = array(
+	  'name' => '学员至上',
+	  'id'   => '_syzs_courses',
+	  'desc' => '学员至上',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	$courses_meta_ziduan[] = array(
+	  'name' => '开班信息',
+	  'id'   => '_kbxi_courses',
+	  'desc' => '开班信息',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	$courses_meta_ziduan[] = array(
+	  'name' => '课程简述',
+	  'id'   => '_duandesc_courses',
+	  'desc' => '课程简述',
+	  'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
+	);
+
 	
-	
+    $courses_box_ziduan = new ashu_meta_box($courses_meta_ziduan, $courses_info_ziduan);
+    
+    $courses_info =  array(
+      'title' => '课程选项卡',  
+      'id'=>'ext_info', 
+      'page'=>array('courses'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+      'tab'=>true
+    );
+	$courses_meta = array_merge($courses_meta,$courses_tab_ini_arr);
+
     $courses_box = new ashu_meta_box($courses_meta, $courses_info);
     
     
@@ -302,7 +358,7 @@
 	 $class_activities_meta[] = array(
 	  'name' => '活动缩略图上传',
 	  'id'   => '_id_upload_activities',
-	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'desc' => '图片大小259*202',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',
