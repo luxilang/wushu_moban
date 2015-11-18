@@ -603,13 +603,13 @@ ul {
 }
 /************teachers***************/
 .teachers .page-right .nav-tabs li {
-	width:15.6% !important;
+	width:15.6%;
 }
 .teachers .page-right .nav-tabs label {
-	font-size:18px;
+	font-size:16px;
 }
 .teachers .page-right .content {
-	margin-bottom:30px;
+	
 }
 .teachers .page-right .content h3 {
 	font-size:20px;
@@ -622,6 +622,7 @@ ul {
 }
 .teachers .page-right .content .lybz-list li {
 	margin-bottom:6px;
+	padding-left:22px;
 }
 .teachers .page-right .content .lybz-list li i {
 	display:inline-block;
@@ -630,12 +631,16 @@ ul {
 	background:#c9eefc;
 	border-radius:20px;
 	vertical-align:middle;
-	margin-right:10px;
+	margin-right:0px;
 	color:#00a6e5;
 	font-style:normal;
 	text-align:center;
 	font-size:14px;
 	line-height:22px;
+	margin-left:-22px;
+}
+.teachers .blue-box{
+	min-height:440px;
 }
 /***teachers-view***/
 .teachers-view {

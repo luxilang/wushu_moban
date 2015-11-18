@@ -7,14 +7,15 @@
 <link href="dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="dist/css/css.css" rel="stylesheet" media="screen">
+<link href="dist/css/css_m.css" rel="stylesheet" media="screen">
 <title>教练信息</title>
 </head>
 
 <body class="about">
 <div class="container head">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo"> <img src="dist/img/logo.png"> </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 logo"> <img src="dist/img/logo.png"> </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
       <div class="phone">
         <label>报名热线：18911639063</label>
         <img src="dist/img/xws.png"> </div>
@@ -24,29 +25,49 @@
 <div class="caidan">
   <div class="container">
     <div class="row">
-      <ul class="nav nav-pills">
-        <li><a>首页</a></li>
-        <li><a>课程介绍</a></li>
-        <li><a>学员信息</a></li>
-        <li><a>教练信息</a></li>
-        <li><a>联系我们</a></li>
-        <li><a>论坛</a></li>
-        <li class="active"><a>关于我们</a></li>
-      </ul>
+      <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+          <ul class="nav nav-pills">
+            <li><a href="index.html">首页</a></li>
+         	<li><a href="courses.html">课程介绍</a></li>
+          	<li><a href="student.html">学员信息</a></li>
+          	<li><a href="teachers.html">教练信息</a></li>
+          	<li><a href="contact.html">联系我们</a></li>
+          	<li><a>论坛</a></li>
+          	<li class="active"><a href="about.html">关于我们</a></li>
+          </ul>
+      </div>
+      <div class="hidden-lg hidden-md hidden-sm">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+        </button>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="student.html">学员信息</a></li>
+            <li><a href="teachers.html">教练信息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="#">论坛 </a></li>
+            <li class="active"><a href="about.html">关于我们</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="banner">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12"> <img src="dist/img/other-banner.png"> </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <img src="dist/img/other-banner.png"> </div>
     </div>
   </div>
 </div>
 <!---->
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3 page-left">
+    <div class="col-lg-3 col-md-3 col-sm-3 page-left hidden-xs">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12"> <img class="code" src="dist/img/code.jpg"> </div>
         <!--报名电话-->
@@ -70,10 +91,10 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-9 page-right"> 
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 page-right"> 
       <!--title-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="class-title">
             <label>教练团队</label>
             <ol class="breadcrumb">
@@ -85,7 +106,7 @@
       </div>
       <!--tab-->
       <div class="row">
-        <div class="col-lg-12 content">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 content">
           <h3>发展历史</h3>
           <p>北京武术世家培训中心是京城唯一一家以各个流派的武术世家传承人为一体的专业培训中心，我培训中心建立于2008年，教练员从事教育行业有5年以上的经验，目前与首都体育学院联合，我们拥有最专业的训练场地（面积800平方米以上），我们拥有最专业的师资队伍，全部教练均由获得过全国或世界前三名的教练任教，教练教学经验均在5年以上，我们针对每一位学员都有计划和针对性教学，保证学员真正的学到东西，学以致用。
 </p>
@@ -98,7 +119,7 @@
             <li>按照学员的技术水平和接受能力进行分班；</li>
             <li>根据学员的情况，为学员量身定制一份教案；</li>
             <li>为学员提供免费在线学习课程和相互交流的机会；</li>
-            <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会    用我们的实际行动帮助到你。</li>
+            <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
             <li>学员年龄需在：3周岁以上</li>
           </ul>
           <h3>教学效果</h3>
@@ -119,53 +140,89 @@
       </div>
       <!--map-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-          <div class="map-box">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 title">
-                <label>分校信息</label>
-              </div>
-              <div class="col-lg-5 col-md-5"> <img src="dist/img/map.jpg" style="width:100%;"> </div>
-              <div class="col-lg-7 col-md-7">
-                <ul class="address-list">
-                  <li>
-                    <div class="map-info">
-                      <h3>首都体育学院校区（海淀区）</h3>
-                      <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                      <label>联系电话：189-1163-9063  罗老师 </label>
-                      <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
-                      <a><i class="icon-maps icon-mark"></i>查询地图</a> <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a> </div>
-                  </li>
-                  <li>
-                    <div class="map-info">
-                      <h3>首都体育学院校区（海淀区）</h3>
-                      <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                      <label>联系电话：189-1163-9063  罗老师 </label>
-                      <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
-                      <a><i class="icon-maps icon-mark"></i>查询地图</a> <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a> </div>
-                  </li>
-                </ul>
-              </div>
+      	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        	<div class="map-box">
+            	<div class="row">
+                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title">
+                        <label>分校信息</label>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <img src="dist/img/map.jpg" style="width:100%;">
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <ul class="address-list">
+                        	<li>
+                            	<div class="map-info">
+                                	<h3>首都体育学院校区（海淀区）</h3>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
+                                    <a><i class="icon-maps icon-mark"></i>查询地图</a>
+                                    <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="map-info">
+                                	<h3>首都体育学院校区（海淀区）</h3>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
+                                    <a><i class="icon-maps icon-mark"></i>查询地图</a>
+                                    <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+      </div>
+      <!--map end-->
+    </div>
+    <!--mobel left-->
+    <div class="col-xs-12 page-left hidden-lg hidden-md hidden-sm">
+      <div class="row">
+        <!--三级菜单-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="level-3-menu">
+            <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+            <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
+            <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
+            <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+            <div class="clearfix"></div>
+          </ul>
         </div>
       </div>
     </div>
+    <!--mobel left end -->
   </div>
 </div>
 <div class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-lg-8 col-md-8">
+      <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="address">
-          <label>首都体育学院校区</label>
-          <span>地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</span> <span>联系电话（罗老师 189-1163-9063）    乘车路线：公交在“蓟门桥西”下车     地铁路线：13号线“大钟寺”下车</span> </div>
+          <h3>首都体育学院校区</h3>
+          <label><span>学院地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+          <label><span>联系电话：</span>189-1163-9063 罗老师</label>
+          <label><span>乘车路线：</span>公交在“蓟门桥西”下车</label>
+          <label><span>地铁路线：</span>13号线“大钟寺”下车</label>
+        </div>
         <div class="address">
-          <label>首都体育学院校区</label>
-          <span>地址：海淀体育中心内-海淀体育运动学校武术馆（靠近北京大学）</span> <span>联系电话（吴老师 135-8189-4868）    乘车路线：公交车在“海淀桥北”下车</span> </div>
+          <h3>首都体育学院校区</h3>
+          <label><span>学院地址：</span>海淀体育中心内-海淀体育运动学校武术馆（靠近北京大学）</label>
+          <label><span>联系电话：</span>135-8189-4868 吴老师</label>
+          <label><span>乘车路线：</span>公交车在“海淀桥北”下车</label>
+        </div>
       </div>
-      <div class="col-lg-4 col-md-4"> </div>
-      <div class="col-lg-12 col-md-12 copyright"> <span>Copyright(c)2010-2015 武术世家 版权所有    京ICP备11008151号京公网安备11010802014853</span> </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="code"> <img src="dist/img/footer-code.jpg">
+          <label>扫描二维码<span>用手机访问本站</span></label>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 copyright"> <span>Copyright(c)2010-2015 武术世家 版权所有    京ICP备11008151号京公网安备11010802014853</span> </div>
     </div>
   </div>
 </div>

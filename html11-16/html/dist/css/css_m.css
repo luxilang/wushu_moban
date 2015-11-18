@@ -1,4 +1,7 @@
 @media(max-width:767px){
+.page-right .tab-content .btn-blue{
+	margin:0px;
+}
 .head .logo img{
 	width:110px;
 	margin-top:8px;
@@ -37,7 +40,8 @@
 	padding-left:0px;
 }
 .index .course .nav-tabs li,
-.courses .nav-tabs li{
+.courses .nav-tabs li,
+.teachers .page-right .nav-tabs li{
 	width:50%;
 	margin-bottom:0px;
 	margin-right:0px;
@@ -45,17 +49,21 @@
 	border-right:solid 1px #def6ff;
 }
 .index .course .nav-tabs li:nth-child(2n),
-.courses .nav-tabs li:nth-child(2n){
+.courses .nav-tabs li:nth-child(2n),
+.teachers .page-right .nav-tabs li:nth-child(3n){
 	border-right:none;
 }
 .index .course .nav-tabs li a,
-.courses .nav-tabs li a{
+.courses .nav-tabs li a,
+.teachers .page-right .nav-tabs li a{
 	margin:0px;
 }
 .index .course .nav-tabs li.active i, 
 .index .course .nav-tabs li:hover i,
 .courses .nav-tabs li.active i, 
-.courses .nav-tabs li:hover i{
+.courses .nav-tabs li:hover i,
+.teachers .page-right .nav-tabs li.active i,
+.teachers .page-right .nav-tabs li:hover i{
 	display:none;
 }
 .index .team .info h2{
@@ -117,6 +125,40 @@
 	width:94%;
 	margin:auto;
 }
+.student .nav-tabs label{
+	font-size:14px;
+}
+.student  .nav-tabs-level2 li{
+	width:24% !important;
+}
+.teachers .page-right .nav-tabs li{
+	width:33.333333%;
+}
+.teachers .page-right .nav-tabs label{
+	font-size:14px;
+}
+.teachers .page-right .content p, .teachers .page-right .content .lybz-list li {
+    font-size: 14px;
+    line-height: 22px;
+}
+.teachers .blue-box{
+	min-height:inherit;
+}
+.contact .content{
+	margin-top:0px;
+	margin-bottom:10px;
+}
+.contact .content .title{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.contact .contact-list li{
+	margin-bottom:10px;
+}
+.about .content p, .about .content ul li {
+    font-size: 13px;
+    line-height: 24px;
+}
 }
 @media(min-width:768px) and (max-width:991px){
 /************ index  ******************/
@@ -163,5 +205,13 @@
 	max-height:264px;
 	min-height:264px;
 }
-
+.teachers .page-right .nav-tabs label{
+	font-size:18px;
+}
+.teachers .page-right .content h3{
+	font-size:18px;
+}
+.teachers .page-right .content p, .teachers .page-right .content .lybz-list li{
+	font-size:14px;
+}
 }
