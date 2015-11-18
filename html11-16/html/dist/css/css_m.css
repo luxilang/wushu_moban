@@ -1,0 +1,167 @@
+@media(max-width:767px){
+.head .logo img{
+	width:110px;
+	margin-top:8px;
+}
+.head .phone{
+	width:auto;
+}
+.head .phone label{
+	font-size:12px;
+	padding: 2px 10px 3px;
+	border-radius: 0 0 10px 10px;
+}
+.head .phone img{
+	width:150px;
+}
+.index .content .title h1{
+	font-size:18px;
+	margin-bottom:10px;
+}
+.index .content .title label{
+	font-size:12px;
+}
+.index .course .nav-tabs li{
+	margin-bottom:3px;
+}
+.index .course .nav-tabs li a{
+	padding:2px 15px;
+}
+.index .course .nav-tabs label{
+	font-size:14px;
+}
+.index .course .tab-content{
+	padding-right:8px;
+}
+.index .course .nav-tabs{
+	padding-left:0px;
+}
+.index .course .nav-tabs li,
+.courses .nav-tabs li{
+	width:50%;
+	margin-bottom:0px;
+	margin-right:0px;
+	border-bottom:solid 1px #def6ff;
+	border-right:solid 1px #def6ff;
+}
+.index .course .nav-tabs li:nth-child(2n),
+.courses .nav-tabs li:nth-child(2n){
+	border-right:none;
+}
+.index .course .nav-tabs li a,
+.courses .nav-tabs li a{
+	margin:0px;
+}
+.index .course .nav-tabs li.active i, 
+.index .course .nav-tabs li:hover i,
+.courses .nav-tabs li.active i, 
+.courses .nav-tabs li:hover i{
+	display:none;
+}
+.index .team .info h2{
+	font-size:18px;
+}
+.index .team .info ul{
+	font-size:12px;
+	line-height:24px;
+}
+.blue-box{
+	margin-bottom:16px;
+}
+.blue-box p{
+	font-size:12px;
+}
+.footer{
+	padding:20px 0;
+	margin-top:0px;
+}
+.footer .code{
+	margin:0px;
+}
+.footer .address label{
+	font-size:12px;
+	padding-left:60px;
+}
+.footer .address label span{
+	margin-left:-60px;
+}
+.footer .copyright{
+	padding-top:10px;
+}
+.courses .page-right .nav-tabs{
+	margin-bottom:0px;
+}
+.courses .nav-tabs li a{
+	padding-left:10px;
+	padding-right:10px;
+}
+.map-box .address-list{
+	margin-top:10px;
+}
+.map-box .map-info a{
+	margin:5px 0;
+}
+.page-left, .page-right{
+	margin-top:10px;
+}
+.page-left .class-icon{
+	margin-right:4px;
+}
+.page-left .level-3-menu li{
+	width:50%;
+	float:left;
+}
+.page-left .level-3-menu a{
+	padding:4px 10px;
+	font-size:16px;
+	width:94%;
+	margin:auto;
+}
+}
+@media(min-width:768px) and (max-width:991px){
+/************ index  ******************/
+.index .course .nav-tabs li{
+	margin-bottom:3px;
+}
+.index .course .nav-tabs li a{
+	padding:2px 15px;
+}
+.index .course .nav-tabs label{
+	font-size:14px;
+}
+.index .reason .blue-box{
+	min-height:400px;
+	margin-bottom:16px;
+}
+.index .team .info {
+	padding: 16px 0 0 16px;
+}
+.index .team .info h2 {
+	font-size: 18px;
+}
+.index .team .info ul{
+	font-size:14px;
+	line-height:24px;
+}
+.index .sound .blue-box{
+	min-height:450px;
+}
+/************ courses ****************/
+.page-left .apply-phone .info .p-number{
+	font-size:18px;
+}
+.page-right .tab-content .box .info a{
+	margin:6px 0 0;
+}
+.courses .page-right .nav-tabs li a{
+	padding:4px 10px;
+}
+.courses .page-right .nav-tabs label{
+	font-size:16px;
+}
+.courses .page-right .tab-content .box .info{
+	max-height:264px;
+	min-height:264px;
+}
+
+}
