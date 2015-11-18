@@ -1,45 +1,87 @@
 <?php
 $post_id = $post->ID; //首选需要获取文章id
- 		$post_type = get_post_type();
- 		$post_type_obj = get_post_type_object(get_post_type());
-
- 		?>
- 		<a href="<?php echo home_url() ?>" >首页</a>-><a href="<?php echo home_url() ?>?post_type=<?php echo $post_type ?>"   ><?php echo $post_type_obj->label ?></a>-><?php echo get_the_title() ?>
- 		<br />
-
-
-标题:  <?php echo $post->post_title ?> <br />
-摘要:  <?php echo $post->post_excerpt ?> <br />
-摘要:  <?php echo $post->post_content ?> <br />
-<?php
 $img_url = get_post_meta($post_id,'_id_upload_courses',true); 
 
 ?>
-
-图片1：<img  src="<?php echo $img_url ?>" /><br />
-<?php 
-$ashu_courses_tab_arr = get_option('ashu_courses_tab');
-$courses_tab_ini = trim($ashu_courses_tab_arr['_courses_tab_ini']);
-
-
-	if (!empty($courses_tab_ini)) {
-		
-			$courses_tab_ini_arr = array_filter(explode("\r\n", $courses_tab_ini));
-			if (!empty($courses_tab_ini_arr)) {
-				foreach ($courses_tab_ini_arr as $key => $value) {
-					if (!empty($value)) {
-						list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+<div class="row contact">
+        <div class="col-lg-12">
+          <div class="row view-info">
+            <div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img src="<?php echo $img_url ?>" width="274" height="370"> </div>
+            <div class="col-lg-8 col-xs-12">
+              <h3><?php echo $post->post_title ?></h3>
+              <label><span>授课对象：</span><?php echo get_post_meta($post_id,'_skdx_courses',true);  ?></label>
+              <label><span>课程简述：</span><?php echo get_post_meta($post_id,'_duandesc_courses',true);  ?></label>
+              <label><span>授课时间：</span><?php echo get_post_meta($post_id,'_sksj_courses',true);  ?></label>
+              <label><span>课程费用：</span><?php echo get_post_meta($post_id,'_skfy_courses',true);  ?></label>
+              <label><span>开班信息：</span><?php echo get_post_meta($post_id,'_kbxi_courses',true);  ?></label>
+              <label class="fg">学员至上：<?php echo get_post_meta($post_id,'_syzs_courses',true);  ?></label>
+              <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>免费试课</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="view-detail">
+              <ul class="nav nav-tabs nav-tabs-view" role="tablist">
+              <?php 
+			    $ashu_courses_tab_arr = get_option('ashu_courses_tab');
+				$courses_tab_ini = trim($ashu_courses_tab_arr['_courses_tab_ini']);
+				
+				if (!empty($courses_tab_ini)) {
+				
+					$courses_tab_ini_arr = array_filter(explode("\r\n", $courses_tab_ini));
+					if (!empty($courses_tab_ini_arr)) {
+						foreach ($courses_tab_ini_arr as $key => $value) {
+							$tab_id = $key+1;
+							if (!empty($value)) {
+								list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+								
+								$active_tab = ($key==0)   ?  'class="active"' : ''; 
+								?>
+                                <li role="presentation" <?php echo  $active_tab ?>><i></i><a href="#<?php echo $tab_id ?>" aria-controls="<?php echo $tab_id ?>" role="tab" data-toggle="tab">
+                              <label><?php echo $tab_option_name  ?> </label>
+                              </a></li>
+                                
+                                <?php
+								// get_post_meta($post_id,$tab_option_id,true)
+							}
 						
-						echo "{$tab_option_name}:".get_post_meta($post_id,$tab_option_id,true)."<br /><hr />";
+						}
 					}
 				
 				}
-			}
-		
-		}
-?>
+			  ?>
+              </ul>
+              <div class="tab-content tab-content-view">
+              <?php  
+			  	if (!empty($courses_tab_ini_arr)) {
+						foreach ($courses_tab_ini_arr as $key => $value) {
+							$tab_id1 = $key+1;
+							if (!empty($value)) {
+								list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+								
+								$active_tab1 = ($key==0)   ?  'active' : ''; 
+								
+			  ?>
+                <!--1-->
+                <div class="row tab-pane <?php echo $active_tab1 ?>"  role="tabpanel" id="<?php echo $tab_id1 ?>">
+                		<?php echo get_post_meta($post_id,$tab_option_id,true); ?>
+                </div>
+               <?php 
+							}
+						}
+				}
+			   ?>
 
-<?php 
+              </div>
+           </div>
+        </div>
+        
+      </div>
+
+
+
+<?php
+/***** 
 //调用相关的  学员信息
 $connected = new WP_Query( array(
   'connected_type' => 'courses_to_teachers',
@@ -91,3 +133,5 @@ endif;
 ?>
 
 免费试课
+*/
+?>

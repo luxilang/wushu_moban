@@ -2,7 +2,7 @@
 	 <!--tab-->
    
 	<div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
             <?php 
 		   $courses_tab_arr = array('儿童组','少年组','成人组','1对1私教课程');
@@ -24,7 +24,7 @@
    
           </ul>
           <div class="tab-content">
-          	<!--1-->
+          	<!--1- width="280" height="216"-->
             <?php
 			$tab_id_1 = 1;
 			
@@ -33,11 +33,6 @@
 			   $active_str_2 = '';
 			   if($courses_tab_arr_k == 0) $active_str_2 ='active';
 			   
-			    if($courses_tab_arr_v =='儿童组')
-				{
-					$courses_tab_arr_v = '少儿组';
-				}
-				
 			?>
             <div class="row tab-pane <?php echo $active_str_2 ?>"  role="tabpanel" id="<?php echo  $tab_id_1 ?>">
             
@@ -48,8 +43,10 @@
 				   foreach ($rs as $key => $rs_o) {
 					   $img_url = get_post_meta($rs_o->ID,'_id_upload_home',true);
 			  ?>
-              <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="box"> <img src="<?php echo $img_url ?>" width="280" height="216">
+            	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                <div class="box"> 
+                
+                <img src="<?php echo $img_url ?>" >
                   <div class="info">
                     <h3><?php echo  $rs_o->post_title ?></h3>
                     <label>授课方式：<?php echo  get_post_meta($rs_o->ID,'_skfs_courses',true) ?></label>

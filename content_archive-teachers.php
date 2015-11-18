@@ -1,14 +1,9 @@
-<?php
-		$post_type = get_post_type();
-
- 		?>
-
- 		<br />
-    <?php 
-			echo $content = get_post('211')->post_content;   
-			
-			echo '<br />';
-			
+<?php $post_type = get_post_type(); ?>
+      <div class="row">
+      	<?php echo $content = get_post('19')->post_content;    ?>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <ul class="nav nav-tabs" role="tablist">
+   		 <?php 
 			/***
 			$terms = get_terms('teachers_type', 'orderby=name&hide_empty=0&parent=0' ); 	
 			
@@ -33,60 +28,86 @@
 				if (!empty($value)) {
 					$lei_url = "&lei={$value}";
 				}
+				$activ_sel = ($lei== trim($value)) ? 'class="active"' : '';	
 				?>
- 							<a href="?post_type=teachers<?php echo $lei_url ?>"><?php echo $key ?></a> 
- 							|
- 				
- 				
- 			<?php 
- 			}
- 		
-
-			$args['post_type'] = 'teachers';
-			if (!empty($lei)) {
-				
-				$args['tax_query'] =  array(
-				        'relation' => 'AND',
-				        array(
-				            'taxonomy' => 'teachers_type',
-				            'field'    => 'slug',
-				            'terms'    => array( "$lei"),
-				        ),
-				);
+            <li role="presentation" <?php echo $activ_sel ?> ><i></i><a href="/?post_type=teachers<?php echo $lei_url ?>"  >
+              <label><?php echo $key ?></label>
+              </a></li>
+            <?php
 			}
-			
-			
-	
-			$query = new WP_Query( $args );
-			
-			$the_query = new WP_Query( $args );
 
-// The Loop
-if ( $the_query->have_posts() ) {
-	echo '<ul>';
-	while ( $the_query->have_posts() ) {
-		$the_query->the_post();
-		$img_url = get_post_meta(get_the_ID(),'_id_upload_teachers',true);
-		?>
-		 
-		<li>
-		标题：<?php the_title();  ?> <br />
-		标题：<?php the_content();  ?> <br />
-		摘要：<?php the_excerpt();  ?> <br />
-		标题：<?php get_permalink();  ?> <br />
-			图片<img  src="<?php echo $img_url ?>" width="200" height="200"    />
-		<a href="<?php echo get_permalink(get_the_ID()); ?>">查看详细</a>   
-		 </li>
-		<?php 
+			?>
+          </ul>
+          <div class="tab-content"> 
+           
+            <div class="row tab-pane active"  role="tabpanel"   >
+          		<div id="neirong">
+                
+                </div>
+                    
+          			<div class="col-lg-4 col-xs-offset-4"  id="jiazai">
+                    <input  type="hidden" name="jiazai_tp" id="jiazai_tp" value="teachers"  />
+                    <input  type="hidden" name="jiazai_lei" id="jiazai_lei" value="<?php echo $lei ?>"  />
+                      <input  type="hidden" name="jiazai_page" id="jiazai_page" value="0"  />
+                    <button type="button"  id="jiazai" p_url=""  onclick="load_page()"  class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                  </div>
+            </div>
+
+            <!--tab end--> 
+          </div>
+        </div>
+      </div>
+
+<script>
+function load_page(){
+	var jiazai_tp  = $("#jiazai_tp").val();
+	var jiazai_lei  = $("#jiazai_lei").val();
+	var jiazai_page  = $("#jiazai_page").val();
+	$.get(
+		'?ajax=1',
+		{
+			'jiazai_tp':jiazai_tp,
+			'jiazai_lei':jiazai_lei,
+			'jiazai_page':jiazai_page
+		},
+		function(data){
+			var json = data.rs;
+			alert(data.rs);	alert(json.length);
+			var html ='';
+			for(i=0;i<json.length;i++)
+			{
+			    html += '<div class="col-lg-4 col-md-4">';
+				html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" width="212" height="212">';
+				html += '<label>'+json[i].title+'</label>';
+				html += json[i].excerpt;
+				html += '<a href="'+json[i].permalink+'">查看详细</a> ';
+				html += '</div>';
+				html += '</div>';
+			}
 		
-	}
-	echo '</ul>';
-} else {
-	// no posts found
-}
-/* Restore original Post Data */
-wp_reset_postdata();
+			$("#jiazai_page").val(data.page);
+			if(json.length == 0)
+			{
+				
+			}else{
+				$("#neirong").append(html);	
+			}
+
 			
- 	
-    
+		},
+		'json'
+	)
+
+	
+}
+$(document).ready(function() {  
+
+		load_page();
+
+});
+
+
+
+
+</script>
 

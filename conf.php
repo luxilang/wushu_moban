@@ -113,7 +113,7 @@
 	$courses_meta_img[] = array(
 	  'name' => '详细图片上传',
 	  'id'   => '_id_upload_courses',
-	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'desc' => '图片大小(274*370)',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',
@@ -145,49 +145,57 @@
 	  'name' => '授课方式',
 	  'id'   => '_skfs_courses',
 	  'desc' => '授课方式',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	    'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);
 	$courses_meta_ziduan[] = array(
 	  'name' => '优惠活动',
 	  'id'   => '_yhhd_courses',
 	  'desc' => '优惠活动',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	    'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);	
      $courses_meta_ziduan[] = array(
 	  'name' => '授课对象',
 	  'id'   => '_skdx_courses',
 	  'desc' => '授课对象',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	    'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);
 	  $courses_meta_ziduan[] = array(
 	  'name' => '授课时间',
 	  'id'   => '_sksj_courses',
 	  'desc' => '授课时间',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	   'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
+	);
+	  $courses_meta_ziduan[] = array(
+	  'name' => '授课费用',
+	  'id'   => '_skfy_courses',
+	  'desc' => '授课费用',
+	    'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);
      $courses_meta_ziduan[] = array(
 	  'name' => '学员至上',
 	  'id'   => '_syzs_courses',
 	  'desc' => '学员至上',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	   'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);
 	$courses_meta_ziduan[] = array(
 	  'name' => '开班信息',
 	  'id'   => '_kbxi_courses',
 	  'desc' => '开班信息',
-	  'std'  => '',
-	  'size' => 40,
-	  'type' => 'text'
+	    'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
 	);
 	$courses_meta_ziduan[] = array(
 	  'name' => '课程简述',
@@ -228,7 +236,7 @@
     $students_meta[] = array(
 	  'name' => '图片上传',
 	  'id'   => '_id_upload_students',
-	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'desc' => '图片大小274*370',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',

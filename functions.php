@@ -1,5 +1,5 @@
 <?php
-
+//require get_template_directory() . '/ajax.php';
 function get_current_archive_link( $paged = true ) { 
        $link = false; 
   
@@ -136,6 +136,7 @@ add_action( 'wp_loaded', 'hbns_register_p2p_relationships' );
  * @param unknown_type $meta_key _is_top
  */
 function custom_type_class_meta($post_type,$post_type_class,$meta_key) {
+
 	global  $wpdb;
 	$sql = "
 	SELECT * FROM  wp_postmeta 
@@ -153,7 +154,6 @@ function custom_type_class_meta($post_type,$post_type_class,$meta_key) {
 	order by wp_posts.ID desc
 	limit 3
 		";
-	
 	$rs = $wpdb->get_results($sql);
 	//置顶封面
 	if (($post_type == '_is_top' && count($rs) < 3 ) || empty($rs) ) {
