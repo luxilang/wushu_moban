@@ -1,4 +1,5 @@
 <?php
+add_filter('show_admin_bar','__return_false'); 
 //require get_template_directory() . '/ajax.php';
 function get_current_archive_link( $paged = true ) { 
        $link = false; 
@@ -68,6 +69,7 @@ include_once('conf.php');
 include_once 'custom_post_types.php';
 include_once 'layout.php';
 
+/***
 function hbns_register_p2p_relationships() {
 	if ( !function_exists( 'p2p_register_connection_type' ) )
 		return;
@@ -83,10 +85,10 @@ function hbns_register_p2p_relationships() {
 			'context' => 'advanced',
 			),
 		'cardinality' => 'many-to-many',
-			/*
-		'fields' => array(
-			'description' => 'Description',
-			),*/
+			
+		//'fields' => array(
+		//	'description' => 'Description',
+		//	),
 		) );
 	p2p_register_connection_type( array(
 		'name' => 'courses_to_teachers',
@@ -99,10 +101,10 @@ function hbns_register_p2p_relationships() {
 			'context' => 'advanced',
 			),
 		'cardinality' => 'many-to-many',
-			/*
-		'fields' => array(
-			'description' => 'Description',
-			),*/
+			
+		//'fields' => array(
+		//	'description' => 'Description',
+			//),
 		) );
 		p2p_register_connection_type( array(
 		'name' => 'teachers_to_students',
@@ -115,14 +117,15 @@ function hbns_register_p2p_relationships() {
 			'context' => 'advanced',
 			),
 		'cardinality' => 'many-to-many',
-			/*
-		'fields' => array(
-			'description' => 'Description',
-			),*/
+			
+		//'fields' => array(
+			//'description' => 'Description',
+			//),
 		) );
 }
  
 add_action( 'wp_loaded', 'hbns_register_p2p_relationships' );
+*/
 
 
 //页面的数据模型

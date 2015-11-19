@@ -270,6 +270,130 @@ class liebiao {
 
 //$liebiao = new liebiao();
 //$liebiao->init($wpdb);
+function columns_img($post_id,$flag){
+  			$tutu_link = get_post_meta( $post_id, $flag, true );
+			$html ='';
+			if(!empty($tutu_link)){
+				$html = "<a target='_blank' href='".$tutu_link."'><img  src='".$tutu_link."'  width='100'  height='100'/></a>";
+			}
+			else{
+				$html  = '&nbsp;&nbsp;&nbsp;&nbsp;--------';
+			}
+			return $html ;
+}
+function columns_leixing($wpdb,$post_id){
+			$sql = "
+			SELECT wp_term_relationships.*, wp_terms.name FROM  wp_term_relationships,wp_term_taxonomy,wp_terms 
+			WHERE  
+			wp_term_relationships.term_taxonomy_id = wp_term_taxonomy.term_taxonomy_id 
+			AND  wp_terms.term_id = wp_term_taxonomy.term_id 
+			AND  object_id = '{$post_id}' 
+			";
+			$rs = $wpdb->get_results($sql);
+			$html = '';
+         	if(!empty($rs))
+			{
+				
+					foreach($rs as $v )
+					{
+						
+						$html.=  $v->name."&nbsp,";
+					}
+				
+			}else{
+				
+			}  
+			return trim($html,',');
+}
+//教练 
+
+add_filter('manage_teachers_posts_columns', 'my_teachers_columns', 1);
+add_action('manage_teachers_posts_custom_column', 'output_my_teachers_custom_columns', 0, 2); 
+  
+function my_teachers_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';
+		$tiyan_columns['_id_upload_teachers']  = '图片'; 
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+    return $tiyan_columns;
+} 
+function output_my_teachers_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+        case '_id_upload_teachers' :
+			echo  columns_img($post_id,'_id_upload_teachers');
+            break;
+ 		 case 'leixing':   
+		 		echo columns_leixing($wpdb,$post_id);
+          break; 
+    }
+}
+
+//课程 
+add_filter('manage_courses_posts_columns', 'my_courses_columns', 1);
+add_action('manage_courses_posts_custom_column', 'output_my_courses_custom_columns', 0, 2); 
+  
+function my_courses_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';//这个是前面那个选框，不要丢了
+		$tiyan_columns['_id_upload_home']  = '首页图片/列表封面'; 
+		$tiyan_columns['_id_upload_courses']  = '详细页图片'; 
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+     
+      
+    return $tiyan_columns;
+} 
+function output_my_courses_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+        case '_id_upload_home' :
+			echo  columns_img($post_id,'_id_upload_home');
+            break;
+        case '_id_upload_courses' :
+			echo  columns_img($post_id,'_id_upload_courses');
+            break;
+ 		 case 'leixing':   
+		 		echo columns_leixing($wpdb,$post_id);
+          break; 
+    }
+}
+
+
+
+//学员
+
+add_filter('manage_students_posts_columns', 'my_students_columns', 1);
+add_action('manage_students_posts_custom_column', 'output_my_students_custom_columns', 0, 2); 
+  
+function my_students_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';//这个是前面那个选框，不要丢了
+		$tiyan_columns['_id_upload_students']  = '图片'; 
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+     
+      
+    return $tiyan_columns;
+} 
+function output_my_students_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+        case '_id_upload_students' :
+			echo  columns_img($post_id,'_id_upload_students');
+            break;
+ 		 case 'leixing':   
+		 	echo columns_leixing($wpdb,$post_id);
+            break; 
+    }
+}
 
 
 //体验名单列表

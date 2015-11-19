@@ -271,10 +271,11 @@
       'callback'=>'',
 	 'tab'=>true
     );
+
 	 $teachers_meta[] = array(
 	  'name' => '教练图片上传',
 	  'id'   => '_id_upload_teachers',
-	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'desc' => '图片大小 212 *212',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',

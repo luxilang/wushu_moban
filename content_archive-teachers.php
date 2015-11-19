@@ -1,7 +1,7 @@
 <?php $post_type = get_post_type(); ?>
       <div class="row">
       	<?php echo $content = get_post('19')->post_content;    ?>
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
    		 <?php 
 			/***
@@ -41,16 +41,20 @@
           <div class="tab-content"> 
            
             <div class="row tab-pane active"  role="tabpanel"   >
-          		<div id="neirong">
-                
-                </div>
+                    <div id="neirong">
                     
-          			<div class="col-lg-4 col-xs-offset-4"  id="jiazai">
-                    <input  type="hidden" name="jiazai_tp" id="jiazai_tp" value="teachers"  />
+                    </div>
+                         <input  type="hidden" name="jiazai_tp" id="jiazai_tp" value="teachers"  />
                     <input  type="hidden" name="jiazai_lei" id="jiazai_lei" value="<?php echo $lei ?>"  />
                       <input  type="hidden" name="jiazai_page" id="jiazai_page" value="0"  />
-                    <button type="button"  id="jiazai" p_url=""  onclick="load_page()"  class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                  </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="jiazai">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" onclick="load_page()" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                        </div>
+                    </div>
+                    </div>
+          		
             </div>
 
             <!--tab end--> 
@@ -63,37 +67,46 @@ function load_page(){
 	var jiazai_tp  = $("#jiazai_tp").val();
 	var jiazai_lei  = $("#jiazai_lei").val();
 	var jiazai_page  = $("#jiazai_page").val();
-	$.get(
-		'?ajax=1',
+	$.post(
+		'/?post_type=teachers',
 		{
+			'ajax_type':'post',
 			'jiazai_tp':jiazai_tp,
 			'jiazai_lei':jiazai_lei,
 			'jiazai_page':jiazai_page
 		},
 		function(data){
 			var json = data.rs;
-			alert(data.rs);	alert(json.length);
-			var html ='';
-			for(i=0;i<json.length;i++)
+			if(json.length ==0)
 			{
-			    html += '<div class="col-lg-4 col-md-4">';
-				html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" width="212" height="212">';
-				html += '<label>'+json[i].title+'</label>';
-				html += json[i].excerpt;
-				html += '<a href="'+json[i].permalink+'">查看详细</a> ';
-				html += '</div>';
-				html += '</div>';
-			}
-		
-			$("#jiazai_page").val(data.page);
-			if(json.length == 0)
-			{
-				
+				$("#jiazai").hide();
 			}else{
-				$("#neirong").append(html);	
-			}
-
+				//alert(data.rs);	alert(json.length);
+				if(json.length <=2)
+				{
+					$("#jiazai").hide();
+				}
+				var html ='';
+				for(i=0;i<json.length;i++)
+				{
+					html += '<div class="col-lg-4 col-md-4 col-sm-4">';
+					html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" width="212" height="212">';
+					html += '<label>'+json[i].title+'</label>';
+					html += '<p>'+json[i].excerpt+'</p>';
+					html += '<a href="'+json[i].permalink+'">查看详细</a> ';
+					html += '</div>';
+					html += '</div>';
+				}
 			
+				$("#jiazai_page").val(data.page);
+				if(json.length == 0)
+				{
+					
+				}else{
+					$("#neirong").append(html);	
+				}
+
+			}
 		},
 		'json'
 	)
