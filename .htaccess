@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteRule ([a-zA-Z]{1,})/([0-9]{1,}).html index.php?post_type=$1&p=$2
+
+
+
+ 
