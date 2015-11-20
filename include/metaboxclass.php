@@ -264,7 +264,7 @@ class ashu_meta_box {
         $checked = 'checked = "checked"';
       }
       
-      echo '<input '.$checked.' type="checkbox" class="ashu_checkbox" value="'.$key.'" name="'.$ashu_meta['id'].'[]"/>'.$value;
+      echo '<input '.$checked.' type="checkbox" class="ashu_checkbox" value="'.$key.'" name="'.$ashu_meta['id'].'[]"/>&nbsp;'.$value.'&nbsp;&nbsp;';
     }
   }
   
