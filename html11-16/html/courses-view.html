@@ -8,14 +8,15 @@
 <link href="dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="dist/css/css.css" rel="stylesheet" media="screen">
+<link href="dist/css/css_m.css" rel="stylesheet" media="screen">
 <title>课程介绍</title>
 </head>
 
 <body class="course-view">
 <div class="container head">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo"> <img src="dist/img/logo.png"> </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 logo"> <img src="dist/img/logo.png"> </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
       <div class="phone">
         <label>报名热线：18911639063</label>
         <img src="dist/img/xws.png"> </div>
@@ -25,29 +26,49 @@
 <div class="caidan">
   <div class="container">
     <div class="row">
-      <ul class="nav nav-pills">
-        <li><a>首页</a></li>
-        <li class="active"><a>课程介绍</a></li>
-        <li><a>学员信息</a></li>
-        <li><a>教练信息</a></li>
-        <li><a>联系我们</a></li>
-        <li><a>论坛</a></li>
-        <li><a>关于我们</a></li>
-      </ul>
+      <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+          <ul class="nav nav-pills">
+            <li><a href="index.html">首页</a></li>
+         	<li class="active"><a href="courses.html">课程介绍</a></li>
+          	<li><a href="student.html">学员信息</a></li>
+          	<li><a href="teachers.html">教练信息</a></li>
+          	<li><a href="contact.html">联系我们</a></li>
+          	<li><a>论坛</a></li>
+          	<li><a href="about.html">关于我们</a></li>
+          </ul>
+      </div>
+      <div class="hidden-lg hidden-md hidden-sm">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+        </button>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">首页</a></li>
+            <li class="active"><a href="courses.html">课程介绍</a></li>
+            <li><a href="student.html">学员信息</a></li>
+            <li><a href="teachers.html">教练信息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="#">论坛 </a></li>
+            <li><a href="about.html">关于我们</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="banner">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12"> <img src="dist/img/other-banner.png"> </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <img src="dist/img/other-banner.png"> </div>
     </div>
   </div>
 </div>
 <!---->
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3 page-left">
+    <div class="col-lg-3 col-md-3 col-sm-3 page-left hidden-xs">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12"> <img class="code" src="dist/img/code.jpg"> </div>
         <!--报名电话-->
@@ -71,13 +92,13 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-9 page-right"> 
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 page-right"> 
       <!--title-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="class-title">
             <label>课程介绍</label>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb hidden-xs">
               <li><a href="#">首页</a></li>
               <li><a href="#">课程介绍</a></li>
               <li class="active">少儿武术班</li>
@@ -87,337 +108,445 @@
       </div>
       <!--tab-->
       <div class="row contact">
-        <div class="col-lg-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="row view-info">
-            <div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img src="dist/img/student.jpg"> </div>
-            <div class="col-lg-8 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6 col-lg-offset-0 col-md-offset-0 col-sm-offset-0 col-xs-offset-3"> <img src="dist/img/student.jpg"> </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
               <h3>少儿武术班</h3>
               <label><span>授课对象：</span>少儿组3岁~10岁</label>
               <label><span>课程简述：</span>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</label>
-              <label><span>授课时间：</span>周一至周五 晚上：6:00-7:30<br>周六日 上午9:30-11:00  下午：3:00-4:30 4:30-6:00</label>
+              <label><span>授课时间：</span>周一至周五 晚上：6:00-7:30<br>
+                周六日 上午9:30-11:00  下午：3:00-4:30 4:30-6:00</label>
               <label><span>课程费用：</span>集体课程：26元~100元不等; 私教课程：300~400元不等;
-上课次数越多，每节课单价越低，祥情请咨询客服！</label>
+                上课次数越多，每节课单价越低，祥情请咨询客服！</label>
               <label><span>开班信息：</span>随到随学</label>
               <label class="fg">学员至上：免费试课，满意为止（无任何附加费用）</label>
               <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>免费试课</button>
             </div>
           </div>
         </div>
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="view-detail">
-              <ul class="nav nav-tabs nav-tabs-view" role="tablist">
-                <li role="presentation" class="active"><i></i><a href="#1" aria-controls="1" role="tab" data-toggle="tab">
-                  <label>获奖经历</label>
-                  </a></li>
-                <li role="presentation"><i></i><a href="#2" aria-controls="2" role="tab" data-toggle="tab">
-                  <label>学员中心</label>
-                  </a></li>
-                <li role="presentation"><i></i><a href="#3" aria-controls="3" role="tab" data-toggle="tab">
-                  <label>教学成果</label>
-                  </a></li>
-                <li role="presentation"><i></i><a href="#4" aria-controls="4" role="tab" data-toggle="tab">
-                  <label>课堂展示</label>
-                  </a></li>
-                <li role="presentation"><i></i><a href="#4" aria-controls="4" role="tab" data-toggle="tab">
-                  <label>扩展阅读</label>
-                  </a></li>
-              </ul>
-              <div class="tab-content tab-content-view">
-                <!--1-->
-                <div class="row tab-pane active"  role="tabpanel" id="1">
-                	<div class="col-lg-12">
-                    <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
-                      <li role="presentation" class="active"><i></i><a href="#1_1" aria-controls="1_1" role="tab" data-toggle="tab">
-                        <label>训练花絮</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#1_2" aria-controls="1_2" role="tab" data-toggle="tab">
-                        <label>比赛集锦</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#1_3" aria-controls="1_3" role="tab" data-toggle="tab">
-                        <label>获奖证书</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#1_4" aria-controls="1_4" role="tab" data-toggle="tab">
-                        <label>学员表演</label>
-                        </a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="row tab-pane active"  role="tabpanel" id="1_1">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                      <!--1_2-->
-                      <div class="row tab-pane"  role="tabpanel" id="1_2">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student3.jpg"> </div>
-                        </div>
-                        <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                      <!--1_3-->
-                      <div class="row tab-pane"  role="tabpanel" id="1_3">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
+            <ul class="nav nav-tabs nav-tabs-view" role="tablist">
+              <li role="presentation" class="active"><i></i><a href="#1" aria-controls="1" role="tab" data-toggle="tab">
+                <label>课程简介</label>
+                </a></li>
+              <li role="presentation"><i></i><a href="#2" aria-controls="2" role="tab" data-toggle="tab">
+                <label>学员保障</label>
+                </a></li>
+              <li role="presentation"><i></i><a href="#3" aria-controls="3" role="tab" data-toggle="tab">
+                <label>课程评价</label>
+                </a></li>
+              <li role="presentation"><i></i><a href="#4" aria-controls="4" role="tab" data-toggle="tab">
+                <label>教练简介</label>
+                </a></li>
+              <li role="presentation"><i></i><a href="#5" aria-controls="5" role="tab" data-toggle="tab">
+                <label>学员成果</label>
+                </a></li>
+              <li role="presentation"><i></i><a href="#6" aria-controls="6" role="tab" data-toggle="tab">
+                <label>扩展阅读</label>
+                </a></li>
+            </ul>
+            <div class="tab-content tab-content-view"> 
+              <!--1-->
+              <div class="row tab-pane active"  role="tabpanel" id="1">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
+                    <li role="presentation" class="active"><i></i><a href="#1_1" aria-controls="1_1" role="tab" data-toggle="tab">
+                      <label>试听课程</label>
+                      </a></li>
+                    <li role="presentation"><i></i><a href="#1_2" aria-controls="1_2" role="tab" data-toggle="tab">
+                      <label>正式课程</label>
+                      </a></li>
+                  </ul>
+                  <div class="tab-content"> 
+                    <!--1_1-->
+                    <div class="row tab-pane active"  role="tabpanel" id="1_1">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h3>课程简述</h3>
+                        <p>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</p>
+                        <h3>教学特色</h3>
+                        <ul>
+                          <li>我们为了保证课程质量，经过吸取学员和家长之间的意见，最终规定：每个班的人数5~10人；</li>
+                          <li>在学员插班问题上，我们专门为新来的学员分配教练进行指导教学，保证学员的学习效果，帮助插班的学员跟上课程进度；</li>
+                          <li>按照学员的技术水平和接受能力进行分班；</li>
+                          <li>根据学员的情况，为学员量身定制一份教案；</li>
+                          <li>为学员提供免费在线学习课程和相互交流的机会；</li>
+                          <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
+                        </ul>
                       </div>
                     </div>
+                    <!--1_2-->
+                    <div class="row tab-pane"  role="tabpanel" id="1_2">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <h3>课程简述1</h3>
+                        <p>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</p>
+                        <h3>教学特色</h3>
+                        <ul>
+                          <li>我们为了保证课程质量，经过吸取学员和家长之间的意见，最终规定：每个班的人数5~10人；</li>
+                          <li>在学员插班问题上，我们专门为新来的学员分配教练进行指导教学，保证学员的学习效果，帮助插班的学员跟上课程进度；</li>
+                          <li>按照学员的技术水平和接受能力进行分班；</li>
+                          <li>根据学员的情况，为学员量身定制一份教案；</li>
+                          <li>为学员提供免费在线学习课程和相互交流的机会；</li>
+                          <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!--end--> 
                   </div>
                 </div>
-                <!--2-->
-                <div class="row tab-pane"  role="tabpanel" id="2">
-                  <div class="col-lg-12">
-                    <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
-                      <li role="presentation" class="active"><i></i><a href="#2_1" aria-controls="2_1" role="tab" data-toggle="tab">
-                        <label>训练花絮</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#2_2" aria-controls="2_2" role="tab" data-toggle="tab">
-                        <label>比赛集锦</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#2_3" aria-controls="2_3" role="tab" data-toggle="tab">
-                        <label>获奖证书</label>
-                        </a></li>
-                      <li role="presentation"><i></i><a href="#2_4" aria-controls="2_4" role="tab" data-toggle="tab">
-                        <label>学员表演</label>
-                        </a></li>
-                    </ul>
-                    <div class="tab-content">
-                      <div class="row tab-pane active"  role="tabpanel" id="2_1">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                       <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                      <!--1_2-->
-                      <div class="row tab-pane"  role="tabpanel" id="2_2">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student3.jpg"> </div>
-                        </div>
-                        <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                      <!--1_3-->
-                      <div class="row tab-pane"  role="tabpanel" id="2_3">
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student2.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student1.jpg"> </div>
-                        </div>
-                        <div class="col-lg-4">
-                          <div class="picList">
-                            <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                            <img src="dist/img/student.jpg"> </div>
-                        </div>
-                        <div class="col-lg-12">
-                    	<div class="row">
-                        	<div class="col-lg-4 col-xs-offset-4">
-                              <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--3-->
-                <div class="row tab-pane"  role="tabpanel" id="3">
-                  
-                </div>
-                <!--4-->
-                <div class="row tab-pane"  role="tabpanel" id="4">
-                    
-                </div>
-                <!--tab end-->
               </div>
-           </div>
+              <!--2-->
+              <div class="row tab-pane"  role="tabpanel" id="2">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <h3 class="title">0元体验</h3>
+                  <ul>
+                    <li>学员可根据自己时间的安排</li>
+                    <li>课程全免无任何隐性消费！</li>
+                  </ul>
+                  <h3 class="title">师资保障</h3>
+                  <p>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</p>
+                  <h3 class="title">教学保障</h3>
+                  <ul>
+                    <li>我们为了保证课程质量，经过吸取学员和家长之间的意见，最终规定：每个班的人数5~10人；</li>
+                    <li>在学员插班问题上，我们专门为新来的学员分配教练进行指导教学，保证学员的学习效果，帮助插班的学员跟上课程进度；</li>
+                    <li>按照学员的技术水平和接受能力进行分班；</li>
+                    <li>根据学员的情况，为学员量身定制一份教案；</li>
+                    <li>为学员提供免费在线学习课程和相互交流的机会；</li>
+                    <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
+                  </ul>
+                  <h3 class="title">1对1指导</h3>
+                  <ul>
+                    <li>学员可根据自己时间的安排</li>
+                    <li>指导完全免费！</li>
+                  </ul>
+                </div>
+              </div>
+              <!--3-->
+              <div class="row tab-pane"  role="tabpanel" id="3">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                  <!---->
+                  <div class="box">
+                    <div class="row">
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label><img src="dist/img/xz1.png">张友佳父亲<span>少儿武术成员家长</span></label>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right"> <span class="time"> 2015-10-30 15:20:16 </span> </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+                        <p>周教练耐心 ，细心，幽默风趣，是非常好的教练，教了我们不光武术动作还有相应的文化知识，感谢周教练。</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!----> 
+                  <!---->
+                  <div class="box">
+                    <div class="row">
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label><img src="dist/img/xz1.png">王晓丽母亲<span>少儿武术成员家长</span></label>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right"> <span class="time"> 2015-10-30 15:20:16 </span> </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+                        <p>周教练治学严谨，要求严格，能深入了解学生的学习和生活状况，循循善诱，平易近人；注意启发和调动学生的积极性，课堂气氛较为活跃；上课例题丰富，不厌其烦，细心讲解，使学生有所收获；半数认真工整，批改作业认真及时并注意讲解学生易犯错误；最重要的是，能虚心并广泛听取学生的意见和反馈信息，做到及时修正和调整自己的教学。总之是一个不可多得的好教师。</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!----> 
+                  <!---->
+                  <div class="box">
+                    <div class="row">
+                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                        <label><img src="dist/img/xz1.png">李海洋父亲<span>少儿武术成员家长</span></label>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right"> <span class="time"> 2015-10-30 15:20:16 </span> </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+                        <p> 对待教学认真负责，语言生动，条理清晰，举例充分恰当，对待学生严格要求，能够鼓励学生踊跃发言，使课堂气      氛比较积极热烈。
+                          课堂内容充实，简单明了，使学生能够轻轻松松掌握知识。</p>
+                      </div>
+                    </div>
+                  </div>
+                  <!----> 
+                </div>
+              </div>
+              <!--4-->
+              <div class="row tab-pane"  role="tabpanel" id="4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="blue-box"> <img src="dist/img/xz1.png">
+                      <label>周教练</label>
+                      <span class="class-from">国家一级运动员</span>
+                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
+                      <a href="#"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="blue-box"> <img src="dist/img/xz2.png">
+                      <label>周教练</label>
+                      <span class="class-from">国家一级运动员</span>
+                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
+                      <a href="#"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                    <div class="blue-box"> <img src="dist/img/xz3.png">
+                      <label>周教练</label>
+                      <span class="class-from">国家一级运动员</span>
+                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
+                      <a href="#"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
+                    </div>
+                  </div>
+              </div>
+              <!--5-->
+              <div class="row tab-pane"  role="tabpanel" id="5">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
+                    <li role="presentation" class="active"><i></i><a href="#5_1" aria-controls="5_1" role="tab" data-toggle="tab">
+                      <label>训练花絮</label>
+                      </a></li>
+                    <li role="presentation"><i></i><a href="#5_2" aria-controls="5_2" role="tab" data-toggle="tab">
+                      <label>比赛集锦</label>
+                      </a></li>
+                    <li role="presentation"><i></i><a href="#5_3" aria-controls="5_3" role="tab" data-toggle="tab">
+                      <label>获奖证书</label>
+                      </a></li>
+                    <li role="presentation"><i></i><a href="#5_4" aria-controls="5_4" role="tab" data-toggle="tab">
+                      <label>学员表演</label>
+                      </a></li>
+                  </ul>
+                  <div class="tab-content"> 
+                    <!--5_1-->
+                    <div class="row tab-pane active"  role="tabpanel" id="5_1">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student2.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student1.jpg"> </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--5_2-->
+                    <div class="row tab-pane"  role="tabpanel" id="5_2">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student1.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student3.jpg"> </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--5_3-->
+                    <div class="row tab-pane"  role="tabpanel" id="5_3">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student2.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student1.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student.jpg"> </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--5_4-->
+                    <div class="row tab-pane"  role="tabpanel" id="5_4">
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student1.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student.jpg"> </div>
+                      </div>
+                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                        <div class="picList">
+                          <div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
+                          <img src="dist/img/student3.jpg"> </div>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--end--> 
+                  </div>
+                </div>
+              </div>
+              <!--6-->
+              <div class="row tab-pane"  role="tabpanel" id="6">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                	<h1 class="title">《狼图腾》</h1>
+                    <h4 class="title">《狼图腾》 第一章(1) </h4>
+                    <p>
+<br>“犬戎族”自称祖先为二白犬，当是以犬为图腾。
+<br>
+<br>——范文澜《中国通史简编·第一编》
+<br>
+<br>周穆王伐畎戎，得四白狼、四白鹿以归。
+<br>
+<br>——《汉书·匈奴传》
+<br>
+<br>当陈阵在雪窝里用单筒望远镜镜头，套住了一头大狼的时候，他看到了蒙古草原狼钢锥一样的目光。陈阵全身的汗毛又像豪猪的毫刺一般竖了起来，几乎将衬衫撑离了皮肉。毕利格老人就在他的身边，陈阵这次已没有灵魂出窍的感觉，但是，身上的冷汗还是顺着竖起的汗毛孔渗了出来。虽然陈阵来到草原已经两年，可他还是惧怕蒙古草原上的巨狼和狼群。在这远离营盘的深山，面对这么大的一群狼，他嘴里呼出的霜气都颤抖起来。陈阵和毕利格老人，这会儿手上没有枪，没有长刀，没有套马杆，甚至连一副马镫这样的铁家伙也没有。他们只有两根马棒，万一狼群嗅出他们的人气，那他俩可能就要提前天葬了。
+<br>
+<br>陈阵又哆哆嗦嗦地吐出半口气，才侧头去看老人。毕利格正用另一只单筒望远镜观察着狼群的包围圈。老人压低声音说：就你这点胆子咋成？跟羊一样。你们汉人就是从骨子里怕狼，要不汉人怎么一到草原就净打败仗。老人见陈阵不吱声，便侧头小声喝道：这会儿可别吓慌了神，弄出点动静来，那可不是闹着玩的。陈阵点了一下头，用手抓了一把雪，雪在他的掌心被捏成了一坨冰。
+<br>
+<br>侧对面的山坡上，大群的黄羊仍在警惕地抢草吃，但似乎还没有发现狼群的阴谋。狼群包围线的一端已越来越靠近俩人的雪窝，陈阵一动也不敢动，他感到自己几乎冻成了一具冰雕……
+<br>
+<br>这是陈阵在草原上第二次遇到大狼群。此刻，第一次与狼群遭遇的惊悸又颤遍他的全身。他相信任何一个汉人经历过那种遭遇，他的胆囊也不可能完好无损。
+<br>
+<br>两年前陈阵从北京到达这个边境牧场插队的时候，正是十一月下旬，额仑草原早已是一片白雪皑皑。知青的蒙古包还未发下来，陈阵被安排住在毕利格老人家里，分配当了羊倌。一个多月后的一天，他随老人去80多里外的场部领取学习文件，顺便采购了一些日用品。临回家时，老人作为牧场革委会委员，突然被留下开会，可是场部指示那些文件必须立即送往大队，不得延误。陈阵只好一人骑马回队。临走时，老人将自己那匹又快又认家的大青马，换给了陈阵，并再三叮嘱他，千万别抄近道，一定要顺大车道走，一路上隔上二三十里就有蒙古包，不会有事的。
+<br>
+<br>陈阵一骑上大青马，他的胯下立即感到了上等蒙古马的强劲马力，就有了快马急行的冲动。刚登上一道山梁，遥望大队驻地的查干窝拉山头，他一下子就把老人的叮嘱扔在脑后，率性地放弃了绕行二十多里地走大车道的那条路线，改而径直抄近路插向大队。
+<br>
+<br>天越来越冷，大约走了一半路程，太阳被冻得瑟瑟颤抖，缩到地平线下面去了。雪面的寒气升上半空，皮袍的皮板也已冻硬。陈阵晃动胳膊、皮袍肘部和腰部，就会发出嚓嚓的磨擦声。大青马全身已披上了一层白白的汗霜，马踏厚厚积雪，马步渐渐迟缓。丘陵起伏，一个接着一个，四周是望不到一缕炊烟的蛮荒之地。大青马仍在小跑着，并不显出疲态。它跑起来不颠不晃，尽量让人骑着舒服。陈阵也就松开马嚼子，让它自己掌握体力、速度和方向。陈阵忽然一阵颤栗，心里有些莫名的紧张——他怕大青马迷路，怕变天，怕暴风雪，怕冻死在冰雪荒原上，但就是忘记了害怕狼。
+<br>
+<br>快到一个山谷口，一路上大青马活跃乱动、四处侦听的耳朵突然停住了，并且直直地朝向谷口的后方，开始抬头喷气，步伐错乱。陈阵这还是第一次在雪原上单骑走远道，根本没意识到前面的危险。大青马急急地张大鼻孔，瞪大眼睛，自作主张地改变方向，想绕道而走。但陈阵还是不解马意，他收紧嚼口，拨正马头继续朝前小跑。马步越来越乱，变成了半走半跑半颠，而蹄下却蹬踏有力，随时就可狂奔。陈阵知道在冬季必须爱惜马力，死死地勒住嚼子，不让马奔起来。
+<br>
+<br>大青马见一连串的提醒警告不起作用，便回头猛咬陈阵的毡靴。陈阵突然从大青马恐怖的眼球里看到了隐约的危险。但为时已晚，大青马哆嗦着走进了阴森山谷喇叭形的开口处。
+<br>
+<br>当陈阵猛地转头向山谷望去时，他几乎吓得栽下马背。距他不到40米的雪坡上，在晚霞的天光下，竟然出现了一大群金毛灿灿、杀气腾腾的蒙古狼。全部正面或侧头瞪着他，一片锥子般的目光飕飕飞来，几乎把他射成了刺猬。离他最近的正好是几头巨狼，大如花豹，足足比他在北京动物园里见的狼粗一倍、高半倍、长半个身子。此时，十几条蹲坐在雪地上的大狼呼地一下全部站立起来，长尾统统平翘，像一把把即将出鞘的军刀，一副弓在弦上、居高临下、准备扑杀的架势。狼群中一头被大狼们簇拥着的白狼王，它的脖子、前胸和腹部大片的灰白毛，发出白金般的光亮，耀眼夺目，射散出一股凶傲的虎狼之威。整个狼群不下三四十头。后来，陈阵跟毕利格详细讲起狼群当时的阵势，老人用食指刮了一下额上的冷汗说，狼群八成正在开会，山那边正好有一群马，狼王正给手下布置袭击马群的计划呢。幸亏这不是群饥狼，毛色发亮的狼就不是饿狼。
+<br>
+<br>陈阵在那一瞬其实已经失去任何知觉。他记忆中的最后感觉是头顶迸出一缕轻微但极其恐怖的声音，像是口吹足色银元发出的那种细微振颤的铮铮声。这一定是他的魂魄被击出天灵盖的抨击声。陈阵觉得自己的生命曾有过几十秒钟的中断，那一刻他已经变成了一个灵魂出窍的躯壳，一具虚空的肉身遗体。很久以后陈阵回想那次与狼群的遭遇，内心万分感激毕利格阿爸和他的大青马。陈阵没有栽下马，是因为他骑的不是一般的马，那是一匹在狼阵中长大、身经百战的著名猎马。
+<br>
+<br>事到临头，千钧一发之际，大青马突然异常镇静。它装着没有看见狼群，或是一副无意冲搅狼们聚会的样子，仍然踏着赶路过客的步伐缓缓前行。它挺着胆子，控着蹄子，既不挣扎摆动，也不夺路狂奔，而是极力稳稳地驮正鞍子上的临时主人，像一个头上顶着高耸的玻璃杯叠架盘的杂技高手，在陈阵身下灵敏地调整马步，小心翼翼地控制着陈阵脊椎中轴的垂直，不让他重心倾斜失去平衡，一头栽进狼阵。
+<br>
+<br>可能正是大青马巨大的勇气和智慧，将陈阵出窍的灵魂追了回来。也可能是陈阵忽然领受到了腾格里(天)的精神抚爱，为他过早走失上天的灵魂，揉进了信心与定力。当陈阵在寒空中游飞了几十秒的灵魂，再次收进他的躯壳时，他觉得自己已经侥幸复活，并且冷静得出奇。
+<br>
+<br> 陈阵强撑着身架，端坐马鞍，不由自主地学着大青马，调动并集中剩余的胆气，也装着没有看见狼群，只用眼角的余光紧张地感觉着近在侧旁的狼群。他知道蒙古草原狼的速度，这几十米距离的目标，对蒙古狼来说只消几秒钟便可一蹴而就。人马与侧面的狼群越来越近，陈阵深知自己绝对不能露出丝毫的怯懦，必须像唱空城计的诸葛孔明那样，摆出一副胸中自有雄兵百万，身后跟随铁骑万千的架势。只有这样才能镇住凶残多疑的草原杀手——蒙古草原狼。
+<br>
+<br>他感到狼王正在伸长脖子向他身后的山坡望，群狼都把尖碗形的长耳，像雷达一样朝着狼王张望的方向。所有的杀手都在静候狼王下令。但是，这个无枪无杆的单人单马，竟敢如此大胆招摇地路过狼群，却令狼王和所有的大狼生疑。
+<br>
+<br>晚霞渐渐消失。人马离狼群更近了。这几十步可以说是陈阵一生中最凶险、最漫长的路途之一。大青马又走了几步，陈阵突然感到有一条狼向他身后的雪坡跑去，他意识到那一定是狼王派出的探子，想查看他身后有无伏兵。陈阵觉得刚刚在体内焐热的灵魂又要出窍了。
+<br>
+<br>大青马的步伐似乎也不那么镇定了。陈阵的双腿和马身都在发抖，并迅速发生可怕的共振，继而传染放大了人马共同的恐惧。大青马的耳朵背向身后，紧张关注着那条探子狼。一旦狼探明实情，人马可能正好走到离狼群的最近处。陈阵觉得自己正在穿越一张巨大的狼口，上面锋利的狼牙，下面也是锋利的狼牙，没准他正走到上下狼牙之间，狼口便咔嚓一声合拢了。大青马开始轻轻后蹲聚力，准备最后的拼死一搏。可是，负重的马一启动就得吃亏。
+<br>
+<br>陈阵忽然像草原牧民那样在危急关头心中呼唤起腾格里：长生天，腾格里，请你伸出胳膊，帮我一把吧!他又轻轻呼叫毕利格阿爸。毕利格蒙语的意思是睿智，他希望老阿爸能把蒙古人的草原智慧，快快送抵他的大脑。静静的额仑草原，没有任何回声。他绝望地抬起头，想最后看一眼美丽冰蓝的腾格里。
+<br>
+<br>突然，老阿爸的一句话从天而降，像疾雷一样地轰进他的鼓膜：狼最怕枪、套马杆和铁器。枪和套马杆，他没有。铁器他有没有呢？他脚底一热，有！他脚下蹬着的就是一副硕大的钢镫。他的脚狂喜地颤抖起来。
+<br>
+<br>毕利格阿爸把自己的大青马换给他，但马鞍未换。难怪当初老人给他挑了这么大的一副钢蹬，似乎老人早就料到了有用得着它的这一天。但老人当初对他说，初学骑马，马镫不大就踩不稳。万一被马尥下来，也容易拖镫，被马踢伤踢死。这副马镫开口宽阔，踏底是圆形的，比普通的浅口方底铁镫，几乎大一倍重两倍。
+<br>
+<br>狼群正在等待探子，人马已走到狼群的正面。陈阵迅速将双脚退出钢镫，又弯身将镫带拽上来，双手各抓住一只钢镫——生死存亡在此一举。陈阵憋足了劲，猛地转过身，朝密集的狼群大吼一声，然后将沉重的钢镫举到胸前，狠狠地对砸起来。
+<br>
+<br>“当、当……”
+<br>
+<br>钢镫击出钢锤敲砸钢轨的声响，清脆高频，震耳欲聋，在肃杀静寂的草原上，像刺耳刺胆的利剑刺向狼群。对于狼来说，这种非自然的钢铁声响，要比自然中的惊雷声更可怕，也比草原狼最畏惧的捕兽钢夹所发出的声音更具恐吓力。陈阵敲出第一声，就把整个狼群吓得集体一哆嗦。他再猛击几下，狼群在狼王的率领下，全体大回转，倒背耳朵，缩起脖子像一阵黄风一样，呼地向山里奔逃而去。连那条探狼也放弃任务，迅速折身归队。
+<br>
+<br>陈阵简直不敢相信自己的眼睛，如此可怕庞大的蒙古狼群，居然被两只钢镫所击退。他顿时壮起胆来，一会儿狂击马镫，一会儿又用草原牧民的招唤手势，抡圆了胳膊，向身后的方向大喊大叫：豁勒登！豁勒登！（快！快！）这里的狼，多多的有啦。
+<br>
+<br>可能，蒙古狼听得懂蒙古话，也看得懂蒙古猎人的手势猎语。狼群被它们所怀疑的蒙古猎人的猎圈阵吓得快速撤离。但狼群撤得井然有序，急奔中的狼群仍然保持着草原狼军团的古老建制和队形，猛狼冲锋，狼王靠前，巨狼断后，完全没有鸟兽散的混乱。陈阵看呆了。
+<br>
+<br>狼群一眨眼的工夫就跑没影了，山谷里留下一大片雪雾雪砂。
+<br>
+<br>天光已暗。陈阵还没有完全认好马镫，大青马就弹射了出去，朝它所认识的最近营盘冲刺狂奔。寒风灌进领口袖口，陈阵浑身的冷汗几乎结成了冰。
+<br>
+<br>狼口余生的陈阵，从此也像草原民族那样崇敬起长生天腾格里来了。并且，他从此对蒙古草原狼有一种着了魔的恐惧、敬畏和痴迷。蒙古狼，对他来说，决不是仅仅触及了他的灵魂、而是曾经击出了他灵魂的生物。在草原狼身上，竟然潜伏着、承载着一种如此巨大的吸引力？这种看不见、摸不着，虚无却又坚固的东西，可能就是人们心灵中的崇拜物或原始图腾。陈阵隐隐感到，自己可能已经闯入草原民族的精神领域。虽然他偶然才撞开了一点门缝，但是，他的目光和兴趣已经投了进去。
+		 </p>
+                </div>
+              </div>
+              <!--tab end--> 
+            </div>
+          </div>
         </div>
-        
       </div>
       <!--map-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
-          <div class="map-box">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 title">
-                <label>分校信息</label>
-              </div>
-              <div class="col-lg-5 col-md-5"> <img src="dist/img/map.jpg" style="width:100%;"> </div>
-              <div class="col-lg-7 col-md-7">
-                <ul class="address-list">
-                  <li>
-                    <div class="map-info">
-                      <h3>首都体育学院校区（海淀区）</h3>
-                      <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                      <label>联系电话：189-1163-9063  罗老师 </label>
-                      <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
-                      <a><i class="icon-mark"></i>查询地图</a> <a><i class="icon-car"></i>公交/驾车去这里</a> </div>
-                  </li>
-                  <li>
-                    <div class="map-info">
-                      <h3>首都体育学院校区（海淀区）</h3>
-                      <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                      <label>联系电话：189-1163-9063  罗老师 </label>
-                      <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
-                      <a><i class="icon-maps icon-mark"></i>查询地图</a> <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a> </div>
-                  </li>
-                </ul>
-              </div>
+      	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        	<div class="map-box">
+            	<div class="row">
+                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title">
+                        <label>分校信息</label>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+                        <img src="dist/img/map.jpg" style="width:100%;">
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                        <ul class="address-list">
+                        	<li>
+                            	<div class="map-info">
+                                	<h3>首都体育学院校区（海淀区）</h3>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
+                                    <a><i class="icon-maps icon-mark"></i>查询地图</a>
+                                    <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
+                                </div>
+                            </li>
+                            <li>
+                            	<div class="map-info">
+                                	<h3>首都体育学院校区（海淀区）</h3>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
+                                    <a><i class="icon-maps icon-mark"></i>查询地图</a>
+                                    <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </div>
+      </div>
+      <!--map end-->
+    </div>
+    <div class="col-xs-12 page-left hidden-lg hidden-md hidden-sm">
+      <div class="row">
+        <!--三级菜单-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="level-3-menu">
+            <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+            <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
+            <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
+            <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+            <div class="clearfix"></div>
+          </ul>
         </div>
       </div>
     </div>

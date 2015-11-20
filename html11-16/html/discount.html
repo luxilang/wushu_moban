@@ -7,14 +7,15 @@
 <link href="dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="dist/css/css.css" rel="stylesheet" media="screen">
+<link href="dist/css/css_m.css" rel="stylesheet" media="screen">
 <title>优惠活动</title>
 </head>
 
 <body class="discount">
 <div class="container head">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo"> <img src="dist/img/logo.png"> </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 logo"> <img src="dist/img/logo.png"> </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
       <div class="phone">
         <label>报名热线：18911639063</label>
         <img src="dist/img/xws.png"> </div>
@@ -24,29 +25,49 @@
 <div class="caidan">
   <div class="container">
     <div class="row">
-      <ul class="nav nav-pills">
-        <li><a>首页</a></li>
-        <li><a>课程介绍</a></li>
-        <li><a>学员信息</a></li>
-        <li><a>教练信息</a></li>
-        <li><a>联系我们</a></li>
-        <li><a>论坛</a></li>
-        <li><a>关于我们</a></li>
-      </ul>
+      <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+          <ul class="nav nav-pills">
+            <li><a href="index.html">首页</a></li>
+         	<li class="active"><a href="courses.html">课程介绍</a></li>
+          	<li><a href="student.html">学员信息</a></li>
+          	<li><a href="teachers.html">教练信息</a></li>
+          	<li><a href="contact.html">联系我们</a></li>
+          	<li><a>论坛</a></li>
+          	<li><a href="about.html">关于我们</a></li>
+          </ul>
+      </div>
+      <div class="hidden-lg hidden-md hidden-sm">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+        </button>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="student.html">学员信息</a></li>
+            <li><a href="teachers.html">教练信息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="#">论坛 </a></li>
+            <li><a href="about.html">关于我们</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="banner">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12"> <img src="dist/img/other-banner.png"> </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <img src="dist/img/other-banner.png"> </div>
     </div>
   </div>
 </div>
 <!---->
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3 page-left">
+    <div class="col-lg-3 col-md-3 col-sm-3 page-left hidden-xs">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12"> <img class="code" src="dist/img/code.jpg"> </div>
         <!--报名电话-->
@@ -65,18 +86,18 @@
             <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
             <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
             <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
-            <li><a href="discount.html" class="active"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+            <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-9 page-right">
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 page-right">
       <!--title-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="class-title">
             <label>优惠活动</label>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb hidden-xs">
               <li><a href="#">首页</a></li>
               <li class="active">优惠活动</li>
             </ol>
@@ -85,7 +106,7 @@
       </div>
       <div class="row content">
       	<!---->
-      	<div class="col-lg-4">
+      	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="box"> <img src="dist/img/yhhd1.jpg">
             <div class="info">
               <h3>报名就送训练服</h3>
@@ -94,7 +115,7 @@
           </div>
         </div>
         <!---->
-      	<div class="col-lg-4">
+      	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="box"> <img src="dist/img/yhhd2.jpg">
             <div class="info">
               <h3>购买年卡优惠1000元</h3>
@@ -103,7 +124,7 @@
           </div>
         </div>
         <!---->
-      	<div class="col-lg-4">
+      	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 			<div class="box"> <img src="dist/img/yhhd3.jpg">
             <div class="info">
               <h3>免费送课程</h3>
@@ -112,6 +133,20 @@
           </div>
         </div>
         
+      </div>
+    </div>
+     <div class="col-xs-12 page-left hidden-lg hidden-md hidden-sm">
+      <div class="row">
+        <!--三级菜单-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="level-3-menu">
+            <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+            <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
+            <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
+            <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+            <div class="clearfix"></div>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

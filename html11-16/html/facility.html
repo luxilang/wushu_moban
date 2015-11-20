@@ -8,14 +8,15 @@
 <link href="dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="dist/css/css.css" rel="stylesheet" media="screen">
+<link href="dist/css/css_m.css" rel="stylesheet" media="screen">
 <title>上课环境</title>
 </head>
 
 <body class="facility">
 <div class="container head">
   <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 logo"> <img src="dist/img/logo.png"> </div>
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 logo"> <img src="dist/img/logo.png"> </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">
       <div class="phone">
         <label>报名热线：18911639063</label>
         <img src="dist/img/xws.png"> </div>
@@ -25,29 +26,49 @@
 <div class="caidan">
   <div class="container">
     <div class="row">
-      <ul class="nav nav-pills">
-        <li><a>首页</a></li>
-        <li><a>课程介绍</a></li>
-        <li><a>学员信息</a></li>
-        <li><a>教练信息</a></li>
-        <li><a>联系我们</a></li>
-        <li><a>论坛</a></li>
-        <li><a>关于我们</a></li>
-      </ul>
+      <div class="col-lg-12 col-md-12 col-sm-12 hidden-xs">
+          <ul class="nav nav-pills">
+            <li><a href="index.html">首页</a></li>
+         	<li><a href="courses.html">课程介绍</a></li>
+          	<li><a href="student.html">学员信息</a></li>
+          	<li><a href="teachers.html">教练信息</a></li>
+          	<li><a href="contact.html">联系我们</a></li>
+          	<li><a>论坛</a></li>
+          	<li><a href="about.html">关于我们</a></li>
+          </ul>
+      </div>
+      <div class="hidden-lg hidden-md hidden-sm">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+        </button>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="courses.html">课程介绍</a></li>
+            <li><a href="student.html">学员信息</a></li>
+            <li><a href="teachers.html">教练信息</a></li>
+            <li><a href="contact.html">联系我们</a></li>
+            <li><a href="#">论坛 </a></li>
+            <li><a href="about.html">关于我们</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <div class="banner">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12"> <img src="dist/img/other-banner.png"> </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> <img src="dist/img/other-banner.png"> </div>
     </div>
   </div>
 </div>
 <!---->
 <div class="container">
   <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3 page-left">
+    <div class="col-lg-3 col-md-3 col-sm-3 page-left hidden-xs">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12"> <img class="code" src="dist/img/code.jpg"> </div>
         <!--报名电话-->
@@ -63,7 +84,7 @@
         <!--三级菜单-->
         <div class="col-lg-12 col-md-12 col-sm-12">
           <ul class="level-3-menu">
-            <li><a href="facility.html" class="active"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+            <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
             <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
             <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
             <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
@@ -71,13 +92,13 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-9 page-right">
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12 page-right">
       <!--title-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="class-title">
             <label>上课环境</label>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb hidden-xs">
               <li><a href="#">首页</a></li>
               <li class="active">上课环境</li>
             </ol>
@@ -86,7 +107,7 @@
       </div>
       <!--tab-->
       <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
             <li role="presentation" class="active"><i></i><a href="#1" aria-controls="1" role="tab" data-toggle="tab">
               <label>首都体育学院校区</label>
@@ -98,147 +119,156 @@
           <div class="tab-content">
           	<!--1-->
             <div class="row tab-pane active"  role="tabpanel" id="1">
-            	<div class="col-lg-4">
+            	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj1.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj2.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj3.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj4.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj5.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj6.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj7.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj8.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj9.jpg">
                     </div>
                 </div>
-              	<div class="col-lg-4 col-xs-offset-4">
-                	<button type="button" class="btn btn-lg btn-block btn-blue">加载更多  <i class="glyphicon glyphicon-save"></i></button>
-                </div>
+              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
             </div>
             <!--2-->
             <div class="row tab-pane"  role="tabpanel" id="2">
-              <div class="col-lg-4">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj1.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj2.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj3.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj4.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj5.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj6.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj7.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj8.jpg">
                     </div>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 	<div class="picList">
                     	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
                     	<img src="dist/img/skhj9.jpg">
                     </div>
                 </div>
-              	<div class="col-lg-4 col-xs-offset-4">
-                	<button type="button" class="btn btn-lg btn-block btn-blue">加载更多  <i class="glyphicon glyphicon-save"></i></button>
-                </div>
+              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
             </div>
             <!--tab end-->
           </div>
         </div>
       </div>
-      <!--map-->
+       <!--map-->
       <div class="row">
-      	<div class="col-lg-12 col-md-12 col-sm-12">
+      	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         	<div class="map-box">
             	<div class="row">
-                	<div class="col-lg-12 col-md-12 title">
+                	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 title">
                         <label>分校信息</label>
                     </div>
-                    <div class="col-lg-5 col-md-5">
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                         <img src="dist/img/map.jpg" style="width:100%;">
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                         <ul class="address-list">
                         	<li>
                             	<div class="map-info">
                                 	<h3>首都体育学院校区（海淀区）</h3>
-                                    <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                                    <label>联系电话：189-1163-9063  罗老师 </label>
-                                    <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
                                     <a><i class="icon-maps icon-mark"></i>查询地图</a>
                                     <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
                                 </div>
@@ -246,9 +276,10 @@
                             <li>
                             	<div class="map-info">
                                 	<h3>首都体育学院校区（海淀区）</h3>
-                                    <label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-                                    <label>联系电话：189-1163-9063  罗老师 </label>
-                                    <label>乘车路线：公交在“蓟门桥西”下车    地铁路线：13号线“大钟寺”下车</label>
+                                    <label><span>详细地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
+                                    <label><span>联系电话：</span>189-1163-9063  罗老师 </label>
+                                    <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
+                                    <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
                                     <a><i class="icon-maps icon-mark"></i>查询地图</a>
                                     <a><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
                                 </div>
@@ -257,6 +288,21 @@
                     </div>
                 </div>
             </div>
+        </div>
+      </div>
+      <!--map end-->
+    </div>
+    <div class="col-xs-12 page-left hidden-lg hidden-md hidden-sm">
+      <div class="row">
+        <!--三级菜单-->
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <ul class="level-3-menu">
+            <li><a href="facility.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+            <li><a href="timetable.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
+            <li><a href="charge.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
+            <li><a href="discount.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+            <div class="clearfix"></div>
+          </ul>
         </div>
       </div>
     </div>
