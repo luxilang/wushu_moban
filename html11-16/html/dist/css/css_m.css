@@ -159,6 +159,117 @@
     font-size: 13px;
     line-height: 24px;
 }
+.page-right .class-title label, .map-box .title label{
+	font-size:20px;
+}
+.page-right .class-title .breadcrumb{
+	padding-left:0px;
+}
+.view-info label{
+	line-height:24px;
+	font-size:12px;
+}
+.view-info label.fg{
+	font-size:14px;
+}
+.view-info h3{
+	font-size:18px;
+	margin:5px 0;
+	padding-bottom:5px;
+}
+.view-info .btn-lg{
+	width:100%;
+}
+.course-view .view-info label{
+	font-size:12px;
+	padding-left:60px;
+}
+.course-view .view-info label span{
+	margin-left:-60px;
+}
+.view-detail{
+	margin-top:10px;
+}
+.view-detail .nav-tabs-view{
+	margin:6px 6px 2px;
+}
+.view-detail .nav-tabs-view li{
+	width:33.3333333%;
+	margin-right:0px;
+}
+.view-detail .nav-tabs-view li a{
+	margin-right:0px;
+	border-radius:0px;
+	border-right:solid 1px #c9eefc;
+}
+.view-detail .nav-tabs-view li a:nth-child(3n){
+	border-right:0px;
+}
+.view-detail .nav-tabs-view li a label{
+	font-size:14px;
+}
+.page-right .nav-tabs-level2 li{
+	width:49%;
+}
+.page-right .nav-tabs-level2 li a label{
+	font-size:14px;
+}
+.view-detail .tab-content h3 {
+    font-size: 16px;
+}
+.view-detail .tab-content-view p, .view-detail .tab-content-view li {
+    font-size: 12px;
+    line-height: 20px;
+    color: #666;
+}
+.view-detail .tab-content-view .box label{
+	font-size:14px;
+}
+.view-detail .tab-content-view .box label span{
+	font-size:12px;
+}
+.view-detail .tab-content-view .box .time{
+	line-height:22px;
+}
+.facility .page-right .nav-tabs li{
+	width:49%;
+}
+.facility .page-right .nav-tabs li a label{
+	font-size:14px;
+}
+.schooltime .table tr>:first-child{
+	min-width:inherit;
+	text-align:center;
+}
+.schooltime .table td{
+	font-size:12px;
+}
+.schooltime .nav-tabs li{
+	width:33.33333333%;
+	margin-right:0px;
+}
+.schooltime .nav-tabs li.active i,
+.charge .content .nav-tabs li.active i{
+	display:none;
+}
+.schooltime .nav-tabs li label{
+	font-size:16px;
+}
+.charge .content .gmxz li{
+	width:50%;
+	min-height:230px;
+}
+.charge .content .gmxz li:nth-child(1),
+.charge .content .gmxz li:nth-child(2){
+	border-bottom:solid 1px #eee;
+}
+.charge .content .nav-tabs li{
+	width:33.333333%;
+	margin-right:0px;
+}
+.charge .content .nav-tabs li label{
+	font-size:14px;
+}
 }
 @media(min-width:768px) and (max-width:991px){
 /************ index  ******************/
@@ -213,5 +324,26 @@
 }
 .teachers .page-right .content p, .teachers .page-right .content .lybz-list li{
 	font-size:14px;
+}
+.view-info label{
+	line-height:24px;
+}
+.view-info h3{
+	font-size:18px;
+	margin-bottom:5px;
+	padding-bottom:5px;
+}
+.course-view .view-info label{
+	font-size:12px;
+	padding-left:60px;
+}
+.course-view .view-info label span{
+	margin-left:-60px;
+}
+.charge .content .nav-tabs label{
+	font-size:14px;
+}
+.discount .content .box{
+	min-height:300px;
 }
 }

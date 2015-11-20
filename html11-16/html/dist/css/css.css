@@ -364,34 +364,6 @@ ul {
 	border-bottom: 12px solid transparent;
 	border-right: 12px solid #00a6e5;
 }
-
-/******* nav-tab-level2 *********/
-.nav-tabs-level2{
-}
-.nav-tabs-level2 li{
-	width:16% !important;
-}
-.nav-tabs-level2 li a{
-	background:none;
-	border:solid 2px transparent;
-	padding:5px 0 !important;
-}
-.nav-tabs-level2 li a label{
-	color:#000;
-	font-size:18px;
-}
-.nav-tabs-level2 li.active i,
-.nav-tabs-level2 li:hover i{
-	display:none;
-}
-.nav-tabs-level2 li.active a,
-.nav-tabs-level2 li:hover a{
-	background:none !important;
-	border:solid 2px #c9eefc !important;
-}
-.nav-tabs-level2 li.active a label{
-	color:#00a6e5;
-}
 /*********reason********/
 .index .reason {
 }
@@ -584,6 +556,31 @@ ul {
 	vertical-align:middle;
 	margin-right:2px;
 }
+/******* nav-tab-level2 *********/
+.page-right .nav-tabs-level2 li{
+	width:16%;
+}
+.page-right .nav-tabs-level2 li a{
+	background:none;
+	border:solid 2px transparent;
+	padding:5px 0;
+}
+.page-right .nav-tabs-level2 li a label{
+	color:#000;
+	font-size:16px;
+}
+.page-right .nav-tabs-level2 li.active i,
+.page-right .nav-tabs-level2 li:hover i{
+	display:none;
+}
+.page-right .nav-tabs-level2 li.active a,
+.page-right .nav-tabs-level2 li:hover a{
+	background:none !important;
+	border:solid 2px #c9eefc !important;
+}
+.page-right .nav-tabs-level2 li.active a label{
+	color:#00a6e5;
+}
 /*****************student********************/
 .student .page-right .nav-tabs li {
 	width:19%;
@@ -643,16 +640,11 @@ ul {
 	min-height:440px;
 }
 /***teachers-view***/
-.teachers-view {
-}
-.teachers-view .view-info {
-}
-.teachers-view .view-info img,
-.course-view .view-info img {
+/***************** view-info *********************/
+.view-info img {
 	width:100%;
 }
-.teachers-view .view-info h3,
-.course-view .view-info h3 {
+.view-info h3 {
 	width:100%;
 	font-size:21px;
 	color:#222;
@@ -660,91 +652,161 @@ ul {
 	padding-bottom:10px;
 	margin-bottom:10px;
 }
-.teachers-view .view-info label,
-.course-view .view-info label {
+.view-info label {
 	display:block;
 	font-size:16px;
 	color:#333;
 	line-height:30px;
 }
-.teachers-view .view-info label.fg,
-.course-view .view-info label.fg {
+.view-info label.fg {
 	margin:10px 0;
 	font-size:18px;
 }
-.teachers-view .view-info label span,
-.course-view .view-info label span {
+.view-info label span {
 	color:#666;
 }
-.teachers-view .view-detail,
-.course-view .view-detail {
+/***************** view-detail *********************/
+.view-detail {
 	margin-top:30px;
 	border:solid 2px #c9eefc;
 	border-radius:4px 4px 0 0;
 	background:#c9eefc;
 }
-.teachers-view .view-detail .nav-tabs-view,
-.course-view .view-detail .nav-tabs-view {
+.view-detail .nav-tabs-view {
 	margin:10px 0 2px 10px;
 }
-.teachers-view .view-detail .nav-tabs-view li,
-.course-view .view-detail .nav-tabs-view li {
+.view-detail .nav-tabs-view li {
 	width:16%;
 	margin-right:2px;
 }
-.teachers-view .view-detail .nav-tabs-view li a,
-.course-view .view-detail .nav-tabs-view li a {
+.view-detail .nav-tabs-view li a {
 	border-radius:4px 4px 0 0;
 	background:#fff;
 }
-.teachers-view .view-detail .nav-tabs-view label,
-.course-view .view-detail .nav-tabs-view label {
+.view-detail .nav-tabs-view label {
 	font-size:16px;
 	color:#333;
 }
-.teachers-view .view-detail .nav-tabs-view li.active label, 
-.teachers-view .view-detail .nav-tabs-view li:hover label,
-.course-view .view-detail .nav-tabs-view li.active label, 
-.course-view .view-detail .nav-tabs-view li:hover label {
+.view-detail .nav-tabs-view li.active label, 
+.view-detail .nav-tabs-view li:hover label {
 	color:#fff;
 }
-.teachers-view .view-detail .nav-tabs-view li.active i, 
-.teachers-view .view-detail .nav-tabs-view li:hover i,
-.course-view .view-detail .nav-tabs-view li.active i, 
-.course-view .view-detail .nav-tabs-view li:hover i {
+.view-detail .nav-tabs-view li.active i, 
+.view-detail .nav-tabs-view li:hover i {
 	display:none;
 }
-.teachers-view .view-detail .tab-content-view,
-.course-view .view-detail .tab-content-view{
+.view-detail .tab-content-view{
 	background:#fff;
-	padding:5px 15px;
+	padding:15px;
 }
-.teachers-view .view-detail .tab-content-view .box {
+.view-detail .tab-content-view .box {
 	border:solid 2px #dedede;
 	padding:10px;
 	padding-bottom:0px;
-	margin:10px 0;
+	margin:0 0 10px;
 }
-.teachers-view .view-detail .tab-content-view .box label {
+.view-detail .tab-content-view .box label {
 	font-size:18px;
 	color:#000;
 }
-.teachers-view .view-detail .tab-content-view .box label img{
+.view-detail .tab-content-view .box label img{
 	width:36px;
 	vertical-align:middle;
 	margin-right:10px;
 }
-.teachers-view .view-detail .tab-content-view .box label span {
+.view-detail .tab-content-view .box label span {
 	font-size:14px;
 	margin-left:10px;
 }
-.teachers-view .view-detail .tab-content-view .box .time {
+.view-detail .tab-content-view .box .time {
 	font-size:12px;
 	color:#666;
 	line-height:36px;
 }
-.teachers-view .view-detail .tab-content-view .box .info {
+.view-detail .tab-content-view .box .info {
 	padding-top:10px;
+}
+.view-detail .nav-tabs-level2{
+	margin:0px;
+}
+.view-detail .tab-content .btn-blue{
+	margin-top:0px;
+}
+.view-detail .tab-content h3{
+	font-size:18px;
+	font-weight:500;
+	color:#333;
+	margin:6px 0;
+}
+.view-detail .tab-content-view .tab-content ul{
+	list-style:decimal;
+	margin-left:20px;
+}
+.view-detail .tab-content-view .tab-content ul.no-list-style{
+	list-style:none;
+	margin:0;
+	margin-top:10px;
+}
+.view-detail .tab-content-view p,
+.view-detail .tab-content-view li{
+	font-size:14px;
+	line-height:24px;
+	color:#666;
+}
+.view-detail .tab-content-view h3.title{
+	border:solid 2px #c9eefc;
+	color:#00a6e5;
+	width:120px;
+	text-align:center;
+	padding:8px 0;
+	font-size:16px;
+}
+.view-detail .tab-content-view .blue-box{
+	background:none;
+	text-align:center;
+	border:solid 2px #dedede;
+	cursor:pointer;
+	padding-bottom:0px;
+	min-height:400px;
+}
+.view-detail .tab-content-view .blue-box:hover{
+	border-color:#c9eefc;
+	background:#c9eefc;
+}
+.view-detail .tab-content-view .blue-box label{
+	margin:10px 0 4px;
+	font-weight:500;
+}
+.view-detail .tab-content-view .blue-box a{
+	color:#00a6e5;
+	text-decoration:none;
+	margin:10px 0;
+	display:block;
+}
+.view-detail .tab-content-view .blue-box a i{
+	background: #00a6e5;
+	width: 20px;
+	height: 20px;
+	color: #fff;
+	border-radius: 20px;
+	text-align: center;
+	padding: 4px 0;
+	font-size: 12px;
+	margin-right: 4px;
+}
+.view-detail .tab-content-view h1.title{
+	text-align:center;
+	font-size:24px;
+	display:block;
+	margin:10px 0;
+}
+.view-detail .tab-content-view h4.title{
+	text-align:center;
+	font-size:16px;
+	display:block;
+}
+.view-detail .tab-content-view .tab-content .picList{
+	margin:10px 0;
 }
 /********** course-view ***************/
 .course-view .view-info{}
@@ -797,6 +859,7 @@ ul {
 }
 .discount .content .box {
 	border:solid 1px #eee;
+	min-height:340px;
 }
 /*************facility***************/
 .facility .student .page-right .nav-tabs li {
@@ -844,7 +907,7 @@ ul {
 	width:15.6%;
 }
 .charge .content .nav-tabs label {
-	font-size:18px;
+	font-size:16px;
 }
 .charge .content .blue-box {
 }
