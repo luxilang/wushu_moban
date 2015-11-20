@@ -92,7 +92,9 @@ function load_page(){
 					html += '<div class="col-lg-4 col-md-4 col-sm-4">';
 					html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" width="212" height="212">';
 					html += '<label>'+json[i].title+'</label>';
-					html += '<p>'+json[i].excerpt+'</p>';
+					html += '<p>'+json[i].yddj+'</p>';
+					html += '<p>少儿武术教学经验:'+json[i].sewsjljy+'</p>';
+					html += '<p>教学风格:'+json[i].jxfg+'</p>';
 					html += '<a href="'+json[i].permalink+'">查看详细</a> ';
 					html += '</div>';
 					html += '</div>';

@@ -94,9 +94,12 @@ if (!empty($_POST['ajax_type']))
 									$img_url = get_post_meta($rs_o->ID,'_id_upload_teachers',true);
 									$rs_arr['rs'][]= array(
 										'title'=>$rs_o->post_title,
-										'excerpt'=>$rs_o->post_excerpt,
+										//'content'=>$rs_o->post_content,
 										'img_url'=>$img_url,
 										'permalink'=>get_permalink($rs_o->ID),
+										'yddj'=>get_post_meta($rs_o->ID,'_teachers_yddj',true),
+										'sewsjljy'=>get_post_meta($rs_o->ID,'_teachers_sewsjljy',true),
+										'jxfg'=> get_post_meta($rs_o->ID,'_teachers_jxfg',true),
 									);
 								}						
 						}
@@ -143,13 +146,14 @@ if (!empty($_POST['ajax_type']))
 				if ($nav_post_type == 'class_env') $body_css_type = 'class="facility"';	
 				if ($nav_post_type == 'teachers') $body_css_type = 'class="teachers"';
 				if ($nav_post_type == 'courses') $body_css_type = 'class="courses"';
-				if ($nav_post_type == 'students') $body_css_type = 'class="student"';			
+				if ($nav_post_type == 'students') $body_css_type = 'class="student"';		
+				if ($nav_post_type == 'class_time') $body_css_type = 'class="schooltime"';		
 							
 				
 			}else if(is_single()){
 				$nav_post_type = get_post_type();
 				if ($nav_post_type == 'courses') $body_css_type = 'class="course-view"';
-				
+				if ($nav_post_type == 'teachers') $body_css_type = 'class="teachers-view"';
 				
 			}
 			else if(is_page(3))

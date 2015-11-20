@@ -1,82 +1,82 @@
-<?php
-
-$post_id = $post->ID; //首选需要获取文章id
- 		$post_type = get_post_type();
- 		$post_type_obj = get_post_type_object(get_post_type());
-
- 		?>
- 		<a href="<?php echo home_url() ?>" >首页</a>-><a href="<?php echo home_url() ?>?post_type=<?php echo $post_type ?>"   ><?php echo $post_type_obj->label ?></a>-><?php echo get_the_title() ?>
- 		<br />
-
-
-标题:  <?php echo $post->post_title ?> <br />
-摘要:  <?php echo $post->post_excerpt ?> <br />
-摘要:  <?php echo $post->post_content ?> <br />
-<?php
-$img_url = get_post_meta($post_id,'_id_upload_teachers',true); //_id_upload即配置数据中的id值，获取的值实际为图片url地址
-//输出<img>标签
-?>
-
-图片：<img  src="<?php echo $img_url ?>" /><br />
 <?php 
+$post_id = $post->ID; 
+$img_url = get_post_meta($post_id,'_id_upload_teachers',true); 
+?>
+<div class="row content">
+      	<div class="col-lg-12">
+        	<div class="row view-info">
+            	<div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3">
+                	<img src="<?php echo $img_url  ?>">
+                </div>
+                <div class="col-lg-8 col-xs-12">
+                	<h3><?php echo $post->post_title ?></h3>
+                    <label><span>姓名：</span><?php echo get_post_meta($post_id,'_teachers_name',true); ?></label>
+                    <label><span>习武年限：</span><?php echo get_post_meta($post_id,'_teachers_xwnx',true);  ?></label>
+                    <label><span>武术段位：</span><?php echo get_post_meta($post_id,'_teachers_wsdw',true);  ?></label>
+                    <label><span>运动等级：</span><?php echo get_post_meta($post_id,'_teachers_yddj',true);  ?></label>
+                    <label><span>武术最高级别：</span><?php echo get_post_meta($post_id,'_teachers_wszgjb',true);  ?></label>
+                    <label><span>少儿武术教学经验：</span><?php echo get_post_meta($post_id,'_teachers_sewsjljy',true);  ?></label>
+                    <label><span>毕业于：</span><?php echo get_post_meta($post_id,'_teachers_by',true);  ?></label>
+                    <label class="fg">教学风格：<?php echo get_post_meta($post_id,'_teachers_jxfg',true);  ?></label>
+                    <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>我要体验</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="view-detail">
+              <ul class="nav nav-tabs nav-tabs-view" role="tablist">
+              
+         <?php 
+
 	$ashu_teachers_tab_arr = get_option('ashu_teachers_tab');
 	$teachers_tab_ini = trim($ashu_teachers_tab_arr['_teachers_tab_ini']);
-
-
-	if (!empty($teachers_tab_ini)) {
-		
-			$teachers_tab_ini_arr = array_filter(explode("\r\n", $teachers_tab_ini));
-			if (!empty($teachers_tab_ini_arr)) {
-				foreach ($teachers_tab_ini_arr as $key => $value) {
-					if (!empty($value)) {
-						list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+				if (!empty($teachers_tab_ini)) {
+				
+					$teachers_tab_ini_arr = array_filter(explode("\r\n", $teachers_tab_ini));
+					if (!empty($teachers_tab_ini_arr)) {
+						foreach ($teachers_tab_ini_arr as $key => $value) {
+							$tab_id = $key+1;
+							if (!empty($value)) {
+								list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+								
+								$active_tab = ($key==0)   ?  'class="active"' : ''; 
+								?>
+                                <li role="presentation" <?php echo  $active_tab ?>><i></i><a href="#<?php echo $tab_id ?>" aria-controls="<?php echo $tab_id ?>" role="tab" data-toggle="tab">
+                              <label><?php echo $tab_option_name  ?> </label>
+                              </a></li>
+                                
+                                <?php
+								// get_post_meta($post_id,$tab_option_id,true)
+							}
 						
-						echo "{$tab_option_name}:".get_post_meta($post_id,$tab_option_id,true)."<br /><hr />";
+						}
 					}
 				
 				}
-			}
-		
-		}
-?>
-<!--  
-获奖经历: <?php echo get_post_meta($post_id,'_id_tinymce_hjjl',true); ?>  <br /><hr />
-学员中心: <?php echo get_post_meta($post_id,'_id_tinymce_xyzx',true); ?>  <br /><hr />
-教学成果:<?php echo get_post_meta($post_id,'_id_tinymce_jxcg',true); ?>  <br /><hr />
-课堂展示：<?php
+			  ?>
+              </ul>
+              <div class="tab-content tab-content-view">
+              <?php  
+			  	if (!empty($teachers_tab_ini_arr)) {
+						foreach ($teachers_tab_ini_arr as $key => $value) {
+							$tab_id1 = $key+1;
+							if (!empty($value)) {
+								list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
+								
+								$active_tab1 = ($key==0)   ?  'active' : ''; 
+								
+			  ?>
 
-//echo get_post_meta($post_id,'_id_tinymce_ktzs',true); ?>  <br /><hr />
-扩展阅读:<?php echo get_post_meta($post_id,'_id_tinymce_kzyd',true); ?>  <br /><hr />
+                <div class="row tab-pane <?php echo $active_tab1 ?>"  role="tabpanel" id="<?php echo $tab_id1 ?>">
+                		<?php echo get_post_meta($post_id,$tab_option_id,true); ?>
+                </div>
+               <?php 
+							}
+						}
+				}
+			   ?>
+              </div>
+           </div>
+        </div>
+      </div>
 
-
-<?php 
-//调用相关的  学员信息
-$connected = new WP_Query( array(
-  'connected_type' => 'teachers_to_students',
-  'connected_items' => get_queried_object(),
-  'nopaging' => true,
-) );
-
-// Display connected pages
-if ( $connected->have_posts() ) :
-?>
-<h3>课堂展示</h3>
-<ul>
-<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-    <li>
-    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    
-    
-    <img  src="<?php echo get_post_meta(get_the_ID(),'_id_upload_students',true); ?>" width="200" height="200"  /><br />
-    </li>
-<?php endwhile; ?>
-</ul>
-
-<?php 
-// Prevent weirdness
-wp_reset_postdata();
-
-endif;
-?>
--->
-我要体验

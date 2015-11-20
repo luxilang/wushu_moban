@@ -260,19 +260,20 @@
 	
 	$students_box = new ashu_meta_box($students_meta, $students_info);
 	
-	
+	//教练
 	$teachers_meta = $teachers_info = array();
-	$teachers_info =  array(
-      'title' => '&nbsp',  
-      'id'=>'ext_info', 
+	$teachers_meta_detail = $teachers_info_detail = array();
+	
+	$teachers_info_detail =  array(
+      'title' => '教练详细信息',  
+      'id'=>'ext_info_detail', 
       'page'=>array('teachers'), 
       'context'=>'normal', 
       'priority'=>'low',
       'callback'=>'',
-	 'tab'=>true
+	  'tab'=>true
     );
-
-	 $teachers_meta[] = array(
+	$teachers_meta_detail[] = array(
 	  'name' => '教练图片上传',
 	  'id'   => '_id_upload_teachers',
 	  'desc' => '图片大小 212 *212',
@@ -281,29 +282,92 @@
 	  'button_text' => '上传',
 	  'type' => 'upload'
 	);
-	$teachers_meta = array_merge($teachers_meta,$teachers_tab_ini_arr);
-	
-	/*
-	$teachers_meta[] = array(
-	  'name'  => '课堂展示',
-	  'id'    => '_id_tinymce_ktzs',
-	  'desc'  => '请填写课堂展示',
-	  'std'   => '',
-	  'media' => 1,
-	  'type'  => 'tinymce'
+	 $teachers_meta_detail[] = array(
+	  'name' => '教练姓名',
+	  'id'   => '_teachers_name',
+	  'desc' => '教练姓名',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
 	);
-	$teachers_meta[] = array(
-	  'name'  => '扩展阅读',
-	  'id'    => '_id_tinymce_kzyd',
-	  'desc'  => '请填写扩展阅读',
-	  'std'   => '',
-	  'media' => 1,
-	  'type'  => 'tinymce'
-	);*/
+	 $teachers_meta_detail[] = array(
+	  'name' => '习武年限',
+	  'id'   => '_teachers_xwnx',
+	  'desc' => '习武年限例子：18年',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $teachers_meta_detail[] = array(
+	  'name' => '武术段位',
+	  'id'   => '_teachers_wsdw',
+	  'desc' => '武术段位例子：五段',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $teachers_meta_detail[] = array(
+	  'name' => '运动等级',
+	  'id'   => '_teachers_yddj',
+	  'desc' => '运动等级例子：国家一级运动员',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $teachers_meta_detail[] = array(
+	  'name' => '武术最高级别',
+	  'id'   => '_teachers_wszgjb',
+	  'desc' => '武术最高级别例子：武英级(健将运动员)',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	
+	 $teachers_meta_detail[] = array(
+	  'name' => '少儿武术教学经验',
+	  'id'   => '_teachers_sewsjljy',
+	  'desc' => '少儿武术教学经验例子：6年以上',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $teachers_meta_detail[] = array(
+	  'name' => '毕业于',
+	  'id'   => '_teachers_by',
+	  'desc' => '毕业于例子：首都体育学院-武术系',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+
+	$teachers_meta_detail[] = array(
+	  'name' => '教学风格',
+	  'id'   => '_teachers_jxfg',
+	  'desc' => '教学风格例子：幽默风趣，善于引导孩子在兴趣中学习',
+	  'std'  => '',
+	  'size' => array(60,5),
+	  'type' => 'textarea'
+	);
+	
+	$teachers_box_detail = new ashu_meta_box($teachers_meta_detail, $teachers_info_detail);
+
+	
+	$teachers_info =  array(
+      'title' => '选项卡',  
+      'id'=>'ext_info', 
+      'page'=>array('teachers'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+	 'tab'=>true
+    );
+
+
+	$teachers_meta = array_merge($teachers_meta,$teachers_tab_ini_arr);
 	$teachers_box = new ashu_meta_box($teachers_meta, $teachers_info);
 
 
-	
+	//预约 体验
 	$tiyan_meta = $tiyan_info = array();
 
 	$tiyan_info =  array(
@@ -385,7 +449,7 @@
       'context'=>'normal', 
       'priority'=>'low',
       'callback'=>'',
-	 'tab'=>true
+	  'tab'=>true
     );
     
 	 $class_env_meta[] = array(
@@ -399,10 +463,37 @@
 	);
     
 	$teachers_box = new ashu_meta_box($class_env_meta, $class_env_info);
+	//时间
+	$class_time_meta = $class_time_info = array();
+	$class_time_info =  array(
+      'title' => '上课时间选项',  
+      'id'=>'ext_info', 
+      'page'=>array('class_time'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+	  //'tab'=>true
+    );
+	$arr_heng_v = array('周一','周二','周三','周四','周五','周六','周日');
+	$arr_heng_k = array('zhou1','zhou2','zhou3','zhou4','zhou5','zhou6','zhou7');
+	$arr_shu_v = array('上午9:30-11:00','下午3:00-4:30','下午4:30-6:00','晚上6:00-7:30');
+	$arr_shu_k = array('shijian1','shijian2','shijian3','shijian4');
 	
-	
-	
+	$buttons_arr = array_combine($arr_shu_k,$arr_shu_v);
+	foreach($arr_heng_v as $k=>$v)
+	{
+		$class_time_meta[] = array(
+		  'name'    => $v,
+		  'id'      => $arr_heng_k[$k],
+		  'desc'    => '',
+		  'std'     => '',
+		  'buttons' => $buttons_arr,
+		  'type'    => 'checkbox'
+		);
+	}
+	$class_time_box = new ashu_meta_box($class_time_meta, $class_time_info);
 
+	
 	/***
 	$tab_cont_info =  $tab_cont_meta = array();
 	

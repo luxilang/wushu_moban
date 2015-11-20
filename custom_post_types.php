@@ -136,11 +136,11 @@ $post_type_conf = array(
 	),
 	array(
 		'post_code'=>'teachers',
-		'post_str'=>'教练信息',
-		'post_supports'=>array( 'title','editor','excerpt','thumbnail' ),
+		'post_str'=>'教练团队',
+		'post_supports'=>array( 'title'),
 		'has_taxonomy'=>true,
 		'taxonomy_arr'=>array(
-			array('name'=>'教练信息','code'=>'teachers_type')
+			array('name'=>'教练','code'=>'teachers_type')
 		),
 	
 	),
@@ -157,7 +157,7 @@ $post_type_conf = array(
 	array(
 		'post_code'=>'class_time',
 		'post_str'=>'上课时间',
-		'post_supports'=>array( 'title','editor' ),
+		'post_supports'=>array( 'title'),
 		'has_taxonomy'=>true,
 				'taxonomy_arr'=>array(
 			array('name'=>'上课时间','code'=>'class_time_type')

@@ -22,12 +22,16 @@ function echo_layout($html)
 			}else if(is_single()){
 				$post_type = get_post_type();
  				$post_type_obj = get_post_type_object(get_post_type());
+				$detail_title_inf = '';
+				if($post_type  == 'courses') $detail_title_inf= get_the_title();
+				if($post_type  == 'teachers') $detail_title_inf= '教练员介绍';
+
 				?>
               <!--title-->
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <div class="class-title">
-                    <label>课程介绍</label>
+                    <label><?php  echo $detail_title_inf?></label>
                     <ol class="breadcrumb">
                       <li><a href="<?php echo site_url() ?>">首页</a></li>
                       <li><a href="<?php echo site_url() ?>?post_type=<?php echo $post_type ?>"><?php echo $post_type_obj->label ?></a></li>
