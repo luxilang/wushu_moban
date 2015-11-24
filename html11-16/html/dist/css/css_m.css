@@ -270,6 +270,16 @@
 .charge .content .nav-tabs li label{
 	font-size:14px;
 }
+.modal .close{
+	right:20px;
+}
+.view-info .btn-blue .bubble{
+	right:0px;
+}
+.modal-open,
+.modal{
+	padding:0px !important;
+}
 }
 @media(min-width:768px) and (max-width:991px){
 /************ index  ******************/
