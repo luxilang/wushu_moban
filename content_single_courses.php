@@ -15,7 +15,7 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
               <label><span>课程费用：</span><?php echo get_post_meta($post_id,'_skfy_courses',true);  ?></label>
               <label><span>开班信息：</span><?php echo get_post_meta($post_id,'_kbxi_courses',true);  ?></label>
               <label class="fg">学员至上：<?php echo get_post_meta($post_id,'_syzs_courses',true);  ?></label>
-              <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>免费试课</button>
+              <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
             </div>
           </div>
         </div>

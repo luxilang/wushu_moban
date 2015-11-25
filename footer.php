@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
-        <div class="code"> <img src="dist/img/footer-code.jpg">
+        <div class="code"> <img src="/dist/img/footer-code.jpg">
           <label>扫描二维码<span>用手机访问本站</span></label>
         </div>
       </div>

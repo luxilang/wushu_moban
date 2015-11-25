@@ -11,6 +11,9 @@
 
 
 ?>
+
+<link rel="stylesheet" href="<?php echo  site_url() ?>/lightbox/css/lightbox.css">
+<script src="<?php echo  site_url() ?>/lightbox/js/lightbox.js"></script>
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +59,7 @@
                 </ul>
                 <div class="tab-content">
 
-                  <div class="row tab-pane active"  role="tabpanel" id="1_1">
+   
                  		 <div id="neirong">
                          	
                          </div>
@@ -81,8 +84,8 @@
               </div> 
             </div>
             <!--1 end-->
-
-          </div>
+			
+          </div >
         </div>
       </div>
 <script>
@@ -102,6 +105,7 @@ function load_page(){
 		},
 		function(data){
 			var json = data.rs;
+				$("#jiazai").show();
 			//alert(data.rs);	alert(json.length);
 			if(json.length == 0)
 			{
@@ -113,15 +117,28 @@ function load_page(){
 					$("#jiazai").hide();
 				}
 				var html ='';
+				var html1 ='';
+				var pp= data.page;
 				
 				for(i=0;i<json.length;i++)
 				{
-					 html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="uuuuu'+json[i].id+'" >';
+					
+					 html += '<a href="'+json[i].img_url+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="uuuuu'+json[i].id+'" >';
 					 html += '<div class="picList">';
-					 html += '<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>';
-					 html += '<img src="'+json[i].img_url+'" >';
+					 html += '<div class="b-layer" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i></div>';
+					 html += '<img src="'+json[i].img_url+'"   width="274" height="370" >';
 					 html += '</div>';
-					 html += '</div>';
+					 html += '</div></a>';
+					 /*
+					 if(i==0 && pp == 1)
+					 {
+						 html1 += '<div class="item active">';
+					 }else{
+						 html1 += '<div class="item">';
+					 }
+					  html1 += '<img src="'+json[i].img_url+'">';
+					  html1 += '</div>';
+					 */
 				}
 				//alert(html);
 				$("#jiazai_page").val(data.page);
@@ -130,6 +147,7 @@ function load_page(){
 					
 				}else{
 					$("#neirong").append(html);	
+					$("#neirong1").append(html1);	
 				}
 			}
 			
@@ -141,7 +159,7 @@ function load_page(){
 }
 $(document).ready(function() {  
 	load_page();
+	$("#jiazai").hide();
 });
 
 </script>
-

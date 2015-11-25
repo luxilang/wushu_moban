@@ -305,6 +305,77 @@ function columns_leixing($wpdb,$post_id){
 			}  
 			return trim($html,',');
 }
+//环境
+add_filter('manage_class_env_posts_columns', 'my_class_env_columns', 1);
+add_action('manage_class_env_posts_custom_column', 'output_my_class_env_custom_columns', 0, 2); 
+  
+function my_class_env_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';
+		$tiyan_columns['_id_upload_env']  = '图片'; 
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+    return $tiyan_columns;
+} 
+function output_my_class_env_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+        case '_id_upload_env' :
+			echo  columns_img($post_id,'_id_upload_env');
+            break;
+ 		 case 'leixing':   
+		 		echo columns_leixing($wpdb,$post_id);
+          break; 
+    }
+}
+
+//费用
+add_filter('manage_class_fee_posts_columns', 'my_class_fee_columns', 1);
+add_action('manage_class_fee_posts_custom_column', 'output_my_class_fee_custom_columns', 0, 2); 
+  
+function my_class_fee_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+    return $tiyan_columns;
+} 
+function output_my_class_fee_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+ 		 case 'leixing':   
+		 		echo columns_leixing($wpdb,$post_id);
+          break; 
+    }
+}
+
+//时间
+
+add_filter('manage_class_time_posts_columns', 'my_class_time_columns', 1);
+add_action('manage_class_time_posts_custom_column', 'output_my_class_time_custom_columns', 0, 2); 
+  
+function my_class_time_columns( $tiyan_columns ){
+    	$tiyan_columns['cb'] = '<input type="checkbox" />';
+		$tiyan_columns['leixing']  = '类型';         
+   	    $tiyan_columns['id'] = __('ID');  
+    return $tiyan_columns;
+} 
+function output_my_class_time_custom_columns( $column_name, $post_id ) {
+	global $wpdb;
+    switch( $column_name ) {
+ 		 case 'id':   
+            echo $post_id;   
+            break; 
+ 		 case 'leixing':   
+		 		echo columns_leixing($wpdb,$post_id);
+          break; 
+    }
+}
+
 //教练 
 
 add_filter('manage_teachers_posts_columns', 'my_teachers_columns', 1);

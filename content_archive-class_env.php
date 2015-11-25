@@ -1,8 +1,7 @@
-
-
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12">
- 
+<link rel="stylesheet" href="<?php echo  site_url() ?>/lightbox/css/lightbox.css">
+<script src="<?php echo  site_url() ?>/lightbox/js/lightbox.js"></script>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
                  <?php
 
@@ -34,46 +33,18 @@ foreach ($terms as $term)
 ?>
           </ul>
           <div class="tab-content">
-          	<!--1-->
-            <div class="row tab-pane active"  role="tabpanel" id="1">
-            <?php
-
-
-			$args['post_type'] = 'class_env';
-			if (!empty($lei)) {
-				
-				$args['tax_query'] =  array(
-				        'relation' => 'AND',
-				        array(
-				            'taxonomy' => 'class_env_type',
-				            'field'    => 'slug',
-				            'terms'    => array( "$lei"),
-				        ),
-				);
-			}
-			
-			$query = new WP_Query( $args );
-			
-			if (!empty($query->posts)) {
-					$rs = $query->posts;
-					foreach ($rs as $rs_o) {
-							$img_url = get_post_meta($rs_o->ID,'_id_upload_env',true);
-						?>
-            	<div class="col-lg-4">
-                	<div class="picList">
-                    	<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>
-                    	<img src="<?php echo $img_url ?>" width="274" height="220">
-                    </div>
-                </div>
-                <?php 
-					}
-			}
-			wp_reset_postdata();
-			?>
-               
-              	<div class="col-lg-4 col-xs-offset-4">
-                	<button type="button" class="btn btn-lg btn-block btn-blue">加载更多  <i class="glyphicon glyphicon-save"></i></button>
-                </div>
+            <div class="row tab-pane active"  role="tabpanel" >
+               	 		<div id="neirong"></div>
+                         <input  type="hidden" name="jiazai_tp" id="jiazai_tp" value="class_env"  />
+                    <input  type="hidden" name="jiazai_lei" id="jiazai_lei" value="<?php echo $lei ?>"  />
+                      <input  type="hidden" name="jiazai_page" id="jiazai_page" value="0"  />
+              	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"  id="jiazai">
+                        <div class="row">
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4">
+                            <button type="button" onclick="load_page()" class="btn btn-lg btn-block btn-blue">加载更多 <i class="glyphicon glyphicon-save"></i></button>
+                          </div>
+                        </div>
+                      </div>
             </div>
 
             <!--tab end-->
@@ -81,5 +52,65 @@ foreach ($terms as $term)
         </div>
       </div>
 
-						
+<script>
+function load_page(){
+	var jiazai_tp  = $("#jiazai_tp").val();
+	var jiazai_lei  = $("#jiazai_lei").val();
+	var jiazai_page  = $("#jiazai_page").val();
+	$.post(
+		'/?post_type=teachers',
+		{
+			'ajax_type':'post',
+			'jiazai_tp':jiazai_tp,
+			'jiazai_lei':jiazai_lei,
+			'jiazai_page':jiazai_page
+		},
+		function(data){
+			var json = data.rs;
+			$("#jiazai").show();
+			if(json.length ==0)
+			{
+				$("#jiazai").hide();
+			}else{
+				//alert(data.rs);	alert(json.length);
+				if(json.length <=2)
+				{
+					$("#jiazai").hide();
+				}
+				var html ='';
+				for(i=0;i<json.length;i++)
+				{
+					 html += '<a href="'+json[i].img_url+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">';
+					 html += '<div class="picList">';
+					 html += '<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>';
+					 html += '<img src="'+json[i].img_url+'" >';
+					 html += '</div>';
+					 html += '</div></a>';
+				}
+			
+				$("#jiazai_page").val(data.page);
+				if(json.length == 0)
+				{
+					
+				}else{
+					$("#neirong").append(html);	
+				}
+
+			}
+		},
+		'json'
+	)
+
+	
+}
+$(document).ready(function() {  
+
+		load_page();
+		$("#jiazai").hide();	
+});
+
+
+
+
+</script>				
 						

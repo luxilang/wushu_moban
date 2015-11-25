@@ -1,7 +1,3 @@
-
-
-
-
 <?php
 	$courses_tab_conf = array(
 	  'full_name' => '课程页面选项卡',
@@ -455,7 +451,7 @@
 	 $class_env_meta[] = array(
 	  'name' => '环境图上传',
 	  'id'   => '_id_upload_env',
-	  'desc' => '请上传图片或者填入图片的URl地址',
+	  'desc' => '图片大小274*220',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',
@@ -493,6 +489,10 @@
 	}
 	$class_time_box = new ashu_meta_box($class_time_meta, $class_time_info);
 
+	//费用
+
+	
+	
 	
 	/***
 	$tab_cont_info =  $tab_cont_meta = array();

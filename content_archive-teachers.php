@@ -95,7 +95,8 @@ function load_page(){
 					html += '<p>'+json[i].yddj+'</p>';
 					html += '<p>少儿武术教学经验:'+json[i].sewsjljy+'</p>';
 					html += '<p>教学风格:'+json[i].jxfg+'</p>';
-					html += '<a href="'+json[i].permalink+'">查看详细</a> ';
+					
+					html += '<a href="'+json[i].permalink+'"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>';
 					html += '</div>';
 					html += '</div>';
 				}
@@ -125,4 +126,3 @@ $(document).ready(function() {
 
 
 </script>
-

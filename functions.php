@@ -1,5 +1,33 @@
 <?php
 add_filter('show_admin_bar','__return_false'); 
+class Disable_Google_Fonts{
+    public function __construct(){
+        add_filter('gettext_with_context',array($this,'disable_open_sans'),888,4);
+    }
+    public function disable_open_sans($translations,$text,$context,$domain ){
+        if ('Open Sans font: on or off' == $context && 'on' == $text){
+            $translations = 'off';
+        }
+        return $translations;
+    }
+}
+$disable_google_fonts = new Disable_Google_Fonts;
+//优化1
+/**
+function dmeng_get_https_avatar($avatar) {
+    //~ 替换为 https 的域名
+    $avatar = str_replace(array("www.gravatar.com", "0.gravatar.com", "1.gravatar.com", "2.gravatar.com"), "secure.gravatar.com", $avatar);
+    //~ 替换为 https 协议
+    $avatar = str_replace("http://", "https://", $avatar);
+    return $avatar;
+}
+add_filter('get_avatar', 'dmeng_get_https_avatar');
+*/
+function get_ssl_avatar($avatar) {
+   $avatar = preg_replace('/.*/avatar/(.*)?s=([d]+)&.*/','<img class="avatar avatar-$2" src="https://secure.gravatar.com/avatar/$1?s=$2" alt="" width="$2" height="$2" />',$avatar);
+   return $avatar;
+}
+add_filter('get_avatar', 'get_ssl_avatar');
 //require get_template_directory() . '/ajax.php';
 function get_current_archive_link( $paged = true ) { 
        $link = false; 
@@ -54,9 +82,7 @@ function add_yuyue_menu() {
 }
 
 function  yuyue() {
-  	?>
-  	<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="content" name="content" src="/wp-admin/custom_admin/index.php" style="width:80%; height:800px; border:none;"></iframe>
-  	<?php 
+  	echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="content" name="content" src="/wp-admin/custom_admin/index.php" style="width:80%; height:800px; border:none;"></iframe>';  	 
 }
 
 
@@ -227,32 +253,5 @@ function custom_type_tag($lei,$post_type)
 	$rs = $wpdb->get_results($sql);
 	return $rs;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
