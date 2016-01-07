@@ -15,7 +15,7 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
               <label><span>课程费用：</span><?php echo get_post_meta($post_id,'_skfy_courses',true);  ?></label>
               <label><span>开班信息：</span><?php echo get_post_meta($post_id,'_kbxi_courses',true);  ?></label>
               <label class="fg">学员至上：<?php echo get_post_meta($post_id,'_syzs_courses',true);  ?></label>
-              <button type="button" class="btn btn-blue btn-lg"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
+              <button type="button" class="btn btn-blue btn-lg"  data-toggle="modal" data-target="#yyModal" ><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
             </div>
           </div>
         </div>
@@ -64,7 +64,27 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
 			  ?>
                 <!--1-->
                 <div class="row tab-pane <?php echo $active_tab1 ?>"  role="tabpanel" id="<?php echo $tab_id1 ?>">
-                		<?php echo get_post_meta($post_id,$tab_option_id,true); ?>
+                		<?php 
+                		$post_c = get_post_meta($post_id,$tab_option_id,true);
+                		if ($tab_option_id == '_id_tinymce_kzyd') { //扩展阅读
+                		    $post_c = trim($post_c);
+                		    $post_c = str_replace('，', ',', $post_c);
+                		    $content_id_arr = array_filter(explode(",", $post_c));
+                		    
+                		    $wp_article_id = $content_id_arr[0];
+                		    
+                		    $sql = "SELECT * FROM wp_article WHERE id ='{$wp_article_id}' LIMIT 1";
+							$rs = $wpdb->get_results($sql);
+						
+							if (!empty($rs[0]))  echo  get_bendi_wenzhang($rs);;
+	
+                		    
+                		}else{
+                		   $echopost_c = $post_c ;
+                		   echo $echopost_c;
+                		}
+                		
+                		?>
                 </div>
                <?php 
 							}
@@ -77,8 +97,8 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
         </div>
         
       </div>
-
-
+<?php  $zaixian_submit_type = 2 //教练  ;?>
+<?php include_once 'modal.php';  ?>
 
 <?php
 /***** 

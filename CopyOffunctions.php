@@ -1,5 +1,4 @@
 <?php
-
 add_filter('show_admin_bar','__return_false'); 
 class Disable_Google_Fonts{
     public function __construct(){
@@ -25,7 +24,7 @@ function dmeng_get_https_avatar($avatar) {
 add_filter('get_avatar', 'dmeng_get_https_avatar');
 */
 function get_ssl_avatar($avatar) {
-   $avatar = preg_replace('/.*\/avatar\/(.*)\?s=([\d]+)&.*/','<img src="https://secure.gravatar.com/avatar/$1?s=$2" height="$2" width="$2">',$avatar);
+   $avatar = preg_replace('/.*/avatar/(.*)?s=([d]+)&.*/','<img class="avatar avatar-$2" src="https://secure.gravatar.com/avatar/$1?s=$2" alt="" width="$2" height="$2" />',$avatar);
    return $avatar;
 }
 add_filter('get_avatar', 'get_ssl_avatar');
@@ -78,28 +77,14 @@ function specs_wp_revisions_to_keep( $num, $post ) {
 add_action('admin_menu', 'add_yuyue_menu');     
 function add_yuyue_menu() {
 
-	add_menu_page( '教练预约', '教练预约', 'administrator', 'yuyue', 'yuyue', '', 51);
+	add_menu_page( '预约菜单', '预约菜单', 'administrator', 'yuyue', 'yuyue', '', 51);
 
 }
-/*function  yuyue(){
-	 include_once 'yuyue.php';
-}*/
+
 function  yuyue() {
-  	echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="content" name="content" src="/wp-admin/custom_admin/index.php" style="width:80%; height:800px; border:none;"></iframe>';  	 
-}
-
-/**
- * 
- */
-add_action('admin_menu', 'add_titledao_menu');     
-function add_titledao_menu() {
-
-	add_menu_page( '文章标题导入', '文章标题导入', 'administrator', 'titledao', 'titledao', '', 52);
-
-}
-function titledao() {
-	  	echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="content" name="content" src="/api/titledao.php" style="width:80%; height:800px; border:none;"></iframe>';  	 
-
+  	?>
+  	<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="content" name="content" src="/wp-admin/custom_admin/index.php" style="width:80%; height:800px; border:none;"></iframe>
+  	<?php 
 }
 
 
@@ -111,7 +96,7 @@ require get_template_directory() . '/include/import_export.php';
 include_once('conf.php'); 
 include_once 'custom_post_types.php';
 include_once 'layout.php';
-require get_template_directory() . '/class_lu.php'; 
+
 /***
 function hbns_register_p2p_relationships() {
 	if ( !function_exists( 'p2p_register_connection_type' ) )
@@ -271,17 +256,31 @@ function custom_type_tag($lei,$post_type)
 	return $rs;
 }
 
-function get_bendi_wenzhang($rs) {
-	$rs_o = $rs[0];
-	$file_path = $rs_o->file_path;
-	$html_url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$file_path;
-	
-	$html =  file_get_contents($html_url); 
-	
-	$host = str_replace(strrchr($html_url, '/'),'' , $html_url).'/';
-	
-	$html = mb_convert_encoding($html, "UTF-8", "GB2312");
-	$html = preg_replace ( "/<img.+?src=\'(.+?)\'.+?>/", '<img src="' . $host . '\1" />', $html );
-	return $html;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -13,8 +13,9 @@
 <link href="<?php echo  site_url() ?>/dist/css/css_m.css" rel="stylesheet" media="screen">
 <script src="<?php echo  site_url() ?>/dist/js/jQuery-1.11.2.js"></script> 
 <script src="<?php echo  site_url() ?>/dist/js/bootstrap.min.js"></script> 
+
 </head>
-<?php 	
+<?php 
 
 		$body_css_type = '';
 			if(is_home())
@@ -50,9 +51,22 @@
 			{
 				$nav_post_type = 'guanyuwomen';
 				$body_css_type = 'class="about"';
+
 			}else{
 				$nav_post_type = 'bbs';
 			}
+		
+	
+			if(is_category())
+			{
+				$nav_post_type = 'category';
+				$body_css_type = 'class="courses"';
+			}
+			if (strpos($_SERVER['REQUEST_URI'], '?p=')) {
+				$nav_post_type = 'category';
+				$body_css_type = 'class="courses"';
+			} 
+			
 ?>
 <body <?php echo $body_css_type ?>>
 <div class="container head">
@@ -78,8 +92,9 @@
 				'students'=>array('/?post_type=students','学员信息'),
 				'teachers'=>array('/?post_type=teachers','教练信息'),
 				'lianxiwomen'=>array('/?page_id=3','联系我们'),
-				'bbs'=>array('bbs','论坛'),
+				'bbs'=>array('/bbs','论坛'),
 				'guanyuwomen'=>array('/?page_id=1','关于我们'),
+				'category'=>array('/?cat=1','文章'),
 		
 			);
 			

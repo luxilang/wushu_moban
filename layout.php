@@ -4,7 +4,7 @@ Template Name: 信息布局模板
 */ 
 function echo_layout($html)
 {
-	global $post,$post_type_conf,$nav_post_type;
+	global $post,$post_type_conf,$nav_post_type,$wpdb;
 	get_header();
 
 ?>
@@ -20,12 +20,35 @@ function echo_layout($html)
 			{
 				
 			}else if(is_single()){
+				
+				if (strpos($_SERVER['REQUEST_URI'], '?p=')) {  //导入的文章
+				
+					$post_type = get_post_type();
+ 					$post_type_obj = get_post_type_object(get_post_type());
+					
+				?>
+				<div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="class-title">
+                    <label><?php  echo get_the_title() ?></label>
+                    <!--  <ol class="breadcrumb">
+                      <li><a href="<?php echo site_url() ?>">首页</a></li>
+                      <li><a href="<?php echo site_url() ?>?post_type=<?php echo $post_type ?>"><?php echo $post_type_obj->label ?></a></li>
+                      <li class="active"><?php echo get_the_title() ?></li>
+                    </ol>-->
+                  </div>
+                </div>
+              </div>
+				<?php 
+					
+				}else{
+					
 				$post_type = get_post_type();
  				$post_type_obj = get_post_type_object(get_post_type());
 				$detail_title_inf = '';
 				if($post_type  == 'courses') $detail_title_inf= get_the_title();
 				if($post_type  == 'teachers') $detail_title_inf= '教练员介绍';
-
+			
 				?>
               <!--title-->
               <div class="row">
@@ -40,7 +63,10 @@ function echo_layout($html)
                   </div>
                 </div>
               </div>
-                <?php
+				<?php	
+				} 
+
+                
 				
 			}else{
 		
@@ -88,6 +114,25 @@ function echo_layout($html)
 					
         		}	
 			}
+			
+			if(is_category())
+			{
+					?>
+                 <!--title-->
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="class-title">
+                        <label>所有文章列表</label>
+                        <ol class="breadcrumb">
+                          <li><a href="<?php echo site_url() ?>">首页</a></li>
+                          <li class="active">所有文章列表</li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+					<?php 
+			}
+			
 	
 	?>
     

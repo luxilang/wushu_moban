@@ -94,7 +94,7 @@ if (!empty($_POST['ajax_type']))
 					}
 					wp_reset_postdata();
 		  
-					echo   json_encode($rs_arr,true);
+					echo   json_encode($rs_arr);
 					exit();
 				}
 				 //环境
@@ -146,7 +146,7 @@ if (!empty($_POST['ajax_type']))
 					}
 					wp_reset_postdata();
 		  
-					echo   json_encode($rs_arr,true);
+					echo   json_encode($rs_arr);
 					exit();
 				}
 				 
@@ -232,10 +232,13 @@ if (!empty($_POST['ajax_type']))
 								{
 								
 									$img_url = get_post_meta($rs_o->ID,'_id_upload_students',true);
+									$img_url_r = get_post_meta($rs_o->ID,'_id_upload_students_real',true);
 									$rs_arr['rs'][]= array(
 										'id'=>$rs_o->ID,
 										'title'=>$rs_o->post_title,
 										'img_url'=>$img_url,
+										'img_url_r'=>($img_url_r == '') ? $img_url : $img_url_r,
+										
 										'permalink'=>get_permalink($rs_o->ID),
 									);	
 								}elseif ($jiazai_tp == 'teachers'){
@@ -255,7 +258,7 @@ if (!empty($_POST['ajax_type']))
 				}
 				wp_reset_postdata();
 		
-				echo   json_encode($rs_arr,true);
+				echo   json_encode($rs_arr);
 				exit();
 		}elseif ($_POST['ajax_type']  == 'single'){
 			
@@ -266,7 +269,7 @@ if (!empty($_POST['ajax_type']))
 
 if($_GET['ajax'] == 'single')
 {
-
+	$in['type_id'] =  intval($_POST['type_id']);
 	$in['post_id'] = intval($_POST['post_id']);
 	$in['jia_name'] = strip_tags($_POST['jiazhuang']);
 	$in['jia_tel'] = strip_tags($_POST['jazhangdianhua']);

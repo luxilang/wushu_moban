@@ -28,3 +28,5 @@
 
 </body>
 </html>
+<link rel="stylesheet" href="<?php echo  site_url() ?>/lightbox/css/lightbox.css">
+<script src="<?php echo  site_url() ?>/lightbox/js/lightbox.js"></script>

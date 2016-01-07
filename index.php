@@ -82,7 +82,7 @@ get_header();
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                   <div class="box"> <img src="<?php echo $img_url ?>" width="280" height="216">
                                     <div class="info">
-                                      <h3><?php echo  $rs_o->post_title ?></h3>
+                                      <h3><a href="<?php echo get_permalink($rs_o->ID); ?>" ><?php echo  $rs_o->post_title ?></a></h3>
                                       <label>授课方式：<?php echo  get_post_meta($rs_o->ID,'_skfs_courses',true) ?></label>
                                       <label>优惠活动：<?php echo  get_post_meta($rs_o->ID,'_yhhd_courses',true) ?></label>
                                     </div>

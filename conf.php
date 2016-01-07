@@ -230,9 +230,18 @@
       'callback'=>''
     );
     $students_meta[] = array(
-	  'name' => '图片上传',
+	  'name' => '封面缩略图片上传',
 	  'id'   => '_id_upload_students',
 	  'desc' => '图片大小274*370',
+	  'std'  => '',
+	  'size' => 40,
+	  'button_text' => '上传',
+	  'type' => 'upload'
+	);
+    $students_meta[] = array(
+	  'name' => '图片上传',
+	  'id'   => '_id_upload_students_real',
+	  'desc' => '图片上传',
 	  'std'  => '',
 	  'size' => 40,
 	  'button_text' => '上传',

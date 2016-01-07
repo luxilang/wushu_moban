@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="<?php echo  site_url() ?>/lightbox/css/lightbox.css">
-<script src="<?php echo  site_url() ?>/lightbox/js/lightbox.js"></script>
+
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">

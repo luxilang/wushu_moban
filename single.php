@@ -1,4 +1,2 @@
-
 <?php
-get_header();
-echo  '日志模板';
+echo_layout('content_single.php');//文章模板

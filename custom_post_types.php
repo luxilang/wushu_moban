@@ -444,7 +444,8 @@ add_action('manage_students_posts_custom_column', 'output_my_students_custom_col
   
 function my_students_columns( $tiyan_columns ){
     	$tiyan_columns['cb'] = '<input type="checkbox" />';//这个是前面那个选框，不要丢了
-		$tiyan_columns['_id_upload_students']  = '图片'; 
+		$tiyan_columns['_id_upload_students']  = '封面图片'; 
+		$tiyan_columns['_id_upload_students_real']  = '图片'; 
 		$tiyan_columns['leixing']  = '类型';         
    	    $tiyan_columns['id'] = __('ID');  
      
@@ -459,6 +460,9 @@ function output_my_students_custom_columns( $column_name, $post_id ) {
             break; 
         case '_id_upload_students' :
 			echo  columns_img($post_id,'_id_upload_students');
+            break;
+        case '_id_upload_students_real' :
+			echo  columns_img($post_id,'_id_upload_students_real');
             break;
  		 case 'leixing':   
 		 	echo columns_leixing($wpdb,$post_id);

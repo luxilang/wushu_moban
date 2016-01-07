@@ -12,8 +12,7 @@
 
 ?>
 
-<link rel="stylesheet" href="<?php echo  site_url() ?>/lightbox/css/lightbox.css">
-<script src="<?php echo  site_url() ?>/lightbox/js/lightbox.js"></script>
+
 <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
@@ -123,7 +122,7 @@ function load_page(){
 				for(i=0;i<json.length;i++)
 				{
 					
-					 html += '<a href="'+json[i].img_url+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="uuuuu'+json[i].id+'" >';
+					 html += '<a href="'+json[i].img_url_r+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="uuuuu'+json[i].id+'" >';
 					 html += '<div class="picList">';
 					 html += '<div class="b-layer" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i></div>';
 					 html += '<img src="'+json[i].img_url+'"   width="274" height="370" >';
