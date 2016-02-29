@@ -1,5 +1,17 @@
 <?php
 
+remove_filter ('the_content', 'wpautop');
+
+remove_filter ('comment_text', 'wpautop');
+function remove_screen_options(){ return false;}
+add_filter('screen_options_show_screen', 'remove_screen_options');
+add_filter( 'contextual_help', 'wpse50723_remove_help', 999, 3 );
+function wpse50723_remove_help($old_help, $screen_id, $screen){
+$screen->remove_help_tabs();
+return $old_help;
+}
+
+
 add_filter('show_admin_bar','__return_false'); 
 class Disable_Google_Fonts{
     public function __construct(){
@@ -13,7 +25,7 @@ class Disable_Google_Fonts{
     }
 }
 $disable_google_fonts = new Disable_Google_Fonts;
-//优化1
+
 /**
 function dmeng_get_https_avatar($avatar) {
     //~ 替换为 https 的域名
@@ -72,13 +84,11 @@ function specs_wp_revisions_to_keep( $num, $post ) {
     return 0;
 }
 
-/**
- * 注册 留言菜单项
- */
+
 add_action('admin_menu', 'add_yuyue_menu');     
 function add_yuyue_menu() {
 
-	add_menu_page( '教练预约', '教练预约', 'administrator', 'yuyue', 'yuyue', '', 51);
+	add_menu_page( '体验预约', '体验预约', 'administrator', 'yuyue', 'yuyue', '', 51);
 
 }
 /*function  yuyue(){
@@ -108,9 +118,9 @@ require get_template_directory() . '/include/simple-term-meta.php';
 require get_template_directory() . '/include/class-taxonomy-feild.php';
 require get_template_directory() . '/include/optionclass.php';
 require get_template_directory() . '/include/import_export.php';
-include_once('conf.php'); 
-include_once 'custom_post_types.php';
-include_once 'layout.php';
+require get_template_directory() . '/conf.php';
+require get_template_directory() . '/custom_post_types.php';
+require get_template_directory() . '/layout.php';
 require get_template_directory() . '/class_lu.php'; 
 /***
 function hbns_register_p2p_relationships() {
@@ -171,16 +181,7 @@ add_action( 'wp_loaded', 'hbns_register_p2p_relationships' );
 */
 
 
-//页面的数据模型
 
-//取得 自定义分类子分类置顶信息
-/**
- * 
- * Enter description here ...
- * @param unknown_type $post_type  courses
- * @param unknown_type $post_type_class 少年组
- * @param unknown_type $meta_key _is_top
- */
 function custom_type_class_meta($post_type,$post_type_class,$meta_key) {
 
 	global  $wpdb;
@@ -225,13 +226,7 @@ function custom_type_class_meta($post_type,$post_type_class,$meta_key) {
 	return $rs;
 	
 }
-/**
- * 
- * Enter description here ...
- * @param unknown_type $tag_name  dong_wushu 武术 
- * @param unknown_type $slug   xlhx 训练花絮
- * @param unknown_type $post_type students
- */
+
 function custom_type_tag($lei,$post_type)
 {
 	global  $wpdb;

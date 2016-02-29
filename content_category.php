@@ -7,7 +7,7 @@
 <table width="95%" border="0" align="center" cellpadding="0" cellspacing="20" style="font-size:16px">
 <?php
 
-$page_size = 10;
+$page_size = 12;
 $curr_url = "?cat=1"; 
 $page_size = !empty($page_size) ? $page_size : 10;
 $rs = $wpdb->get_results("select count(*) as num from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1   ");

@@ -269,13 +269,18 @@ if (!empty($_POST['ajax_type']))
 
 if($_GET['ajax'] == 'single')
 {
+
 	$in['type_id'] =  intval($_POST['type_id']);
 	$in['post_id'] = intval($_POST['post_id']);
-	$in['jia_name'] = strip_tags($_POST['jiazhuang']);
-	$in['jia_tel'] = strip_tags($_POST['jazhangdianhua']);
-	$in['email'] = strip_tags($_POST['email']);
-	$in['xue_name'] = strip_tags($_POST['xueyuan']);
-	$in['xue_nian'] = strip_tags($_POST['nianling']);
+
+	$in['xue_name'] = strip_tags($_POST['xue_name']);
+	$in['xue_nian'] = strip_tags($_POST['xue_nian']);
+	$in['jia_tel'] = strip_tags($_POST['jia_tel']);
+	$in['xingbie'] = strip_tags($_POST['xingbie']);
+	$in['xiaoqu'] = strip_tags($_POST['xiaoqu']);
+	$in['yuyuetime'] = strip_tags($_POST['yuyuetime']);
+	$in['quyu'] = strip_tags($_POST['quyu']);
+	$in['beizhu'] = strip_tags($_POST['beizhu']);
 	$in['ctime'] = date('Y-m-d H:i:s');
 	$in_good= $wpdb->insert( 'wp_yuyue', $in) ;
 	if($in_good)

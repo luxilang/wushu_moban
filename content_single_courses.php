@@ -77,11 +77,21 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
 							$rs = $wpdb->get_results($sql);
 						
 							if (!empty($rs[0]))  echo  get_bendi_wenzhang($rs);;
-	
+							?>
+										  	    <div id="SOHUCS"></div>
+								<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+								<script type="text/javascript">
+								    window.changyan.api.config({
+								        appid: 'cys3XmfBU',
+								        conf: 'prod_674cebb9c09386b41dfc0b70d2a82563'
+								    });
+								</script> 
+							<?php 
                 		    
                 		}else{
                 		   $echopost_c = $post_c ;
                 		   echo $echopost_c;
+                	
                 		}
                 		
                 		?>

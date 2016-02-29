@@ -85,7 +85,7 @@
 				                 	<?php 
 	                  					foreach ($real_time_arr as $zhou => $real_time_arrvalue) {
 	                  					
-	                  						if (in_array($a_time_flag, $real_time_arrvalue)) {
+	                  						if (@in_array($a_time_flag, $real_time_arrvalue)) {
 		                  						
 		                  				
 										?>

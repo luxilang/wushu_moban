@@ -5,8 +5,36 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php 
+			$fubiaoti ='';
+			$post->rs_html_xiangxi = '';
+			$post->rs_o = '';
+			$post->rs_html_host = '';
+			if (strpos($_SERVER['REQUEST_URI'], '?p=')) {
 
-<title><?php wp_title( '|', true, 'right' ); bloginfo('name'); ?></title>
+				//加载文章标题
+				$title_id = $post->ID;
+				$title_type = $post->title_type;
+				$sql = "SELECT * FROM wp_article WHERE title_id ='{$title_id}' AND flag = 1 LIMIT 1";
+				$rs = $wpdb->get_results($sql);
+				$rs_o = $rs[0];
+				$file_path = $rs_o->file_path;
+				$html_url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$file_path;
+				$html =  file_get_contents($html_url); 
+				$html = mb_convert_encoding($html, "UTF-8", "GB2312");
+				preg_match_all('/<h4.+?>(.*?)<\/h4>/si' ,$html, $r);
+				if (!empty($r[1][0])) {
+					$fubiaoti = $r[1][0];
+				}
+	
+				$host = str_replace(strrchr($html_url, '/'),'' , $html_url).'/';
+				$post->rs_html_xiangxi = $html;
+				$post->rs_o  = $rs;
+				$post->rs_html_host = $host;
+			} 
+
+?>
+<title><?php wp_title( ' | ', true, 'right' );  bloginfo('name'); if (!empty($fubiaoti)) {echo ' | '.$fubiaoti;}  ?></title>
 <link href="<?php echo  site_url() ?>/dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/css.css" rel="stylesheet" media="screen">
