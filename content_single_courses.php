@@ -89,6 +89,9 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
 							<?php 
                 		    
                 		}else{
+                			$post_c = str_replace("{jintian_date}",date('Y-m-d'),$post_c ); 
+                			$post_c = str_replace("{zuotian_date}",date('Y-m-d',time()-24*3600),$post_c ); 
+                			$post_c = str_replace("{qiantian_date}",date('Y-m-d',time()-2*24*3600),$post_c ); 
                 		   $echopost_c = $post_c ;
                 		   echo $echopost_c;
                 	

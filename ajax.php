@@ -283,6 +283,9 @@ if($_GET['ajax'] == 'single')
 	$in['beizhu'] = strip_tags($_POST['beizhu']);
 	$in['ctime'] = date('Y-m-d H:i:s');
 	$in_good= $wpdb->insert( 'wp_yuyue', $in) ;
+	
+	//打短信
+	
 	if($in_good)
 	{
 		echo 1;	
