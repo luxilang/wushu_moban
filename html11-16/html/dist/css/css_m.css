@@ -103,11 +103,20 @@
 	padding-left:10px;
 	padding-right:10px;
 }
+.map-box{
+	margin-top:0px;
+}
 .map-box .address-list{
 	margin-top:10px;
 }
 .map-box .map-info a{
 	margin:5px 0;
+}
+.map-box .btn-blue{
+	margin-top:10px;
+}
+.map-box .btn-blue i{
+	margin-right:6px;
 }
 .page-left, .page-right{
 	margin-top:10px;

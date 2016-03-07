@@ -87,12 +87,24 @@ ul {
 .caidan .nav-pills > li.active > a, .caidan .nav-pills > li.active > a:hover, .caidan .nav-pills > li.active > a:focus {
 	background-color:#fff;
 }
+.caidan .nav-pills-small{
+	width:80%;
+	display:inline-block;
+	padding-bottom:0px;
+}
+.caidan .nav-pills-small li{
+	width:30%;
+}
+.caidan .nav-pills-small li a{
+	font-size:14px;
+}
 /****小平导航****/
 .caidan .navbar-toggle{
 	background:#FFF;
 	margin:4px 0;
 	padding:6px 8px;
 	cursor:pointer;
+	margin-top:5px;
 }
 .caidan .navbar-toggle .icon-bar{
 	height:2px;
@@ -445,6 +457,7 @@ ul {
 	margin:6px 0;
 }
 .page-left .level-3-menu {
+	margin-bottom:0px;
 }
 .page-left .level-3-menu li {
 	margin-bottom:10px;
