@@ -1,3 +1,8 @@
+<?php 
+	if(!isset($_SESSION['token']) || $_SESSION['token']=='') { 
+ 		set_token(); 
+	} 	
+?>
 <script src="<?php echo  site_url() ?>/dist/js/My97DatePicker/WdatePicker.js" ></script>
 <input name="type_id"  id="type_id"  type="hidden" value="<?php echo $zaixian_submit_type ?>">
 <div class="modal fade form-modal" id="yyModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -7,6 +12,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <form  id='fff' class="yy-form"  >
         <input name="post_id" id="post_id" type="hidden" value="<?php echo $post_id ?>" />
+         <input type="hidden" name="token" value="<?php echo $_SESSION['token']?>"> 
         <!--  
           <div class="form-group">
             <label><i class="red">*</i>家长姓名</label>
@@ -144,6 +150,12 @@ function tijiao(){
 						$('#yycgModal').modal('show') ;
 						//var t=setTimeout("$('#yycgModal').modal('hide')",5000);
 						countDown(10,'');
+					}else if(data == 2){
+						alert('邮件发送失败');
+					}else if(data == 3){
+						alert('短信发送失败');
+					}else if(data == 4){
+						alert('请不要重复提交');
 					}
 				},
 				'text'
@@ -159,7 +171,15 @@ function countDown(secs,surl){
      setTimeout("countDown("+secs+",'"+surl+"')",1000);        
      }        
  else{   
- 	$('#yycgModal').modal('hide')       
+ 	$('#yycgModal').modal('hide') ;
+	$("#xue_name").val('');
+	$("#xue_nian").val('');
+	$("#jia_tel").val('');
+	$("#xingbie").val('');
+	$("#xiaoqu").val('');
+	$("#yuyuetime").val('');
+	$("#quyu").val('');
+	$("#beizhu").val('');      
      //location.href=surl;        
      }        
  }        

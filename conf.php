@@ -1,4 +1,38 @@
 <?php
+
+	$email_tel_conf = array(
+	  'full_name' => '邮箱手机配置',
+	  'optionname'=>'email_tel', //设置名称，获取设置选项用 
+	  'child'=>false,
+	  'filename' => 'email_tel_page' //设置页面的url 
+	);
+	$email_tel_option = array();
+	$email_tel_option[] = array('desc' => '', 'type' => 'open');
+	$email_tel_option[] = array(
+	  'name' => '邮箱',
+	  'id'   => '_auto_email',
+	  'desc' => '免费体验提交后自动发邮件的接收邮箱',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	$email_tel_option[] = array(
+	  'name' => '手机',
+	  'id'   => '_auto_tel',
+	  'desc' => '免费体验提交后自动发短信的接收短信的手机',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	
+	$email_tel_option[] = array('desc' => '', 'type' => 'close');
+	$email_tel_p = new ashu_option_class($email_tel_option, $email_tel_conf);
+	
+	
+	
+	
+	
+	
 	$courses_tab_conf = array(
 	  'full_name' => '课程页面选项卡',
 	  'optionname'=>'courses_tab', //设置名称，获取设置选项用 

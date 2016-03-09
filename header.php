@@ -41,7 +41,13 @@
 <link href="<?php echo  site_url() ?>/dist/css/css_m.css" rel="stylesheet" media="screen">
 <script src="<?php echo  site_url() ?>/dist/js/jQuery-1.11.2.js"></script> 
 <script src="<?php echo  site_url() ?>/dist/js/bootstrap.min.js"></script> 
-
+<script>
+	$(function(){
+		$(window).click(function(){
+			$('#navbar').removeClass('in');
+		})
+	})
+</script>
 </head>
 <?php 
 
@@ -144,6 +150,27 @@
         </ul>
       </div>
       <div class="hidden-lg hidden-md hidden-sm">
+	      <ul class="nav nav-pills nav-pills-small">
+	      <?php 
+	      $nav_cf_1 = array(
+				'home'=>array('/','首页'),
+				'courses'=>array('/?post_type=courses','课程介绍'),
+				'lianxiwomen'=>array('/?page_id=3','联系我们')
+			);
+	      ?>
+	        <?php 
+		  foreach($nav_cf_1 as $k=>$v)
+		  {
+				$nav_active = '';
+				if(trim($nav_post_type) == trim($k)) $nav_active= 'class="active"';
+				
+		  ?>
+          <li <?php echo  $nav_active ?> ><a href="<?php echo $v[0]?>"><?php echo $v[1] ?></a></li>
+          <?php 
+		  }
+		  ?>
+	      
+	      </ul>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> 
             <span class="icon-bar"></span> 
             <span class="icon-bar"></span> 

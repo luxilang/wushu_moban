@@ -71,7 +71,10 @@ class lupage
     function pageEnd() // 最后页
     {
 		$shenglue_ =($this->_currentPage > $this->_totalPages-6 ) ? '' : '...'.$this->_totalPages;
-        return $this->_pageEnd = "<a {$this->_page_link_css_class} href=" . $this->urlphpself . ($this->_linkData) . "&pageId=" . $this->_totalPages . ">{$shenglue_}</a>";
+		if (!empty($shenglue_)) {
+			  return $this->_pageEnd = "<a {$this->_page_link_css_class} href=" . $this->urlphpself . ($this->_linkData) . "&pageId=" . $this->_totalPages . ">{$shenglue_}</a>";
+		}
+  
     }
     function upPage() // 上一页
     {
@@ -138,7 +141,7 @@ class lupage
             $this->_jumpPage .= "<option value='$i' $selected>$i</option>";
             unset($selected);
         }
-        return $this->_jumpPage .= "</select> 页";
+        return $this->_jumpPage .= "</select> 页 ";
         
     }
     function out_page()
@@ -148,7 +151,16 @@ class lupage
         $downPage = $this->downPage();$downPage =  (empty($this->_totalItems))  ?  '' : $downPage;
         $pageStart = $this->pageStart() ; $pageStart = (empty($this->_totalItems))  ?  '': $pageStart; 
         $pageEnd = $this->pageEnd() ; $pageEnd = (empty($this->_totalItems))  ?  '': $pageEnd; 
-        return $upPage."&nbsp;&nbsp;".$pageStart."&nbsp;&nbsp;".$listPage."&nbsp;&nbsp;".$pageEnd."&nbsp;&nbsp;".$downPage."&nbsp;&nbsp;".$this->jumpPage();
+        return $upPage."&nbsp;&nbsp;".$pageStart."&nbsp;&nbsp;".$listPage."&nbsp;&nbsp;".$pageEnd."&nbsp;&nbsp;".$downPage."&nbsp;&nbsp".$this->jumpPage()."&nbsp;&nbsp".'共'.$this->_totalItems.'条';
+    }
+    function mobile_out_page()
+    {
+        $upPage = $this->upPage();$upPage =  (empty($this->_totalItems)) ? '' : $upPage;
+        $listPage = $this->listPage();$listPage =  (empty($this->_totalItems))  ? '' : $listPage;
+        $downPage = $this->downPage();$downPage =  (empty($this->_totalItems))  ?  '' : $downPage;
+        $pageStart = $this->pageStart() ; $pageStart = (empty($this->_totalItems))  ?  '': $pageStart; 
+        $pageEnd = $this->pageEnd() ; $pageEnd = (empty($this->_totalItems))  ?  '': $pageEnd; 
+        return $this->jumpPage()."&nbsp;&nbsp".'共'.$this->_totalItems.'条';
     }
 }
 

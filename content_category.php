@@ -12,7 +12,12 @@ $curr_url = "?cat=1";
 $page_size = !empty($page_size) ? $page_size : 10;
 $rs = $wpdb->get_results("select count(*) as num from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1   ");
 $count = !empty($rs[0]->num) ? $rs[0]->num : 0;
-$lupage = new lupage ( $count, $page_size, $curr_url);
+if (isMobile()) {
+	$lupage = new lupage ( $count, $page_size, $curr_url,2);
+}else{
+	$lupage = new lupage ( $count, $page_size, $curr_url);
+}
+
 $rs = $wpdb->get_results("select * from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1  order by ID desc   limit  ".$lupage->startId ()." ,  {$page_size} " );
 if (!empty($rs)) {
 	
@@ -33,7 +38,12 @@ if (!empty($rs)) {
   <tr>
     <td height="53" colspan="2" align="center" class='lupage'>
 	<?php 
-echo $lupage->out_page ();
+	if (isMobile()) {
+	echo $lupage->mobile_out_page ();
+}else{
+	echo $lupage->out_page ();
+}
+
 ?>
 </td>
   </tr>
