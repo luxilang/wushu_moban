@@ -1,5 +1,4 @@
-﻿<?php
-
+<?php
 date_default_timezone_set ( "Asia/Shanghai" );
 require_once "../wp-config.php";
 if(empty($_GET['id']))  die('error id');
@@ -34,8 +33,8 @@ while ( ! feof ( $file ) ) {
 	$i ++;
 }
 fclose ( $file );
-$info = array_filter ( $info );
 
+$info =  array_filter(array_map('trim',$info));
 
 
 $mysql_db->query ( 'SET NAMES GBK' );

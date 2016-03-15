@@ -26,7 +26,10 @@ if (!empty($rs)) {
 		?>
 		
   <tr>
-    <td width="79%" height="40"><a href="<?php echo get_permalink($rs_o->ID); ?>"><?php echo $rs_o->post_title?></a></td>
+    <td width="79%" height="40"><a href="<?php echo get_permalink($rs_o->ID); ?>"><?php 
+    
+    echo m_subtext($rs_o->post_title,35);
+    ?></a></td>
     <td width="21%" align="right"><?php echo $rs_o->post_date; ?></td>
   </tr>
 

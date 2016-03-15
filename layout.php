@@ -30,7 +30,10 @@ function echo_layout($html)
 				<div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <div class="class-title">
-                    <label><?php  echo get_the_title() ?></label>
+                    <label><?php 
+                      $biaoti_h = get_the_title();
+                     echo m_subtext($biaoti_h,30);
+                     ?></label>
                     <!--  <ol class="breadcrumb">
                       <li><a href="<?php echo site_url() ?>">首页</a></li>
                       <li><a href="<?php echo site_url() ?>?post_type=<?php echo $post_type ?>"><?php echo $post_type_obj->label ?></a></li>

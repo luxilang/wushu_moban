@@ -1,24 +1,25 @@
 <?php
-// 上传数据接口    0 失败 1 成功;
+// 上传数据接口    0 失败 1 成功;  浏览器测试时候 是 多个文件夹不准确 必须 脚本测试
 ini_set ( 'memory_limit', '3232M' );
 set_time_limit ( 0 );
 error_reporting ( 0 );
 date_default_timezone_set ( 'Asia/Shanghai' );
+$log_file = 'shangchuan1.log';
 require_once "class_fun.php";
-$log_file = 'shangchuan.log';
+
 $tip = 0;
 
-du_log ( $log_file,'--------start------------' );
+du_log ($log_file, '--------start------------' );
 $uploaddir = dirname ( __FILE__ ) . '/save_temp/'; //a directory inside 
 $file_name = $_FILES ['fff'] ['name']  ;
 $filename_arr  = pathinfo($file_name);
 $upzip_dirname = $filename_arr['filename'];
-du_log ( $log_file,'--------'.$file_name.'------------' );
+du_log ($log_file, '--------'.$file_name.'------------' );
 $is_up = move_uploaded_file ( $_FILES ['fff'] ['tmp_name'], $uploaddir . $file_name );
 if ($is_up) {
 	du_log ($log_file, 'upload success' );
 } else {
-	du_log ($log_file, 'upload fail' );
+	du_log ( $log_file,'upload fail' );
 }
 
 $zipfile = $uploaddir . $file_name;
@@ -29,12 +30,13 @@ $savepath = realpath ( $savepath );
 
 
 if (zip_extract ( $zipfile, $savepath )) {
-	du_log ($log_file, 'unzip success' );
+	du_log ( $log_file,'unzip success' );
 } else {
 	du_log ($log_file, 'unzip fail' );
 }
 
-$all_dir = fetchDir ( $savepath.'/'.$upzip_dirname.'/' );
+$all_dir = fetchDir ( $savepath.'/'.$upzip_dirname.'/' ); 
+
 
 $all_dir_real = array ();
 if (!empty ( $all_dir )) {
@@ -55,21 +57,20 @@ foreach ( $all_dir_real as $key => $value ) {
 }
 
 
-
-
 if (! empty ( $all_dir_arr )) {
+	//1. 插入 文章路径 到     新文章表
 	$fields = array ('file_path', 'create_date' );
-	$insert_sql = insert ( 'wordpress_wushu', 'wp_article', $fields, $all_dir_arr ) . 'ON DUPLICATE KEY UPDATE file_path=VALUES(file_path)';
-	
+	$insert_sql = insert ( 'wordpress_wushu', 'wp_article1', $fields, $all_dir_arr ) . 'ON DUPLICATE KEY UPDATE file_path=VALUES(file_path)';
 	require_once "cls_mysql.php";
 	$mysql_db = new cls_mysql ( '127.0.0.1', 'root', '', 'wordpress_wushu' );
-	
 	$mysql_db->query ( 'SET NAMES GBK' );
-	$mysql_db->query ( $insert_sql );
+	$in_v  = $mysql_db->query ( $insert_sql );
+	//du_log ($log_file, $in_v );
+	
 }
 
 $tip = 1;
-du_log ( $log_file, '--------end------------' );
+du_log ($log_file, '--------end------------' );
 echo $tip;
 
 
