@@ -7,6 +7,9 @@ require_once "cls_mysql.php";
 $mysql_db = new cls_mysql ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
 //$mysql_db->query('SET NAMES GBK');	
 
+$wp_article_cf_rs =  $mysql_db->getRow("  select * from wp_article_cf where  cfname = 'pub_num' ");
+$pub_limit = $wp_article_cf_rs['cfvalue'];
+
 $sql = "SELECT COUNT(*) AS num FROM wp_posts WHERE  post_status = 'publish'  AND  post_type = 'post' AND  flag = 0 and is_split_title = 0";
 $title_num =  $mysql_db->getOne($sql);
 $sql = "SELECT COUNT(*) AS num FROM wp_article  WHERE  flag = 0 ";
@@ -17,7 +20,7 @@ if ($sp_article_num >0 && $title_num > 0) { //发布
 	$time = date("Y-m-d H:i:s");
 	$time_z = date('Y-m-d H:i:s',time()-8*3600);
 	$create_date = time();
-	$sql = "SELECT * FROM wp_posts WHERE  id >=(SELECT MIN(ID) FROM wp_posts WHERE  post_status = 'publish'  AND  post_type = 'post' AND  flag = 0 and is_split_title = 0) and is_split_title = 0 ";
+	$sql = "SELECT * FROM wp_posts WHERE  id >=(SELECT MIN(ID) FROM wp_posts WHERE  post_status = 'publish'  AND  post_type = 'post' AND  flag = 0 and is_split_title = 0) and is_split_title = 0 limit {$pub_limit} ";
 	$title_rs =  $mysql_db->getAll($sql);
 	$title_id_arr = array();
 	foreach ($title_rs as $value) {

@@ -4,9 +4,15 @@ ini_set ( 'memory_limit', '3232M' );
 set_time_limit ( 0 );
 error_reporting ( 0 );
 date_default_timezone_set ( 'Asia/Shanghai' );
-$log_file = 'shangchuan1.log';
-require_once "class_fun.php";
+function createFolder($path) {
+		if (!file_exists($path)) {
+			createFolder(dirname($path));
+			mkdir($path, 0777);
+		}
+}
 
+require_once "class_fun.php";
+$log_file = 'shangchuan1.log';
 $tip = 0;
 
 du_log ($log_file, '--------start------------' );
@@ -15,17 +21,25 @@ $file_name = $_FILES ['fff'] ['name']  ;
 $filename_arr  = pathinfo($file_name);
 $upzip_dirname = $filename_arr['filename'];
 du_log ($log_file, '--------'.$file_name.'------------' );
-$is_up = move_uploaded_file ( $_FILES ['fff'] ['tmp_name'], $uploaddir . $file_name );
+
+$time_tag = date('YmdHis') . rand(0, 9999);
+$upzip_dirname =  $filename_arr['filename'];
+
+$new_ming = $filename_arr['filename'].'_'.$time_tag;
+$file_name_news = $new_ming.'.'.$filename_arr['extension'];
+
+$is_up = move_uploaded_file ( $_FILES ['fff'] ['tmp_name'], $uploaddir . $file_name_news );
 if ($is_up) {
 	du_log ($log_file, 'upload success' );
 } else {
 	du_log ( $log_file,'upload fail' );
 }
 
-$zipfile = $uploaddir . $file_name;
+$zipfile = $uploaddir . $file_name_news;
 
 chmod ( $zipfile, 0777 );
-$savepath = dirname ( __FILE__ ) . "/save/";
+$savepath = dirname ( __FILE__ ) . "/save/".$time_tag.'/';
+createFolder($savepath);
 $savepath = realpath ( $savepath );
 
 
@@ -59,11 +73,18 @@ foreach ( $all_dir_real as $key => $value ) {
 
 if (! empty ( $all_dir_arr )) {
 	//1. 插入 文章路径 到     新文章表
+	$DB_NAME = 'wordpress_wushu';;
+	$DB_USER = 'root';
+	$DB_PASSWORD = '';
+	$DB_HOST = '127.0.0.1';
+	
 	$fields = array ('file_path', 'create_date' );
-	$insert_sql = insert ( 'wordpress_wushu', 'wp_article1', $fields, $all_dir_arr ) . 'ON DUPLICATE KEY UPDATE file_path=VALUES(file_path)';
+	$insert_sql = insert ( $DB_NAME, 'wp_article1', $fields, $all_dir_arr ) ;
+	du_log ($log_file, $insert_sql );
 	require_once "cls_mysql.php";
-	$mysql_db = new cls_mysql ( '127.0.0.1', 'root', '', 'wordpress_wushu' );
+	$mysql_db = new cls_mysql ($DB_HOST, $DB_USER,$DB_PASSWORD, $DB_NAME );
 	$mysql_db->query ( 'SET NAMES GBK' );
+	
 	$in_v  = $mysql_db->query ( $insert_sql );
 	//du_log ($log_file, $in_v );
 	

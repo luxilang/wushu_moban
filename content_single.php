@@ -5,6 +5,8 @@ $title_type = $post->title_type;
 $host = $post->rs_html_host;
 $rs = $post->rs_o;
 
+$is_split_title = $post->is_split_title;
+
 
 if (isMobile()) {
 	$neirong6 = preg_replace ( "/<img.+?src=\'(.+?)\'.+?>/", '<img width="100%" src="' . $host . '\1" />', $post->rs_html_xiangxi );
@@ -28,7 +30,36 @@ $arrr_seoimg = array(
 	5=>'taijiquan.gif',
 	6=>'kongfan.gif',
 
-)
+);
+$arrr_seoimg_h1 = array(
+	1=>'武术课程',
+	2=>'少儿武术课程',
+	3=>'成人散打课程',
+	4=>'跆拳道课程',
+	5=>'太极拳课程',
+	6=>'空翻课程',
+
+);
+if ($is_split_title) {
+			 
+	?>
+    <style>
+    
+    #inifo99 h1,#inifo99 h2,#inifo99 h3,#inifo99 h4{
+		text-align:center;
+		
+		}
+    </style>
+	   <div  class="row" style=""   >
+			 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"   id="inifo99" style="font-size:14px">
+  	    				<?php 
+						  	    echo $neirong6 ;
+						  	    include_once 'changyan_js.php';  ?>
+			</div>	 
+	  </div>
+	<?php 
+}else{
+	
 
 ?>
 <div class="row content">
@@ -37,14 +68,77 @@ $arrr_seoimg = array(
         		<?php 
         		if (!empty($arrr_seoimg[$seo_type_id]))
         		{
-        			?>
-        			<img alt="" src="/dist/seoimg/<?php echo $arrr_seoimg[$seo_type_id] ?>">
-        			<?php 
+        			 if (isMobile()) {
+        			 	
         			
+        			?>
+        			
+			            <div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img width="100%" src="/wp-content/uploads/2015/11/student1.jpg"> </div>
+			            <div class="col-lg-8 col-xs-12">
+			              <h3><?php echo $arrr_seoimg_h1[$seo_type_id] ?></h3>
+			              <label><span>授课对象：</span>少儿组3岁~10岁 少年组10岁以上</label>
+			              <label><span>课程简述：</span>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</label>
+			              <label><span>授课时间：</span>周一至周五 晚上：6:00-7:30
+			周六日 上午9:30-11:00 下午：3:00-4:30 4:30-6:00</label>
+			              <label><span>课程费用：</span>集体课程：26元~100元不等; 私教课程：300~400元不等; 上课次数越多，每节课单价越低，祥情请咨询客服！</label>
+			              <label><span>开班信息：</span>随到随学</label>
+			              <label class="fg">学员至上：免费试课，满意为止（无任何附加费用）</label>
+			              <button data-target="#yyModal" data-toggle="modal" class="btn btn-blue btn-lg" type="button"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
+			            </div>
+			        
+        			
+        			<?php
+							/**
+							 * 
+							 *<img alt="" src="/dist/seoimg/<?php echo $arrr_seoimg[$seo_type_id] ?>">
+        			
+        						*/
+        			
+        			  }else{
+        			  	?>
+        				<div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img width="274" height="370" src="/wp-content/uploads/2015/11/student1.jpg"> </div>
+			            <div class="col-lg-8 col-xs-12">
+			              <h3><?php echo $arrr_seoimg_h1[$seo_type_id] ?></h3>
+			              <label><img width="100%" src="/dist/seoimg/weizi.gif"></label>
+
+			              <button data-target="#yyModal" data-toggle="modal" class="btn btn-blue btn-lg" type="button"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
+			            </div>
+        			  	<?php 
+        			  }
         		}else{
+        			 	if (isMobile()) {
+        					?>
+        					 <div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img width="100%" src="/wp-content/uploads/2015/11/student1.jpg"> </div>
+			            <div class="col-lg-8 col-xs-12">
+			              <h3>儿童散打课程</h3>
+			              <label><span>授课对象：</span>少儿组3岁~10岁 少年组10岁以上</label>
+			              <label><span>课程简述：</span>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</label>
+			              <label><span>授课时间：</span>周一至周五 晚上：6:00-7:30
+			周六日 上午9:30-11:00 下午：3:00-4:30 4:30-6:00</label>
+			              <label><span>课程费用：</span>集体课程：26元~100元不等; 私教课程：300~400元不等; 上课次数越多，每节课单价越低，祥情请咨询客服！</label>
+			              <label><span>开班信息：</span>随到随学</label>
+			              <label class="fg">学员至上：免费试课，满意为止（无任何附加费用）</label>
+			              <button data-target="#yyModal" data-toggle="modal" class="btn btn-blue btn-lg" type="button"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
+			            </div>
+        					<?php 
+        					
+        				}else{
+        					?>
+        						<div class="col-lg-4 col-xs-6 col-lg-offset-0 col-xs-offset-3"> <img width="274" height="370" src="/wp-content/uploads/2015/11/student1.jpg"> </div>
+			            <div class="col-lg-8 col-xs-12">
+			              <h3>儿童散打课程</h3>
+			              <label><img width="100%" src="/dist/seoimg/weizi.gif"></label>
+
+			              <button data-target="#yyModal" data-toggle="modal" class="btn btn-blue btn-lg" type="button"><i class="glyphicon glyphicon-plus"></i>免费试课<span class="bubble">预约</span></button>
+			            </div>
+        					<?php 
+        				}
         		?>
-				<img alt="" src="/dist/seoimg/wushu.gif">
+        			
+			    	
 				<?php 
+				/*
+				<img alt="" src="/dist/seoimg/wushu.gif">*/ 
         		}
 				?>
             </div>
@@ -120,7 +214,84 @@ $arrr_seoimg = array(
                 		  
                 		   
 						  if ($tab_id1 != 6) {
-						  	if ($tab_id1 == 3) {
+						  	if ($tab_id1 == 1) {
+						  		if (isMobile()) {  //自适应文字
+						  			?>
+						  			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						                  <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
+						                    <li role="presentation" class="active"><i></i><a href="#1_1" aria-controls="1_1" role="tab" data-toggle="tab">
+						                      <label>试听课程</label>
+						                      </a></li>
+						                    <li role="presentation"><i></i><a href="#1_2" aria-controls="1_2" role="tab" data-toggle="tab">
+						                      <label>正式课程</label>
+						                      </a></li>
+						                  </ul>
+						                  <div class="tab-content"> 
+						                    <!--1_1-->
+						                    <div class="row tab-pane active"  role="tabpanel" id="1_1">
+						                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						                        <h3>课程简述</h3>
+						                        <p>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</p>
+						                        <h3>教学特色</h3>
+						                        <ul>
+						                          <li>我们为了保证课程质量，经过吸取学员和家长之间的意见，最终规定：每个班的人数5~10人；</li>
+						                          <li>在学员插班问题上，我们专门为新来的学员分配教练进行指导教学，保证学员的学习效果，帮助插班的学员跟上课程进度；</li>
+						                          <li>按照学员的技术水平和接受能力进行分班；</li>
+						                          <li>根据学员的情况，为学员量身定制一份教案；</li>
+						                          <li>为学员提供免费在线学习课程和相互交流的机会；</li>
+						                          <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
+						                        </ul>
+						                      </div>
+						                    </div>
+						                    <!--1_2-->
+						                    <div class="row tab-pane"  role="tabpanel" id="1_2">
+						                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						                        <h3>课程简述1</h3>
+						                        <p>教师均有5年教学经验,零起点学生以兴趣出发做启蒙;有基础的学生提高综合动作水平,3岁的孩子就可以学。</p>
+						                        <h3>教学特色</h3>
+						                        <ul>
+						                          <li>我们为了保证课程质量，经过吸取学员和家长之间的意见，最终规定：每个班的人数5~10人；</li>
+						                          <li>在学员插班问题上，我们专门为新来的学员分配教练进行指导教学，保证学员的学习效果，帮助插班的学员跟上课程进度；</li>
+						                          <li>按照学员的技术水平和接受能力进行分班；</li>
+						                          <li>根据学员的情况，为学员量身定制一份教案；</li>
+						                          <li>为学员提供免费在线学习课程和相互交流的机会；</li>
+						                          <li>所有学员不管是在训练结束后还是在回到家里后，碰到动作上的疑问 或者 关于体育健康的问题均可打电话咨询我们的教练，我们会用我们的实际行动帮助到你。</li>
+						                        </ul>
+						                      </div>
+						                    </div>
+						                    <!--end--> 
+						                  </div>
+						                </div>
+						  			<?php 
+						  		}else{
+						  		
+						  		?>
+						  		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				                  <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
+				                    <li role="presentation" class="active"><i></i><a href="#1_1" aria-controls="1_1" role="tab" data-toggle="tab">
+				                      <label>试听课程</label>
+				                      </a></li>
+				                    <li role="presentation"><i></i><a href="#1_2" aria-controls="1_2" role="tab" data-toggle="tab">
+				                      <label>正式课程</label>
+				                      </a></li>
+				                  </ul>
+				                  <div class="tab-content"> 
+				                    <!--1_1-->
+				                    <div class="row tab-pane active"  role="tabpanel" id="1_1">
+										<img src="/dist/seoimg/tab_1_0.gif">
+				                    </div>
+				                    <!--1_2-->
+				                    <div class="row tab-pane"  role="tabpanel" id="1_2">
+										<img src="/dist/seoimg/tab_1_1.gif">
+				                    </div>
+				                    <!--end--> 
+				                  </div>
+				                </div>
+						  		<?php 
+						  		}
+						  		
+						  	
+						  }elseif ($tab_id1 == 3) {
 						  		?>
 						  		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
                   <!---->
@@ -168,30 +339,7 @@ $arrr_seoimg = array(
 						  	
 						    }elseif ($tab_id1 == 4) {
 						  		?>
-						  		 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				                    <div class="blue-box"> <img src="/dist/img/xz1.png">
-				                      <label>周教练</label>
-				                      <span class="class-from">国家一级运动员</span>
-				                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
-				                      <a href="/teachers/100.html"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
-				                    </div>
-				                  </div>
-				                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				                    <div class="blue-box"> <img src="/dist/img/xz2.png">
-				                      <label>周教练</label>
-				                      <span class="class-from">国家一级运动员</span>
-				                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
-				                      <a href="#"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
-				                    </div>
-				                  </div>
-				                  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				                    <div class="blue-box"> <img src="/dist/img/xz3.png">
-				                      <label>周教练</label>
-				                      <span class="class-from">国家一级运动员</span>
-				                      <p>少儿武术教学经验：6年以上教学风格：幽默风趣，善于引导孩子在兴趣中学习；</p>
-				                      <a href="#"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
-				                    </div>
-				                  </div>
+						  		 	<?php include_once 'tab_teachers_info.php';  ?>
 						  		<?php 
 						  	}elseif ($tab_id1 == 5){
 						  		?>
@@ -342,14 +490,7 @@ $arrr_seoimg = array(
 						  }else{
 						  	    echo $neirong6 ;
 						  	    ?>
-						  	    <div id="SOHUCS"></div>
-								<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
-								<script type="text/javascript">
-								    window.changyan.api.config({
-								        appid: 'cys3XmfBU',
-								        conf: 'prod_674cebb9c09386b41dfc0b70d2a82563'
-								    });
-								</script> 
+						  	    <?php include_once 'changyan_js.php';  ?>
 						  	    <?php 
 						  	    
 						  	    
@@ -367,3 +508,7 @@ $arrr_seoimg = array(
            </div>
         </div>
       </div>
+<?php include_once 'modal.php';  ?>
+<?php 
+}
+?>

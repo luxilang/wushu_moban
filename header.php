@@ -10,7 +10,7 @@
 			$post->rs_html_xiangxi = '';
 			$post->rs_o = '';
 			$post->rs_html_host = '';
-			if (strpos($_SERVER['REQUEST_URI'], '?p=')) {
+			if (strpos($_SERVER['REQUEST_URI'], 'p_')) {
 					
 				//加载文章标题
 				if ($post->is_split_title == '0') {
@@ -35,30 +35,51 @@
 					$post->rs_o  = $rs;
 					$post->rs_html_host = $host;
 				}else{
+					
 					$title_id = $post->ID;
 					$title_type = $post->title_type;
 					$sql = "SELECT * FROM wp_article1 WHERE title_id ='{$title_id}' AND flag = 1 LIMIT 1";
 					$rs = $wpdb->get_results($sql);
 					$rs_o = $rs[0];
 					$file_path = $rs_o->file_path;
+					
 					$html_url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$file_path;
 					$html =  file_get_contents($html_url); 
 					$html = mb_convert_encoding($html, "UTF-8", "GB2312");
+					/*
 					preg_match_all('/<h4.+?>(.*?)<\/h4>/si' ,$html, $r);
 					if (!empty($r[1][0])) {
 						$fubiaoti = $r[1][0];
 					}
-		
+		*/
 					$host = str_replace(strrchr($html_url, '/'),'' , $html_url).'/';
 					$post->rs_html_xiangxi = $html;
 					$post->rs_o  = $rs;
 					$post->rs_html_host = $host;
 					
+					
 				}
 			} 
 
 ?>
-<title><?php wp_title( ' | ', true, 'right' );  if (!empty($fubiaoti)) {echo ' | '.$fubiaoti.' | ';}  bloginfo('name'); ?></title>
+<?php 
+
+if ($post->is_split_title == '0'){
+	if (!empty($fubiaoti)) {
+		$fubiaoti = '|'.$fubiaoti.'|';
+	} 
+}elseif (($post->is_split_title == '1')){
+
+		$fubiaoti = !empty($post->post_title_short) ? $post->post_title_short.'|' : ''; //
+}else{
+	$fubiaoti = '';
+	
+}
+if (is_home()) {
+	$fubiaoti = '';
+}
+?>
+<title><?php wp_title( '|', true, 'right' );echo $fubiaoti; echo get_bloginfo(); ?></title>
 <link href="<?php echo  site_url() ?>/dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/css.css" rel="stylesheet" media="screen">
@@ -73,6 +94,14 @@
 	})
 </script>
 </head>
+<style>
+#footer {
+	font-size:18px;
+	font-weight:bold;
+	line-height:100px;
+	
+}
+</style>
 <?php 
 
 		$body_css_type = '';
@@ -93,10 +122,12 @@
 				
 							
 				
-			}else if(is_single()){
+			}else if(is_single()){ //详细页
 				$nav_post_type = get_post_type();
+			
 				if ($nav_post_type == 'courses') $body_css_type = 'class="course-view"';
 				if ($nav_post_type == 'teachers') $body_css_type = 'class="teachers-view"';
+				if ($nav_post_type == 'class_activities') $body_css_type = 'class="about"';
 				
 			}
 			else if(is_page(3))
@@ -120,7 +151,7 @@
 				$nav_post_type = 'category';
 				$body_css_type = 'class="courses"';
 			}
-			if (strpos($_SERVER['REQUEST_URI'], '?p=')) {
+			if (strpos($_SERVER['REQUEST_URI'], 'p_')) {
 				$nav_post_type = 'category';
 				$body_css_type = 'class="courses"';
 			} 
@@ -146,13 +177,13 @@
 			//print_R($nav_post_type);
 			$nav_cf = array(
 				'home'=>array('/','首页'),
-				'courses'=>array('/?post_type=courses','课程介绍'),
-				'students'=>array('/?post_type=students','学员信息'),
-				'teachers'=>array('/?post_type=teachers','教练信息'),
-				'lianxiwomen'=>array('/?page_id=3','联系我们'),
+				'courses'=>array('/courses.html','课程介绍'),
+				'students'=>array('/students.html','学员信息'),
+				'teachers'=>array('/teachers.html','教练信息'),
+				'lianxiwomen'=>array('/page_id_3.html','联系我们'),
 				'bbs'=>array('/bbs','论坛'),
-				'guanyuwomen'=>array('/?page_id=1','关于我们'),
-				'category'=>array('/?cat=1','文章'),
+				'guanyuwomen'=>array('/page_id_1.html','关于我们'),
+				'category'=>array('/cat_1.html','文章'),
 		
 			);
 			
@@ -178,8 +209,8 @@
 	      <?php 
 	      $nav_cf_1 = array(
 				'home'=>array('/','首页'),
-				'courses'=>array('/?post_type=courses','课程介绍'),
-				'lianxiwomen'=>array('/?page_id=3','联系我们')
+				'courses'=>array('/courses.html','课程介绍'),
+				'lianxiwomen'=>array('/page_id_3.html','联系我们')
 			);
 	      ?>
 	        <?php 

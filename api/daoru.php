@@ -1,22 +1,33 @@
 <?php
+
+header("Content-type: text/html; charset=utf-8");
+
 date_default_timezone_set ( "Asia/Shanghai" );
+
 require_once "../wp-config.php";
+
 if(empty($_GET['id']))  die('error id');
 $id = $_GET['id'];
 
 require_once "cls_mysql.php";
 $mysql_db = new cls_mysql ( DB_HOST, DB_USER, DB_PASSWORD, DB_NAME );
+
 $wp_title_file= $mysql_db->getRow("select * from wp_title_file where id = {$id} and is_qi = 0 ");
 if (empty($wp_title_file)) {
-	echo  ( '已经导入过了 或者 没有数据！ ' );
+	echo  ( '导入成功！ ' );
 	echo '<a href="titledao.php">返回</a>';
 	exit();
 }
+
 $title_file_path = $wp_title_file['title_file_path'];
 $title_file_type = $wp_title_file['file_type'];
-require_once "class_fun.php";
+
+//require_once 'class_fun.php';
+
 $droot = str_replace ( '\\', '/', ((dirname ( dirname ( __FILE__ ) ))) );
+
 $uploadfile = $droot . '/api/save_title/'.$title_file_path;
+
 if (! file_exists ( $uploadfile )) {
 	
 	echo  ( '没有文件！ ' );
@@ -78,14 +89,16 @@ if (! empty ( $info )) {
 		$mysql_db->autoExecute ( 'wp_posts', $fields );
 	}
 	
-	
-	$title_file_fields['is_qi'] = 1;
-	$mysql_db->autoExecute ( 'wp_title_file', $title_file_fields,'UPDATE' ," id = {$id} " );
+	$mysql_db->query("update wp_title_file set is_qi = 1 where id = {$id} ");
+
+
 	//unlink ( $uploadfile );
 	echo '导入成功！ <br />';
 	echo '<a href="titledao.php">返回</a>';
+	exit();
 } else {
 	echo '没有数据！或者已经导入';
 	echo '<a href="titledao.php">返回</a>';
+	exit();
 }
 

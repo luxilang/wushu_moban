@@ -299,78 +299,103 @@ if($_GET['ajax'] == 'single')
 	
 	if (!empty($ashu_email_tel_arr['_auto_email'])) 
 	{
-		
-		$auto_email = $ashu_email_tel_arr['_auto_email'];
 		ini_set("magic_quotes_runtime",0);
-		try {
-			$mail_cont = "免费试课提醒<br />
-			学员：{$in['xue_name']}<br />
-			年龄：{$in['xue_nian']}<br />
-			联系方式:{$in['jia_tel']}<br />
-			性别：{$in['xingbie']}<br/>
-			最近的校区：{$in['xiaoqu']}<br/>
-			想预约什么时间来体验：{$in['yuyuetime']}<br/>
-			你所在的区域：{$in['quyu']}<br/>
-			家长想让孩子学？还是孩子自己喜欢：{$in['beizhu']}<br/>
-			";
-			$mail = new PHPMailer(true); 
-			$mail->IsSMTP();
-			$mail->CharSet='UTF-8'; //设置邮件的字符编码，这很重要，不然中文乱码
-			$mail->SMTPAuth   = true;                  //开启认证
-			$mail->Port       = 25;                    
-			$mail->Host       = "smtp.139.com"; 
-			$mail->Username   = "devtest151210@139.com";    
-			$mail->Password   = "test20151210dev";            
-			//$mail->IsSendmail(); //如果没有sendmail组件就注释掉，否则出现“Could  not execute: /var/qmail/bin/sendmail ”的错误提示
-			$mail->AddReplyTo("devtest151210@139.com","武术世家");//回复地址
-			$mail->From       = "devtest151210@139.com";
-			$mail->FromName   = "devtest151210@139.com";
-			$to = $auto_email;
-			$mail->AddAddress($to);
-			$mail->Subject  = "武术世家免费试课提醒信息";
-			$mail->Body = $mail_cont;
-			$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; //当邮件不支持html时备用显示，可以省略
-			$mail->WordWrap   = 80; // 设置每行字符串的长度
-			//$mail->AddAttachment("f:/test.png");  //可以添加附件
-			$mail->IsHTML(true); 
-			$mail->Send();
-			//echo '邮件已发送';
-			$send_mail =true;
-		} catch (phpmailerException $e) {
-			$send_mail = false;
-			//echo "邮件发送失败：".$e->errorMessage();
+		$auto_email_str = $ashu_email_tel_arr['_auto_email'];
+		$auto_email_str = @str_replace('；', ';', $auto_email_str);
+		$auto_email_arr  = array_filter(explode(";", $auto_email_str));
+		//print_r($auto_email_arr);
+		//exit();
+		$auto_email_arr = array_map('trim', $auto_email_arr);
+		if (!empty($auto_email_arr)) {
+			foreach ($auto_email_arr as $auto_email) {
+				try {
+					$mail_cont = "免费试课提醒<br />
+					学员：{$in['xue_name']}<br />
+					年龄：{$in['xue_nian']}<br />
+					联系方式:{$in['jia_tel']}<br />
+					性别：{$in['xingbie']}<br/>
+					最近的校区：{$in['xiaoqu']}<br/>
+					想预约什么时间来体验：{$in['yuyuetime']}<br/>
+					你所在的区域：{$in['quyu']}<br/>
+					家长想让孩子学？还是孩子自己喜欢：{$in['beizhu']}<br/>
+					";
+					$mail = new PHPMailer(true); 
+					$mail->IsSMTP();
+					$mail->CharSet='UTF-8'; //设置邮件的字符编码，这很重要，不然中文乱码
+					$mail->SMTPAuth   = true;                  //开启认证
+					$mail->Port       = 25;                    
+					$mail->Host       = "smtp.139.com"; 
+					$mail->Username   = "devtest151210@139.com";    
+					$mail->Password   = "test20151210dev";            
+					//$mail->IsSendmail(); //如果没有sendmail组件就注释掉，否则出现“Could  not execute: /var/qmail/bin/sendmail ”的错误提示
+					$mail->AddReplyTo("devtest151210@139.com","武术世家");//回复地址
+					$mail->From       = "devtest151210@139.com";
+					$mail->FromName   = "devtest151210@139.com";
+					$to = $auto_email;
+					$mail->AddAddress($to);
+					$mail->Subject  = "武术世家免费试课提醒信息";
+					$mail->Body = $mail_cont;
+					$mail->AltBody    = "To view the message, please use an HTML compatible email viewer!"; //当邮件不支持html时备用显示，可以省略
+					$mail->WordWrap   = 80; // 设置每行字符串的长度
+					//$mail->AddAttachment("f:/test.png");  //可以添加附件
+					$mail->IsHTML(true); 
+					$mail->Send();
+					//echo '邮件已发送';
+					$send_mail =true;
+				} catch (phpmailerException $e) {
+					//$send_mail = false;
+					//echo "邮件发送失败：".$e->errorMessage();
+				}
+				
+				
+			}
 		}
+
 	}	
 	//发短信
 	$send_sms = false;
 		
 	if (!empty($ashu_email_tel_arr['_auto_tel'])) 
 	{
-		$auto_tel = $ashu_email_tel_arr['_auto_tel'];
+		$auto_tel_str = $ashu_email_tel_arr['_auto_tel'];
+		
+		$auto_tel_str = @str_replace('；', ';', $auto_tel_str);
+		$auto_tel_arr  = array_filter(explode(";", $auto_tel_str));
+		//print_r($auto_tel_arr);
+		//exit();
+		$auto_tel_arr = array_map('trim', $auto_tel_arr);
 		$content_rs = "免费试课提醒，学员:{$in['xue_name']},年龄:{$in['xue_nian']},联系方式:{$in['jia_tel']}";
 		$url_j = 'https://sms.yunpian.com/v1/sms/send.json';
-		$jieshou_tel = $auto_tel;
+		
 		$tpl_id = '1264517';
-        $curl = new Curl();
-        $curl->ssl(false);
-
-        $result = $curl->simple_post($url_j, 
-
-	        array('tpl_id'=>$tpl_id,
-			'apikey'=>'e807d02ce3330c1de3c9ee02c8c54358',
-			'mobile'=>$jieshou_tel,
-	        'text'=>$content_rs,
-	        )
-        );
-
-        $data = json_decode($result, true);
-        
-        if ($data['code'] == '0' && $data['msg'] == 'OK') {
-        	$send_sms = true;
-        }
+		
+		if (!empty($auto_tel_arr)) {
+			foreach ($auto_tel_arr as $key => $auto_tel) {
+				$jieshou_tel = $auto_tel;
+			    $curl = new Curl();
+		        $curl->ssl(false);
+		
+		        $result = $curl->simple_post($url_j, 
+		
+			        array('tpl_id'=>$tpl_id,
+					'apikey'=>'e807d02ce3330c1de3c9ee02c8c54358',
+					'mobile'=>$jieshou_tel,
+			        'text'=>$content_rs,
+			        )
+		        );
+		
+		        $data = json_decode($result, true);
+		        
+		        if ($data['code'] == '0' && $data['msg'] == 'OK') {
+		        	//$send_sms = true;
+		        }
+			}
+		}
+		
+     
 	}	
 	
-	
+	/*
 	if (!$send_mail) {
 		echo 2;	
 		exit();
@@ -378,7 +403,7 @@ if($_GET['ajax'] == 'single')
 	if (!$send_sms) {
 		echo 3;	
 		exit();
-	}
+	}*/
 	$in_good= $wpdb->insert( 'wp_yuyue', $in) ;
 	if($in_good)
 	{

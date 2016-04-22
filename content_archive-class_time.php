@@ -27,11 +27,39 @@
           </ul>
           <div  class="tab-content">
           	<?php 
+          	
+          	    $ashu_time_duan_arr = get_option('ashu_time_duan');
+     
+			    if (!empty($ashu_time_duan_arr)) {
+			    	$ashu_time_duan_arr_new = array();
+			    	$ashu_time_duan_arr_new_len = array();
+			    	foreach ($ashu_time_duan_arr as $k=>$time_duan_item) {
+			    	
+			    			$time_duan_item_arr  = array_filter(explode("|", $time_duan_item));
+			    			$time_duan_item_arr_len = count($time_duan_item_arr);
+			    	
+			    			$time_duan_item_arr_new =array();
+			    			foreach ($time_duan_item_arr as $kk=>$vv) {
+			    				$kk ++;
+			    				$time_duan_item_arr_new['shijian'.$kk] = trim($vv);
+			    			}
+			    			$ashu_time_duan_arr_new[$k]  = $time_duan_item_arr_new;
+			    			$ashu_time_duan_arr_new_len[$k] = $time_duan_item_arr_len;
+			    	}
+			    }
+			    arsort($ashu_time_duan_arr_new_len);
+          		$ashu_time_duan_arr_new_len_k = array_keys(array_slice($ashu_time_duan_arr_new_len,0,1));
+          		
+          		$arr_shu_v_arr  = $ashu_time_duan_arr_new[$ashu_time_duan_arr_new_len_k[0]];
+			   
+			    
+          	
           			$arr_shu_v = array('上午9:30-11:00','下午3:00-4:30','下午4:30-6:00','晚上6:00-7:30');
 					$arr_shu_k = array('shijian1','shijian2','shijian3','shijian4');
 					$arr_heng_v = array('周一','周二','周三','周四','周五','周六','周日');
 					$arr_heng_k = array('zhou1','zhou2','zhou3','zhou4','zhou5','zhou6','zhou7');
 			$tab_id2= 1;
+			
           	foreach ($terms as $k=>$term) 
           	{
           		$activ_sel333 = ($tab_id2==1) ? 'active' : '';	
@@ -74,9 +102,13 @@
                   </tr>
                   		<?php 
                   			//循环行
-                  			foreach ($arr_shu_v as $arr_shu_vkey => $arr_shu_vvalue) {
+                  			
+                  			
+                  			foreach ($arr_shu_v_arr as $arr_shu_vkey => $arr_shu_vvalue) {
                   				
-                  					$a_time_flag  = $arr_shu_k[$arr_shu_vkey];//时间的flag
+                  					//$a_time_flag  = $arr_shu_k[$arr_shu_vkey];//时间的flag
+                  					
+                  					$a_time_flag = $arr_shu_vkey ;
                   					//echo $a_time_flag
                   					
                   				?>

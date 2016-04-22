@@ -84,7 +84,7 @@
 											for(i=0;i<json.length;i++)
 											{
 												html += '<div class="col-lg-4 col-md-4 col-sm-4">';
-												html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" width="212" height="212">';
+												html += ' <div class="blue-box"> <img src="'+json[i].img_url+'" alt="'+json[i].title+'"  width="212" height="212">';
 												html += '<label>'+json[i].title+'</label>';
 												html += '<p>'+json[i].yddj+'</p>';
 												html += '<p>少儿武术教学经验:'+json[i].sewsjljy+'</p>';

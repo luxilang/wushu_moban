@@ -13,10 +13,10 @@
         <!--三级菜单-->
         <div class="col-lg-12 col-md-12 col-sm-12">
           <ul class="level-3-menu">
-            <li><a href="/?post_type=class_env"><i class="class-icon icon-skhj"></i>上课环境</a></li>
-            <li><a href="/?post_type=class_time"><i class="class-icon icon-sksj"></i>上课时间</a></li>
-            <li><a href="/?post_type=class_fee"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
-            <li><a href="/?post_type=class_activities"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
+			                <li><a href="/class_env.html"><i class="class-icon icon-skhj"></i>上课环境</a></li>
+			                        <li><a href="/class_time.html"><i class="class-icon icon-sksj"></i>上课时间</a></li>
+			                        <li><a href="/class_fee.html"><i class="class-icon icon-kcfy"></i>课程费用</a></li>
+			                        <li><a href="/class_activities.html"><i class="class-icon icon-yhhd"></i>优惠活动</a></li>
           </ul>
         </div>
       </div>

@@ -85,17 +85,13 @@ $img_url = get_post_meta($post_id,'_id_upload_teachers',true);
 							if (!empty($rs[0]))  echo  get_bendi_wenzhang($rs);;
 							?>
 							
-							 	    <div id="SOHUCS"></div>
-								<script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
-								<script type="text/javascript">
-								    window.changyan.api.config({
-								        appid: 'cys3XmfBU',
-								        conf: 'prod_674cebb9c09386b41dfc0b70d2a82563'
-								    });
-								</script> 
+								<?php include_once 'changyan_js.php';  ?>
 							<?php 
                 		    
                 		}else{
+                			$post_c = str_replace("{jintian_date}",date('Y-m-d'),$post_c ); 
+                			$post_c = str_replace("{zuotian_date}",date('Y-m-d',time()-24*3600),$post_c ); 
+                			$post_c = str_replace("{qiantian_date}",date('Y-m-d',time()-2*24*3600),$post_c );
                 		   $echopost_c = $post_c ;
                 		   
                 		   echo $echopost_c;

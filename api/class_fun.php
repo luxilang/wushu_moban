@@ -1,4 +1,5 @@
 <?php
+
 function insert($database, $table, $fields, $values) {
 	$sql = sprintf ( "INSERT INTO `%s`.`%s`(%s) VALUES ", $database, $table, implode ( ',', $fields ) );
 	$nv = count ( $values );
@@ -6,7 +7,7 @@ function insert($database, $table, $fields, $values) {
 	for($i = 0; $i < $nv; $i ++) {
 		$val = '';
 		for($j = 0; $j < $nf; $j ++) {
-			//$values [$i] [$j] = mysql_real_escape_string ( $values [$i] [$j] );
+			//$values [$i] [$j] = mysql_real_escape_string ( $values [$i] [$j] ); //线上开开
 			$val .= sprintf ( "'%s',", $values [$i] [$j] );
 		}
 		$sql .= sprintf ( "(%s),", substr ( $val, 0, - 1 ) );

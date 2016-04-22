@@ -8,7 +8,7 @@
 <?php
 
 $page_size = 12;
-$curr_url = "?cat=1"; 
+$curr_url = "/cat_1.html"; 
 $page_size = !empty($page_size) ? $page_size : 10;
 $rs = $wpdb->get_results("select count(*) as num from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1   ");
 $count = !empty($rs[0]->num) ? $rs[0]->num : 0;
@@ -26,8 +26,8 @@ if (!empty($rs)) {
 		?>
 		
   <tr>
-    <td width="79%" height="40"><a href="<?php echo get_permalink($rs_o->ID); ?>"><?php 
-    
+    <td width="79%" height="40"><a title='<?php echo $rs_o->post_title ?>' href="<?php echo get_permalink($rs_o->ID); ?>"><?php 
+
     echo m_subtext($rs_o->post_title,35);
     ?></a></td>
     <td width="21%" align="right"><?php echo $rs_o->post_date; ?></td>

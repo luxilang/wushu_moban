@@ -122,7 +122,7 @@
 											 html += '<a href="'+json[i].img_url_r+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-6" id="uuuuu'+json[i].id+'" >';
 											 html += '<div class="picList">';
 											 html += '<div class="b-layer" data-toggle="modal" ><i class="glyphicon glyphicon-plus"></i></div>';
-											 html += '<img src="'+json[i].img_url+'"   width="274" height="370" >';
+											 html += '<img src="'+json[i].img_url+'" alt="'+json[i].title+'"  width="274" height="370" >';
 											 html += '</div>';
 											 html += '</div></a>';
 											 /*

@@ -38,6 +38,13 @@ $url_bs = '?post_type=class_fee';
 			);
 			array_unshift($terms,$all_arr);
 			
+			//不限次数排在后面！
+			$no_limit = $terms[1];
+			unset($terms[1]);
+			array_push($terms, $no_limit);
+			sort($terms);
+			
+			
 			$all_ids = array();
 			
 			$terms_i = 1;
@@ -69,6 +76,7 @@ $url_bs = '?post_type=class_fee';
           <div class="tab-content"> 
            	<?php 
              $terms_i = 1;
+              
            	foreach ($terms as $term) 
            	{
            		$activ_sel1 = ($terms_i == 1) ? 'active': '';	
@@ -123,7 +131,7 @@ $url_bs = '?post_type=class_fee';
 			                  html += '<div class="blue-box">';
 			           
 			                  html += json[i].content;
-							  html += ' <button type="button" class="btn btn-block">立刻购买</button>';
+							  html += ' <button  data-toggle="modal" data-target="#yyModal"   type="button" class="btn btn-block">免费预约体验</button>';
 							  html += '</div>';
 							  html += '</div>';
 			
@@ -213,7 +221,7 @@ foreach ($terms1 as $term1)
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <div class="blue-box">
  						  <?php  echo $rs_o->post_content ;?>
-                    <button type="button" class="btn btn-block">立刻购买</button>
+                    <button  data-toggle="modal" data-target="#yyModal"  type="button" class="btn btn-block">免费预约体验</button>
                   </div>
                 </div>
                 		<?php 
@@ -233,3 +241,4 @@ foreach ($terms1 as $term1)
           </div>
         </div>
       </div>
+      <?php include_once 'modal.php';  ?>

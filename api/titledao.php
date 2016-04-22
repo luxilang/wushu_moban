@@ -1,3 +1,7 @@
+<?php 
+header("Content-type: text/html; charset=utf-8");
+?>
+
 文章标题导入
 <br />
 <br />
@@ -5,6 +9,7 @@
 
 
 <?php 
+
 $droot = str_replace('\\', '/', ((dirname(dirname(__FILE__)))));
 
 date_default_timezone_set ( "Asia/Shanghai" );
@@ -58,7 +63,7 @@ if (!empty($rs)) {
   <tr>
     <td><?php echo $value['title_file_path']?></td>
     <td><?php echo $arr[$value['file_type']] ?></td>
-    <td><a href="daoru.php?id=<?php echo $value['id'] ?>">开始导入</a></td>
+    <td><a href="/api/daoru.php?id=<?php echo $value['id'] ?>">开始导入</a></td>
   </tr>
   <?php 
   }	

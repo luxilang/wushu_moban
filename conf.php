@@ -11,17 +11,17 @@
 	$email_tel_option[] = array(
 	  'name' => '邮箱',
 	  'id'   => '_auto_email',
-	  'desc' => '免费体验提交后自动发邮件的接收邮箱',
+	  'desc' => '免费体验提交后自动发邮件的接收邮箱，多个邮箱用";"分割',
 	  'std'  => '',
-	  'size' => 40,
+	  'size' => 100,
 	  'type' => 'text'
 	);
 	$email_tel_option[] = array(
 	  'name' => '手机',
 	  'id'   => '_auto_tel',
-	  'desc' => '免费体验提交后自动发短信的接收短信的手机',
+	  'desc' => '免费体验提交后自动发短信的接收短信的手机，多个手机用";"分割',
 	  'std'  => '',
-	  'size' => 40,
+	  'size' => 100,
 	  'type' => 'text'
 	);
 	
@@ -513,25 +513,77 @@
       'callback'=>'',
 	  //'tab'=>true
     );
+    
+    
+    //时间段短选项
+    $ashu_time_duan_arr = get_option('ashu_time_duan');
+     
+    if (!empty($ashu_time_duan_arr)) {
+    	$ashu_time_duan_arr_new = array();
+    	foreach ($ashu_time_duan_arr as $k=>$time_duan_item) {
+    	
+    			$time_duan_item_arr  = array_filter(explode("|", $time_duan_item));
+    			$time_duan_item_arr_new =array();
+    			foreach ($time_duan_item_arr as $kk=>$vv) {
+    				$kk ++;
+    				$time_duan_item_arr_new['shijian'.$kk] = trim($vv);
+    			}
+    			$ashu_time_duan_arr_new[$k]  = $time_duan_item_arr_new;
+    	}
+    }
+    
+    
+    
 	$arr_heng_v = array('周一','周二','周三','周四','周五','周六','周日');
 	$arr_heng_k = array('zhou1','zhou2','zhou3','zhou4','zhou5','zhou6','zhou7');
-	$arr_shu_v = array('上午9:30-11:00','下午3:00-4:30','下午4:30-6:00','晚上6:00-7:30');
-	$arr_shu_k = array('shijian1','shijian2','shijian3','shijian4');
+	//$arr_shu_v = array('上午9:30-11:00','下午3:00-4:30','下午4:30-6:00','晚上6:00-7:30');
+	//$arr_shu_k = array('shijian1','shijian2','shijian3','shijian4');
 	
-	$buttons_arr = array_combine($arr_shu_k,$arr_shu_v);
+	//$buttons_arr = array_combine($arr_shu_k,$arr_shu_v);
+	$k_1 = 1;
 	foreach($arr_heng_v as $k=>$v)
 	{
+		
 		$class_time_meta[] = array(
 		  'name'    => $v,
 		  'id'      => $arr_heng_k[$k],
 		  'desc'    => '',
 		  'std'     => '',
-		  'buttons' => $buttons_arr,
+		  'buttons' => !empty($ashu_time_duan_arr_new['_time_duan_zhou'.$k_1]) ? $ashu_time_duan_arr_new['_time_duan_zhou'.$k_1] : '',
 		  'type'    => 'checkbox'
 		);
+		$k_1 ++ ;
 	}
 	$class_time_box = new ashu_meta_box($class_time_meta, $class_time_info);
 
+	//上课时间   的 时间管理
+	$time_duan_conf = array(
+	  'full_name' => '时间段管理',
+	  'optionname'=>'time_duan', //设置名称，获取设置选项用 
+	  'child'=>false,
+	  'filename' => 'time_duan_page' //设置页面的url 
+	);
+	$time_duan_option = array();
+	$time_duan_option[] = array('desc' => '', 'type' => 'open');
+	$kkk = 1;
+	foreach ($arr_heng_v as $key => $value) {
+			$time_duan_option[] = array(
+			  'name' => $value,
+			  'id'   => '_time_duan_zhou'.$kkk,
+			  'desc' => $value.'时间段"|"隔开',
+			  'std'  => '',
+			  'size' => 100,
+			  'type' => 'text'
+			);
+			$kkk ++;
+	}
+
+
+	
+	$time_duan_option[] = array('desc' => '', 'type' => 'close');
+	$time_duan_p = new ashu_option_class($time_duan_option, $time_duan_conf);
+	
+	
 	//费用
 
 	
@@ -561,4 +613,52 @@
 	
 	$tab_cont_box = new ashu_meta_box($tab_cont_meta, $tab_cont_info)
 */
+	
+//排序字段
+/**
+<?php 
+ $catid = $options['topiccatid'];
+ $args=array(
+ 'child_of'=>$catid,
+ 'orderby' => 'term_group',
+ 'order'=>'ASC',
+ 'hide_empty' => 0, 
+ );
+ $categories=get_categories($args);
+ ?>
+ */
+
+function mbt_add_category_field(){ 
+	 echo '<div class="form-field"> 
+	 <label for="cat-num">排序序号</label> 
+	 <input name="_term_order" id="cat-num" type="text" value="" size="40"> 
+	 <p>数字越大，越靠前</p> 
+	 </div>'; 
+} 
+add_action('courses_type_add_form_fields','mbt_add_category_field',10,2); 
+ 
+// 分类编辑字段 
+function mbt_edit_category_field($tag){ 
+ echo '<tr class="form-field"> 
+ <th scope="row"><label for="cat-num">排序</label></th> 
+ <td> 
+ <input name="_term_order" id="cat-num" type="text" value="'; 
+ echo ( ! empty( $tag->displayorder ) ) ? $tag->displayorder : '0';
+ echo '" size="40"/><br> 
+  
+ </td> 
+ </tr>'; 
+} 
+add_action('courses_type_edit_form_fields','mbt_edit_category_field',10,2); 
+ 
+// 保存数据 
+function mbt_taxonomy_metadate($term_id){ 
+ global $wpdb;
+ if( isset( $_POST['_term_order'] ) ) {$wpdb->update( $wpdb->terms,array('displayorder' => $_POST['_term_order']),array( 'term_id'=> $term_id));} 
+} 
+ 
+// 虽然要两个钩子，但是我们可以两个钩子使用同一个函数 
+add_action('created_courses_type','mbt_taxonomy_metadate',10,1); 
+add_action('edited_courses_type','mbt_taxonomy_metadate',10,1);
+
 	

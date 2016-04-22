@@ -1,0 +1,42 @@
+2016-03-25 11:19:06 --------start------------
+2016-03-25 11:19:06 --------zuTK9dfduuE=.zip------------
+2016-03-25 11:19:06 upload success
+2016-03-25 11:19:06 unzip success
+2016-03-25 11:19:06 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9dfduuE=/1.html','1458875946'),('api/save/zuTK9dfduuE=/10.html','1458875946'),('api/save/zuTK9dfduuE=/2.html','1458875946'),('api/save/zuTK9dfduuE=/3.html','1458875946'),('api/save/zuTK9dfduuE=/4.html','1458875946'),('api/save/zuTK9dfduuE=/5.html','1458875946'),('api/save/zuTK9dfduuE=/6.html','1458875946'),('api/save/zuTK9dfduuE=/7.html','1458875946'),('api/save/zuTK9dfduuE=/8.html','1458875946'),('api/save/zuTK9dfduuE=/9.html','1458875946')ON DUPLICATE KEY UPDATE file_path=VALUES(file_path)
+2016-03-25 11:19:06 --------end------------
+2016-03-31 17:04:02 --------start------------
+2016-03-31 17:04:02 --------zuTK9cjrw8U=.zip------------
+2016-03-31 17:04:02 upload success
+2016-03-31 17:04:02 unzip success
+2016-03-31 17:04:02 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9cjrw8U=/1.html','1459415042'),('api/save/zuTK9cjrw8U=/10.html','1459415042'),('api/save/zuTK9cjrw8U=/11.html','1459415042'),('api/save/zuTK9cjrw8U=/12.html','1459415042'),('api/save/zuTK9cjrw8U=/13.html','1459415042'),('api/save/zuTK9cjrw8U=/14.html','1459415042'),('api/save/zuTK9cjrw8U=/2.html','1459415042'),('api/save/zuTK9cjrw8U=/3.html','1459415042'),('api/save/zuTK9cjrw8U=/4.html','1459415042'),('api/save/zuTK9cjrw8U=/5.html','1459415042'),('api/save/zuTK9cjrw8U=/6.html','1459415042'),('api/save/zuTK9cjrw8U=/7.html','1459415042'),('api/save/zuTK9cjrw8U=/8.html','1459415042'),('api/save/zuTK9cjrw8U=/9.html','1459415042')ON DUPLICATE KEY UPDATE file_path=VALUES(file_path)
+2016-03-31 17:04:02 --------end------------
+2016-03-31 17:06:54 --------start------------
+2016-03-31 17:06:54 --------zuTK9cjrw8U=.zip------------
+2016-03-31 17:06:54 upload success
+2016-03-31 17:06:54 unzip success
+2016-03-31 17:06:54 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9cjrw8U=/1.html','1459415214'),('api/save/zuTK9cjrw8U=/10.html','1459415214'),('api/save/zuTK9cjrw8U=/11.html','1459415214'),('api/save/zuTK9cjrw8U=/12.html','1459415214'),('api/save/zuTK9cjrw8U=/13.html','1459415214'),('api/save/zuTK9cjrw8U=/14.html','1459415214'),('api/save/zuTK9cjrw8U=/2.html','1459415214'),('api/save/zuTK9cjrw8U=/3.html','1459415214'),('api/save/zuTK9cjrw8U=/4.html','1459415214'),('api/save/zuTK9cjrw8U=/5.html','1459415214'),('api/save/zuTK9cjrw8U=/6.html','1459415214'),('api/save/zuTK9cjrw8U=/7.html','1459415214'),('api/save/zuTK9cjrw8U=/8.html','1459415214'),('api/save/zuTK9cjrw8U=/9.html','1459415214')
+2016-03-31 17:06:54 --------end------------
+2016-03-31 17:09:15 --------start------------
+2016-03-31 17:09:15 --------zuTK9cjrw8U=.zip------------
+2016-03-31 17:09:15 upload success
+2016-03-31 17:09:15 unzip success
+2016-03-31 17:09:15 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9cjrw8U=/1.html','1459415355'),('api/save/zuTK9cjrw8U=/10.html','1459415355'),('api/save/zuTK9cjrw8U=/11.html','1459415355'),('api/save/zuTK9cjrw8U=/12.html','1459415355'),('api/save/zuTK9cjrw8U=/13.html','1459415355'),('api/save/zuTK9cjrw8U=/14.html','1459415355'),('api/save/zuTK9cjrw8U=/15.html','1459415355'),('api/save/zuTK9cjrw8U=/16.html','1459415355'),('api/save/zuTK9cjrw8U=/17.html','1459415355'),('api/save/zuTK9cjrw8U=/18.html','1459415355'),('api/save/zuTK9cjrw8U=/19.html','1459415355'),('api/save/zuTK9cjrw8U=/2.html','1459415355'),('api/save/zuTK9cjrw8U=/20.html','1459415355'),('api/save/zuTK9cjrw8U=/21.html','1459415355'),('api/save/zuTK9cjrw8U=/22.html','1459415355'),('api/save/zuTK9cjrw8U=/23.html','1459415355'),('api/save/zuTK9cjrw8U=/24.html','1459415355'),('api/save/zuTK9cjrw8U=/25.html','1459415355'),('api/save/zuTK9cjrw8U=/26.html','1459415355'),('api/save/zuTK9cjrw8U=/27.html','1459415355'),('api/save/zuTK9cjrw8U=/28.html','1459415355'),('api/save/zuTK9cjrw8U=/29.html','1459415355'),('api/save/zuTK9cjrw8U=/3.html','1459415355'),('api/save/zuTK9cjrw8U=/4.html','1459415355'),('api/save/zuTK9cjrw8U=/5.html','1459415355'),('api/save/zuTK9cjrw8U=/6.html','1459415355'),('api/save/zuTK9cjrw8U=/7.html','1459415355'),('api/save/zuTK9cjrw8U=/8.html','1459415355'),('api/save/zuTK9cjrw8U=/9.html','1459415355')
+2016-03-31 17:09:15 --------end------------
+2016-03-31 17:38:22 --------start------------
+2016-03-31 17:38:22 --------zuTK9cjrw8U=.zip------------
+2016-03-31 17:38:22 upload success
+2016-03-31 17:38:22 unzip success
+2016-03-31 17:38:22 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9cjrw8U=/1.html','1459417102'),('api/save/zuTK9cjrw8U=/10.html','1459417102'),('api/save/zuTK9cjrw8U=/11.html','1459417102'),('api/save/zuTK9cjrw8U=/12.html','1459417102'),('api/save/zuTK9cjrw8U=/13.html','1459417102'),('api/save/zuTK9cjrw8U=/14.html','1459417102'),('api/save/zuTK9cjrw8U=/2.html','1459417102'),('api/save/zuTK9cjrw8U=/3.html','1459417102'),('api/save/zuTK9cjrw8U=/4.html','1459417102'),('api/save/zuTK9cjrw8U=/5.html','1459417102'),('api/save/zuTK9cjrw8U=/6.html','1459417102'),('api/save/zuTK9cjrw8U=/7.html','1459417102'),('api/save/zuTK9cjrw8U=/8.html','1459417102'),('api/save/zuTK9cjrw8U=/9.html','1459417102')
+2016-03-31 17:38:22 --------end------------
+2016-03-31 17:38:41 --------start------------
+2016-03-31 17:38:41 --------zuTK9cjrw8U=.zip------------
+2016-03-31 17:38:41 upload success
+2016-03-31 17:38:41 unzip success
+2016-03-31 17:38:41 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/zuTK9cjrw8U=/1.html','1459417121'),('api/save/zuTK9cjrw8U=/10.html','1459417121'),('api/save/zuTK9cjrw8U=/11.html','1459417121'),('api/save/zuTK9cjrw8U=/12.html','1459417121'),('api/save/zuTK9cjrw8U=/13.html','1459417121'),('api/save/zuTK9cjrw8U=/14.html','1459417121'),('api/save/zuTK9cjrw8U=/15.html','1459417121'),('api/save/zuTK9cjrw8U=/16.html','1459417121'),('api/save/zuTK9cjrw8U=/17.html','1459417121'),('api/save/zuTK9cjrw8U=/18.html','1459417121'),('api/save/zuTK9cjrw8U=/19.html','1459417121'),('api/save/zuTK9cjrw8U=/2.html','1459417121'),('api/save/zuTK9cjrw8U=/20.html','1459417121'),('api/save/zuTK9cjrw8U=/21.html','1459417121'),('api/save/zuTK9cjrw8U=/22.html','1459417121'),('api/save/zuTK9cjrw8U=/23.html','1459417121'),('api/save/zuTK9cjrw8U=/24.html','1459417121'),('api/save/zuTK9cjrw8U=/25.html','1459417121'),('api/save/zuTK9cjrw8U=/26.html','1459417121'),('api/save/zuTK9cjrw8U=/27.html','1459417121'),('api/save/zuTK9cjrw8U=/28.html','1459417121'),('api/save/zuTK9cjrw8U=/29.html','1459417121'),('api/save/zuTK9cjrw8U=/3.html','1459417121'),('api/save/zuTK9cjrw8U=/4.html','1459417121'),('api/save/zuTK9cjrw8U=/5.html','1459417121'),('api/save/zuTK9cjrw8U=/6.html','1459417121'),('api/save/zuTK9cjrw8U=/7.html','1459417121'),('api/save/zuTK9cjrw8U=/8.html','1459417121'),('api/save/zuTK9cjrw8U=/9.html','1459417121')
+2016-03-31 17:38:41 --------end------------
+2016-04-22 14:15:27 --------start------------
+2016-04-22 14:15:27 --------1tC5+rnFtPrO5Mr1.zip------------
+2016-04-22 14:15:27 upload success
+2016-04-22 14:15:27 unzip success
+2016-04-22 14:15:27 INSERT INTO `wordpress_wushu`.`wp_article1`(file_path,create_date) VALUES ('api/save/201604221415278964/1tC5+rnFtPrO5Mr1/1.html','1461305727'),('api/save/201604221415278964/1tC5+rnFtPrO5Mr1/2.html','1461305727'),('api/save/201604221415278964/1tC5+rnFtPrO5Mr1/3.html','1461305727'),('api/save/201604221415278964/1tC5+rnFtPrO5Mr1/4.html','1461305727'),('api/save/201604221415278964/1tC5+rnFtPrO5Mr1/5.html','1461305727')
+2016-04-22 14:15:27 --------end------------

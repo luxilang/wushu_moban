@@ -179,7 +179,7 @@ $post_type_conf = array(
 	array(
 		'post_code'=>'class_activities',
 		'post_str'=>'优惠活动',
-		'post_supports'=>array( 'title','editor' ),
+		'post_supports'=>array( 'title','excerpt','editor',),
 		'has_taxonomy'=>false
 	),
 	/*
@@ -586,7 +586,95 @@ function custom_courses_link( $link, $post = 0 ){
 	}
 
 }
+add_filter('post_type_link', 'custom_class_activities_link', 1, 3);
 
+function custom_class_activities_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'class_activities' ){
+
+		return site_url( 'class_activities/' . $post->ID .'.html' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
+add_filter('post_type_link', 'custom_class_fee_link', 1, 3);
+
+function custom_class_fee_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'class_fee' ){
+		
+		//return site_url( '?post_type=class_fee' );
+		return site_url( 'class_fee'.'.html' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
+add_filter('post_type_link', 'custom_class_time_link', 1, 3);
+
+function custom_class_time_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'class_time' ){
+		return site_url( 'class_time'.'.html' );
+		//return site_url( '?post_type=class_time' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
+add_filter('post_type_link', 'custom_class_env_link', 1, 3);
+
+function custom_class_env_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'class_env' ){
+		return site_url( 'class_env'.'.html' );
+		//return site_url( '?post_type=students' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+add_filter('post_type_link', 'custom_students_link', 1, 3);
+
+function custom_students_link( $link, $post = 0 ){
+
+	if ( $post->post_type == 'students' ){
+		return site_url( 'students'.'.html' );
+		//return site_url( '?post_type=students' );
+
+	} else {
+
+		return $link;
+	}
+
+}
+
+add_filter('post_link', 'custom_post_link', 1, 3);
+
+function custom_post_link( $link, $post = 0 ){
+	if ( $post->post_type == 'post' ){
+	
+			return site_url( 'p_' . $post->ID .'.html' );
+		//return site_url( '?post_type=students' );
+
+	} else {
+
+		return $link;
+	}
+
+}
 
 
  /**
@@ -670,3 +758,45 @@ function ashuwp_product_sticky (){ ?>
 <?php
 }
 */
+
+
+
+add_action('restrict_manage_posts','work_restrict_manage_posts');
+function work_restrict_manage_posts() {
+    global $typenow;
+    $args=array( 'public' => true, '_builtin' => false );
+    $post_types = get_post_types($args);
+    if ( in_array($typenow, $post_types) ) {
+    $filters = get_object_taxonomies($typenow);
+        foreach ($filters as $tax_slug) {
+            $tax_obj = get_taxonomy($tax_slug);
+            $tax_obj->label  = str_replace('分类', '', $tax_obj->label);
+            wp_dropdown_categories(array(
+                'show_option_all' => __('所有 '.$tax_obj->label ),
+                'taxonomy' => $tax_slug,
+                'name' => $tax_obj->name,
+                'orderby' => 'term_order',
+                'selected' => $_GET[$tax_obj->query_var],
+                'hierarchical' => $tax_obj->hierarchical,
+                'show_count' => true,
+                'hide_empty' => false
+            ));
+        }
+    }
+} 
+function work_convert_restrict($query) {
+    global $pagenow;
+    global $typenow;
+    if ($pagenow=='edit.php') {  //所有页面
+        $filters = get_object_taxonomies($typenow);
+        foreach ($filters as $tax_slug) {
+            $var = &$query->query_vars[$tax_slug];
+            if ( isset($var) && $var>0) {
+                $term = get_term_by('id',$var,$tax_slug);
+                $var = $term->slug;
+            }
+        }
+    }
+    return $query;
+} 
+add_filter('parse_query','work_convert_restrict');

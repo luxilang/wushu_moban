@@ -77,7 +77,7 @@ foreach ($terms as $term)
 									 html += '<a href="'+json[i].img_url+'" class="example-image-link" data-lightbox="example-set" data-title=""><div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">';
 									 html += '<div class="picList">';
 									 html += '<div class="b-layer"><i class="glyphicon glyphicon-plus"></i></div>';
-									 html += '<img src="'+json[i].img_url+'" >';
+									 html += '<img src="'+json[i].img_url+'" alt="'+json[i].title+'" >';
 									 html += '</div>';
 									 html += '</div></a>';
 								}

@@ -4,8 +4,19 @@
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <ul class="nav nav-tabs" role="tablist">
             <?php 
-		   $courses_tab_arr = array('儿童组','少年组','成人组','1对1私教课程');
-		   $courses_tab_desc_arr = array('授课对象为3岁-10岁少儿','授课对象为10岁-17岁少儿','授课对象为18岁以上成年人','所有课程都设有1对1私教');
+  			        $terms_courses_type = get_terms('courses_type', 'orderby=displayorder&order=DESC&hide_empty=0&parent=0' );
+  			       	$courses_tab_arr = array();
+  			       	$courses_tab_desc_arr = array();
+            		if (!empty($terms_courses_type)) {
+            			foreach ($terms_courses_type as $value) {
+            				$courses_tab_arr[] = $value->name;
+            				$courses_tab_desc_arr[] = $value->description;
+            			}
+            			
+            		}
+         
+		   //$courses_tab_arr = array('儿童组','少年组','成人组','1对1私教课程');
+		  // $courses_tab_desc_arr = array('授课对象为3岁-10岁少儿','授课对象为10岁-17岁少儿','授课对象为18岁以上成年人','所有课程都设有1对1私教');
 		   $tab_id = 1;
 		   foreach($courses_tab_arr as $courses_tab_arr_k=>$courses_tab_arr_v)
 		   {
@@ -45,7 +56,7 @@
             	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box"> 
                 
-                <img src="<?php echo $img_url ?>" >
+                <img src="<?php echo $img_url ?>"  alt='<?php echo $rs_o->post_title ?>' >
                   <div class="info">
                     <h3><?php echo  $rs_o->post_title ?></h3>
                     <label>授课方式：<?php echo  get_post_meta($rs_o->ID,'_skfs_courses',true) ?></label>

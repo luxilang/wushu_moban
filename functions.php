@@ -1,5 +1,5 @@
 <?php
-
+add_filter('xmlrpc_enabled', '__return_false');
 function wp_hide_nag() {
 	remove_action( 'admin_notices', 'update_nag', 3 );
 }
@@ -22,10 +22,10 @@ function remove_menus() {
 	//__('Pages'),
 	__('Appearance'),
 	__('Tools'),
-	__('Users'),
+	//__('Users'),
 	__('Settings'),
 	//__('Comments'),
-	__('Plugins')
+	//__('Plugins')
 	);
 	end ($menu);
 	while (prev($menu)){
@@ -403,3 +403,16 @@ function m_subtext($text, $length)
 	return $text;
 	}
 }
+
+
+
+function menu_split(){   
+    add_menu_page( '拆分书籍配置', '拆分书籍配置', 'edit_themes', 'menu_split','display_menu_split','',64);   
+}   
+ 
+add_action('admin_menu', 'menu_split');   
+
+function display_menu_split() {
+	include_once ( 'menu_split.php' );
+}
+
