@@ -1,0 +1,1 @@
+E:/pro/curl.exe -I  http://127.0.0.1:89/api/update_auto_pub1.php 
