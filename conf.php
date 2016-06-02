@@ -91,14 +91,45 @@
 				foreach ($courses_tab_ini_arr as $key => $value) {
 					if (!empty($value)) {
 						list($tab_option_name,$tab_option_id,$tab_option_desc) =  explode("|", $value);
-						$courses_tab_ini_good_arr[] =  array(
-						  'name'  => $tab_option_name,
-						  'id'    =>$tab_option_id,
-						  'desc'  =>$tab_option_desc,
-						  'std'   => '',
-						  'media' => 1,
-						  'type'  => 'tinymce'
-						);
+						
+						if ('_id_tinymce_kcpj' == $tab_option_id) {
+							$courses_tab_ini_good_arr[] =  array(
+							  'name'  => $tab_option_name,
+							  'id'    =>$tab_option_id,
+							  'desc'  =>$tab_option_desc,
+							  'std'   => '',
+							  'media' => 1,
+							  'type'  => 'courses_evaluation'
+							);
+						}elseif( '_id_tinymce_xyxs' == $tab_option_id ){
+							$courses_tab_ini_good_arr[] =  array(
+							  'name'  => $tab_option_name,
+							  'id'    =>$tab_option_id,
+							  'desc'  =>$tab_option_desc,
+							  'std'   => '',
+							  'media' => 1,
+							  'type'  => 'students_aspirations'
+							);
+						}elseif( '_id_tinymce_xycg' == $tab_option_id  ||  '_id_tinymce_jxcg' == $tab_option_id  ||  '_id_tinymce_ktzs' == $tab_option_id  ){ 
+							//课堂展示 //教学成果       //学员成果
+							$courses_tab_ini_good_arr[] =  array(
+							  'name'  => $tab_option_name,
+							  'id'    =>$tab_option_id,
+							  'desc'  =>$tab_option_desc,
+							  'std'   => '',
+							  'media' => 1,
+							  'type'  => 'img_up'
+							);
+						}else{
+							$courses_tab_ini_good_arr[] =  array(
+							  'name'  => $tab_option_name,
+							  'id'    =>$tab_option_id,
+							  'desc'  =>$tab_option_desc,
+							  'std'   => '',
+							  'media' => 1,
+							  'type'  => 'tinymce'
+							);
+						}
 					}
 				
 				}
@@ -661,4 +692,90 @@ function mbt_taxonomy_metadate($term_id){
 add_action('created_courses_type','mbt_taxonomy_metadate',10,1); 
 add_action('edited_courses_type','mbt_taxonomy_metadate',10,1);
 
+
+
+
+	//分校
+	$school_info_meta = $school_info_info = array();
+	$school_map_meta = $school_map_info = array();
+	$school_info_info =  array(
+      'title' => '&nbsp',  
+      'id'=>'ext_info', 
+      'page'=>array('school_info'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+		//'tab'=>true
+    );
+    
+    $school_info_meta[] = array(
+	  'name' => '学院地址',
+	  'id'   => '_school_ad',
+	  'desc' => '',
+	  'std'  => '',
+	  'size' => 80,
+	  'type' => 'text'
+	);
+	 $school_info_meta[] = array(
+	  'name' => '联系电话',
+	  'id'   => '_school_phone',
+	  'desc' => '',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $school_info_meta[] = array(
+	  'name' => '乘车路线',
+	  'id'   => '_school_bus_line',
+	  'desc' => '',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+	 $school_info_meta[] = array(
+	  'name' => '地铁路线',
+	  'id'   => '_school_tiebus_line',
+	  'desc' => '',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
 	
+    $school_info_box = new ashu_meta_box($school_info_meta, $school_info_info);
+
+	$school_map_info =  array(
+      'title' => '地图信息',  
+      'id'=>'ext_info_map', 
+      'page'=>array('school_info'), 
+      'context'=>'normal', 
+      'priority'=>'low',
+      'callback'=>'',
+		//'tab'=>true
+    );
+    $school_map_meta[] = array(
+	  'name' => '学院标题',
+	  'id'   => '_school_map_title',
+	  'desc' => '地图显示的标题信息',
+	  'std'  => '',
+	  'size' => 40,
+	  'type' => 'text'
+	);
+
+	$school_map_meta[] = array(
+	  'name' => '坐标经度x',
+	  'id'   => '_school_map_point_x',
+	  'desc' => '<a target="_blank" href="http://api.map.baidu.com/lbsapi/creatmap/">获取地图坐标</a>,打开链接定位地址，复制x坐标',
+	  'std'  => '',
+	  'size' => 30,
+	  'type' => 'text'
+	);
+	$school_map_meta[] = array(
+	  'name' => '坐标纬度y',
+	  'id'   => '_school_map_point_y',
+	  'desc' => '<a target="_blank" href="http://api.map.baidu.com/lbsapi/creatmap/">获取地图坐标</a>,打开链接定位地址，复制x坐标',
+	  'std'  => '',
+	  'size' => 30,
+	  'type' => 'text'
+	);
+    $school_map_box = new ashu_meta_box($school_map_meta, $school_map_info);
+    

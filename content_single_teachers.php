@@ -1,6 +1,7 @@
 <?php 
 $post_id = $post->ID; 
 $img_url = get_post_meta($post_id,'_id_upload_teachers',true); 
+$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=274&h=370&q=100&zc=1&ct=1&a=t";
 ?>
 <div class="row content">
       	<div class="col-lg-12">
@@ -86,17 +87,71 @@ $img_url = get_post_meta($post_id,'_id_upload_teachers',true);
 							?>
 							
 								<?php include_once 'changyan_js.php';  ?>
+								
+								
+								
+								
+								
+								
+								
 							<?php 
                 		    
                 		}else{
+							if ('_id_tinymce_xyxs' == $tab_option_id) {
+      			        	 
+                			        	$sql = "  select * from wp_courses_ping  where post_id = '{$post_id}' order by id desc  ";
+                			        	
+                			        	$courses_ping_rs =  $wpdb->get_results($sql);
+                			        	$curr_ttt = time();
+                			?>
+		                		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		                						<?php 
+		                						if (!empty($courses_ping_rs)) {
+		                			        		foreach ($courses_ping_rs as $courses_ping_k=>$courses_ping_rs_value) {
+		                			        			$dfff_time = ($courses_ping_k * 24*3600);
+		                			        			$curr_ttt = time();
+		                			        			$re_time = $curr_ttt-$dfff_time;
+		                			        			$riqi = date('Y-m-d',$re_time);
+		                						?>
+							                        <!---->
+							                    	<div class="box">
+							                            <div class="row">
+							                            	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+							                                    <label><img src="<?php echo $courses_ping_rs_value->touxiang ?>"><?php echo $courses_ping_rs_value->xingming ?><span><?php echo $courses_ping_rs_value->beizhu ?></span></label>
+							                                </div>
+							                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right">
+							                                	<span class="time">
+							                                    	<?php echo $riqi ?>
+							                                    </span>
+							                                </div>
+							                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+							                                	<p><?php echo $courses_ping_rs_value->pinglun ?></p>
+							                                </div>
+							                            </div>
+							                        </div>
+							                        <!---->
+			                        		<?php 
+		                			        		}
+		                						}
+			                        		?>
+		                   		 </div>
+                			<?php 
+                			}elseif('_id_tinymce_jxcg' == $tab_option_id ){ 
+
+                				echo  jxcg_ktzs(get_postimg_list($tab_option_id,$post_id,'',"&w=260&h=194".get_timthumb_cf()));
+                			}elseif('_id_tinymce_ktzs' == $tab_option_id ){	 //课程展示
+                				echo  jxcg_ktzs(get_postimg_list($tab_option_id,$post_id,'',"&w=274&h=370".get_timthumb_cf()));
+                				
+                			}else{
+                			
                 			$post_c = str_replace("{jintian_date}",date('Y-m-d'),$post_c ); 
                 			$post_c = str_replace("{zuotian_date}",date('Y-m-d',time()-24*3600),$post_c ); 
                 			$post_c = str_replace("{qiantian_date}",date('Y-m-d',time()-2*24*3600),$post_c );
-                		   $echopost_c = $post_c ;
+                		  	 $echopost_c = $post_c ;
                 		   
-                		   echo $echopost_c;
+                		   	echo $echopost_c;
                 		  
-                		  
+                			}
                 		}
                 		
                 		?>

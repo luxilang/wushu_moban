@@ -361,5 +361,35 @@ class ashu_meta_box {
       
     wp_editor( $ashu_meta['std'],$ashu_meta['id'],$settings=array('tinymce'=>$ashu_meta['media'],'media_buttons'=>1,'tinymce'=>$tinymce_args) );
   }
+  function courses_evaluation($ashu_meta){
+    if( !isset($this->meta_conf['tab']) || !$this->meta_conf['tab'] )
+      echo '<h3>'.$ashu_meta['name'].'</h3>';
+  
+    if($ashu_meta['desc'] != "")
+      echo '<p>'.$ashu_meta['desc'].'</p>';
+      $pid = $_GET['post'];
+	  echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="courses_evaluation" name="courses_evaluation" src="/wp-admin/custom_admin/index.php?r=CoursesEvaluation/index&post='.$pid.'" style="width:90%; height:1500px; border:none;"></iframe>';
+ 
+  }
+	function students_aspirations($ashu_meta){
+    if( !isset($this->meta_conf['tab']) || !$this->meta_conf['tab'] )
+      echo '<h3>'.$ashu_meta['name'].'</h3>';
+  
+    if($ashu_meta['desc'] != "")
+      echo '<p>'.$ashu_meta['desc'].'</p>';
+      $pid = $_GET['post'];
+	  echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="courses_evaluation" name="courses_evaluation" src="/wp-admin/custom_admin/index.php?r=CoursesEvaluation/index&post='.$pid.'&tp=students_aspirations" style="width:90%; height:1500px; border:none;"></iframe>';
+ 
+  }
+	function img_up($ashu_meta){
+    if( !isset($this->meta_conf['tab']) || !$this->meta_conf['tab'] )
+      echo '<h3>'.$ashu_meta['name'].'</h3>';
+  
+    if($ashu_meta['desc'] != "")
+      echo '<p>'.$ashu_meta['desc'].'</p>';
+      $pid = $_GET['post'];
+	  echo '<iframe  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" id="imgup" name="imgup" src="/wp-admin/custom_admin/index.php?r=imgup/index&post='.$pid.'&tp='.$ashu_meta['id'].'" style="width:90%; height:2500px; border:none;"></iframe>';
+ 
+  }
 }
 ?>

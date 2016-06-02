@@ -52,11 +52,12 @@
 			   {
 				   foreach ($rs as $key => $rs_o) {
 					   $img_url = get_post_meta($rs_o->ID,'_id_upload_home',true);
+					   $img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=280&h=216".get_timthumb_cf();
 			  ?>
             	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box"> 
                 
-                <img src="<?php echo $img_url ?>"  alt='<?php echo $rs_o->post_title ?>' >
+                <a href="<?php echo get_permalink($rs_o->ID); ?>"><img src="<?php echo $img_url ?>"  alt='<?php echo $rs_o->post_title ?>' ></a>
                   <div class="info">
                     <h3><?php echo  $rs_o->post_title ?></h3>
                     <label>授课方式：<?php echo  get_post_meta($rs_o->ID,'_skfs_courses',true) ?></label>

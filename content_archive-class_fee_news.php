@@ -82,10 +82,89 @@ $url_bs = '?post_type=class_fee';
            		$activ_sel1 = ($terms_i == 1) ? 'active': '';	
            	?>
             <div class="row tab-pane <?php echo $activ_sel1 ?>"  role="tabpanel"  id="<?php echo $terms_i ?>" >
-          			<div id="neirong<?php echo $terms_i ?>"></div>
+          			<div id="neirong<?php echo $terms_i ?>">
+          				<?php 
+          				
+          			
+					$args['posts_per_page'] = 4;
+					$args['offset'] = 0;
+					$args['post_type'] = 'class_fee';
+					$lei = $term['slug'];
+			
+				
+					if (!empty($lei)) {
+						if($lei == 'tao0'){
+										
+		
+								
+							$terms_tao = get_terms('class_fee_type', 'orderby=name&hide_empty=0&parent=0' );
+							
+							$terms_tao = objectToArray($terms_tao);
+							
+							$all_ids = array();
+							foreach ($terms_tao as $term_tao) 
+							{		
+									if(!empty($term_tao['term_id']))
+									{
+										$all_ids[] = $term_tao['term_id'];
+									}
+							}
+							
+							
+							
+							
+							$args['tax_query'] =  array(
+									'relation' => 'AND',
+									array(
+										'taxonomy' => 'class_fee_type',
+										'field'    => 'id',
+										'terms'    => $all_ids,
+									),
+							);
+						}else{
+							$args['tax_query'] =  array(
+									'relation' => 'AND',
+									array(
+										'taxonomy' => 'class_fee_type',
+										'field'    => 'slug',
+										'terms'    => array( "$lei"),
+									),
+							);
+						}	
+		
+					}
+					
+					
+				
+					$query = new WP_Query( $args );
+
+					if (!empty($query->posts)) {
+						
+							$rs = $query->posts;
+							
+							foreach ($rs as $rs_o) {
+				
+									?>
+									
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+			                  <div class="blue-box">
+				           		<?php echo $rs_o->post_content ?>
+							  <button  data-toggle="modal" data-target="#yyModal"   type="button" class="btn btn-block">免费预约体验</button>
+							  </div>
+							  </div>
+									<?php	
+										
+							}
+					}
+					wp_reset_postdata();
+		 
+	
+          				?>
+					 		
+          			</div>
          			 <input  type="hidden" name="jiazai_tp<?php echo $terms_i ?>" id="jiazai_tp<?php echo $terms_i ?>" value="class_fee"  />
                     <input  type="hidden" name="jiazai_lei<?php echo $terms_i ?>" id="jiazai_lei<?php echo $terms_i ?>" value="<?php echo $term['slug'] ?>"  />
-                      <input  type="hidden" name="jiazai_page<?php echo $terms_i ?>" id="jiazai_page<?php echo $terms_i ?>" value="0"  />
+                      <input  type="hidden" name="jiazai_page<?php echo $terms_i ?>" id="jiazai_page<?php echo $terms_i ?>" value="1"  />
           
                		 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="jiazai<?php echo $terms_i ?>">
                         <div class="row">
@@ -153,7 +232,7 @@ $url_bs = '?post_type=class_fee';
 				
 			}
 			$(document).ready(function() {  
-				load_page<?php echo $terms_i ?>();
+				//load_page<?php echo $terms_i ?>();
 			});
 			</script>
             <?php 

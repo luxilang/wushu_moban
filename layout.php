@@ -186,38 +186,59 @@ function echo_layout($html)
 						<div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
 							<div style="height:326px;border:#ccc solid 1px;" id="dituContent"></div>
 						</div>
-						 <div class="col-xs-6 hidden-lg hidden-md hidden-sm"><button class="btn btn-blue btn-block"><i class="glyphicon glyphicon-phone"></i><a href="tel:18911639063" style='color:#fff'>联系电话</a></button></div>
-                    	<div class="col-xs-6 hidden-lg hidden-md hidden-sm"><button class="btn btn-blue btn-block"><i class="glyphicon glyphicon-comment"></i><a href="sms:18911639063" style='color:#fff'>短信联系</a></button></div>
 						
 						<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
 						<ul class="address-list">
+							<?php 
+							
+					
+							
+							$rs_school_info = $wpdb->get_results("select * from wp_posts where  post_status = 'publish'  and  post_type = 'school_info'   order by ID desc " );
+							if (!empty($rs_school_info)) {
+					
+								foreach ($rs_school_info as $key => $rs_school_o) {
+									
+							?>
 							<li>
-						<div class="map-info">
-						<h3>首都体育学院校区（海淀区）</h3>
-						<label>详细地址：首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-						<label>联系电话：189-1163-9063 罗老师 </label>
-						<label>乘车路线：公交在“蓟门桥西”下车</label>
-						<label>地铁路线：13号线“大钟寺”下车</label>
-						<a href='/map.php?type=0' target='_blank'><i class="icon-maps icon-mark"></i>查询地图</a>
-						<a href='/map.php?type=0' target= '_blank'><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
-						
-						</div></li>
-							<li>
-						<div class="map-info">
-						<h3>海淀体育中心校区（海淀区）</h3>
-						<label>详细地址：海淀体育中心内-海淀体育运动学校武术馆（靠近北京大学）</label>
-						<label>135-8189-4868 吴老师</label>
-						<label>乘车路线：公交车在"海淀桥北"下车</label>
-						<a href='/map.php?type=1' target='_blank' ><i class="icon-maps icon-mark"></i>查询地图</a>
-						<a href='/map.php?type=1' target= '_blank' ><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
-						
-						</div></li>
+								<div class="map-info">
+								<h3><?php echo $rs_school_o->post_title  ?></h3>
+								<label>详细地址：<?php echo get_post_meta($rs_school_o->ID,'_school_ad',true);  ?></label>
+								<label>联系电话：<?php echo get_post_meta($rs_school_o->ID,'_school_phone',true);  ?></label>
+								<label>乘车路线：<?php echo get_post_meta($rs_school_o->ID,'_school_bus_line',true);  ?></label>
+								<?php 
+								$school_tiebus_line = get_post_meta($rs_school_o->ID,'_school_tiebus_line',true);
+								if (!empty($school_tiebus_line)) {
+									?>
+									<label>地铁路线：<?php echo  $school_tiebus_line ?></label>
+									<?php 
+
+								}
+								?>
+								
+								<a href='/map.php?type=<?php echo $rs_school_o->ID  ?>' target='_blank'><i class="icon-maps icon-mark"></i>查询地图</a>
+								<a href='/map.php?type=<?php echo $rs_school_o->ID  ?>' target= '_blank'><i class="icon-maps icon-car"></i>公交/驾车去这里</a>
+								</div>
+							</li>
+		                	<?php 
+								}
+							}
+		                	?>
 						</ul>
 						</div>
 						</div>
 						</div>
 						</div>
 						</div>
+						 <style type="text/css">
+						        body { background-image:url(text.txt); background-attachment:fixed; height:1000px; }
+						 #bottomNavfit { z-index:999; position:fixed; bottom:0; left:0; width:100%; _position:absolute;
+						 _top: expression_r(documentElement.scrollTop + documentElement.clientHeight-this.offsetHeight); overflow:visible; }
+						    </style>
+						<div id="bottomNavfit"> 
+						<div class="col-xs-6 hidden-lg hidden-md hidden-sm"><button class="btn btn-blue btn-block"><i class="glyphicon glyphicon-phone"></i><a href="tel:18911639063" style='color:#fff'>联系电话</a></button></div>
+                    	<div class="col-xs-6 hidden-lg hidden-md hidden-sm"><button class="btn btn-blue btn-block"><i class="glyphicon glyphicon-comment"></i><a href="sms:18911639063" style='color:#fff'>短信联系</a></button></div>
+						</div>
+						
 						<script type="text/javascript">
 						        //创建和初始化地图函数：
 						    function initMap(){
@@ -255,8 +276,30 @@ function echo_layout($html)
 						    
 						    //标注点数组
 						  var markerArr = [
-								{title:"武术世家培训中心首都体育学院校区",content:"武术世家培训中心首都体育学院校区",point:"116.353832|39.974903",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}},
-								{title:"武术世家培训中心海淀体育中心校区",content:"海淀体育中心内-海淀体育运动学校武术馆",point:"116.308458|39.994072",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+							<?php 
+							      	$all_rs_len  = count($rs_school_info);
+							        foreach ($rs_school_info as $key => $value) {
+							        	$school_map_point_x = get_post_meta($value->ID,'_school_map_point_x',true);
+							        	$school_map_point_y = get_post_meta($value->ID,'_school_map_point_y',true);
+							        	if ((!empty($school_map_point_x))  && (!empty($school_map_point_y))) 
+							        	{
+							        	
+							        	$school_map_content = get_post_meta($value->ID,'_school_map_title',true).'<br/>';
+										$school_map_content .= get_post_meta($value->ID,'_school_phone',true); 
+							        	$key ++;
+							        	if ($key == $all_rs_len) {
+							        		?>
+							         		{title:"<?php echo  get_post_meta($value->ID,'_school_map_title',true);  ?>",content:"<?php echo $school_map_content  ?>",point:"<?php echo  $school_map_point_x ?>|<?php echo  $school_map_point_y  ?>",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+							        		<?php
+							        	}else{
+										?>
+						         		{title:"<?php echo  get_post_meta($value->ID,'_school_map_title',true);  ?>",content:"<?php echo $school_map_content  ?>",point:"<?php echo  $school_map_point_x  ?>|<?php echo  $school_map_point_y  ?>",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}},
+						        		<?php 
+										}
+
+							        	}
+									 }
+							        ?>
 								 ];
 						    //创建marker
 						    function addMarker(){

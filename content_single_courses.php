@@ -1,7 +1,7 @@
 <?php
 $post_id = $post->ID; //首选需要获取文章id
 $img_url = get_post_meta($post_id,'_id_upload_courses',true); 
-
+$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=274&h=370&q=100&zc=1&ct=1&a=t";
 ?>
 <div class="row contact">
         <div class="col-lg-12">
@@ -91,13 +91,106 @@ $img_url = get_post_meta($post_id,'_id_upload_courses',true);
       
                 				<?php 
                 		}else{
+                				if ('_id_tinymce_kcpj' == $tab_option_id) {
+      			        	 
+                			        	$sql = "  select * from wp_courses_ping  where post_id = '{$post_id}' order by id desc  ";
+                			        	
+                			        	$courses_ping_rs =  $wpdb->get_results($sql);
+                			        	$curr_ttt = time();
+                		
+                			        	
+                					
+                					?>
+					        		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+					        		<?php 
+					        			        	if (!empty($courses_ping_rs)) {
+					                			        		foreach ($courses_ping_rs as $courses_ping_k=>$courses_ping_rs_value) {
+					                			        			$dfff_time = ($courses_ping_k * 24*3600);
+					                			        			$curr_ttt = time();
+					                			        			$re_time = $curr_ttt-$dfff_time;
+					                			        			$riqi = date('Y-m-d',$re_time);
+					        		?>
+					                  <!---->
+					                  <div class="box">
+					                    <div class="row">
+					                      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+					                        <label><img src="<?php echo $courses_ping_rs_value->touxiang ?>"><?php echo $courses_ping_rs_value->xingming ?><span><?php echo $courses_ping_rs_value->beizhu ?></span></label>
+					                      </div>
+					                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 text-right"> <span class="time"> <?php echo $riqi ?></span> </div>
+					                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 info">
+					                        <p><?php echo $courses_ping_rs_value->pinglun ?></p>
+					                      </div>
+					                    </div>
+					                  </div>
+					                  <!---->
+					                  <?php 
+					                			      }
+					        			        	}
+					                  ?> 
+					                  
+					                </div>
+                					
+                			        
+                					<?php 
+                				}elseif('_id_tinymce_xycg' == $tab_option_id){
+                					
+                				?>
+                									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+													                  <ul class="nav nav-tabs nav-tabs-level2" role="tablist">
+													                    <li role="presentation" class="active"><i></i><a href="#5_1" aria-controls="5_1" role="tab" data-toggle="tab">
+													                      <label>训练花絮</label>
+													                      </a></li>
+													                    <li role="presentation"><i></i><a href="#5_2" aria-controls="5_2" role="tab" data-toggle="tab">
+													                      <label>比赛集锦</label>
+													                      </a></li>
+													                    <li role="presentation"><i></i><a href="#5_3" aria-controls="5_3" role="tab" data-toggle="tab">
+													                      <label>获奖证书</label>
+													                      </a></li>
+													                    <li role="presentation"><i></i><a href="#5_4" aria-controls="5_4" role="tab" data-toggle="tab">
+													                      <label>学员表演</label>
+													                      </a></li>
+													                  </ul>
+												                  <div class="tab-content"> 
+												                  	<div class="row tab-pane active"  role="tabpanel" id="5_1">
+												                  	<?php 
+												                  			echo  xycg(get_postimg_list('_id_tinymce_xycg',$post_id,'训练花絮',"&w=274&h=370".get_timthumb_cf()));
+												                  	?>
+												                  	</div>
+												
+												                  	<div class="row tab-pane"  role="tabpanel" id="5_2">
+												                  	<?php 
+												                  			echo  xycg(get_postimg_list('_id_tinymce_xycg',$post_id,'比赛集锦',"&w=274&h=370".get_timthumb_cf()));
+												                  	?>
+												              
+												                  	</div>
+												                  	 <div class="row tab-pane"  role="tabpanel" id="5_3">
+												                  	
+												                  	<?php 
+												                  			echo  xycg(get_postimg_list('_id_tinymce_xycg',$post_id,'获奖证书',"&w=274&h=370".get_timthumb_cf()));
+												                  	?>
+												                  			
+												                  	</div>
+												                  	      <div class="row tab-pane"  role="tabpanel" id="5_4">
+												                  	<?php 
+												                  			echo  xycg(get_postimg_list('_id_tinymce_xycg',$post_id,'学员表演',"&w=274&h=370".get_timthumb_cf()));
+												                  	?>
+												                  			
+												                  	</div>
+												
+												                  </div>
+												                </div>
+                				<?php
+                			
+                				}else{
+
                 			
                 			
-                			$post_c = str_replace("{jintian_date}",date('Y-m-d'),$post_c ); 
-                			$post_c = str_replace("{zuotian_date}",date('Y-m-d',time()-24*3600),$post_c ); 
-                			$post_c = str_replace("{qiantian_date}",date('Y-m-d',time()-2*24*3600),$post_c ); 
-                		   $echopost_c = $post_c ;
-                		   echo $echopost_c;
+		                			$post_c = str_replace("{jintian_date}",date('Y-m-d'),$post_c ); 
+		                			$post_c = str_replace("{zuotian_date}",date('Y-m-d',time()-24*3600),$post_c ); 
+		                			$post_c = str_replace("{qiantian_date}",date('Y-m-d',time()-2*24*3600),$post_c ); 
+		                		   $echopost_c = $post_c ;
+		                		   echo $echopost_c;
+                				}
                 	
                 		}
                 		

@@ -49,11 +49,52 @@
 										<div class="row tab-pane <?php echo $activ_sel ?>"  role="tabpanel" id="4_<?php echo $menu_i ?>">
 											<div id="neirong<?php echo $menu_i ?>">
                     
+								                <?php
+								                    	$args['posts_per_page'] = 3;
+														$args['offset'] = 0;
+														$args['post_type'] = 'teachers';
+														if(!empty($value))
+														{
+															$args['tax_query'] =  array(
+																	'relation' => 'AND',
+																	array(
+																		'taxonomy' => 'teachers_type',
+																		'field'    => 'slug',
+																		'terms'    => array( "$value"),
+																	),
+															);
+														}
+														
+														$query = new WP_Query( $args );
+												
+														if (!empty($query->posts)) {
+															$rs = $query->posts;	
+															foreach ($rs as $rs_o) {	
+																		$img_url = get_post_meta($rs_o->ID,'_id_upload_teachers',true);
+																		$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=212&h=212".get_timthumb_cf();
+																		?>
+																	<div class="col-lg-4 col-md-4 col-sm-4">
+																	<div class="blue-box"> <img src="<?php echo $img_url ?>" alt="<?php echo $rs_o->post_title ?>"  width="212" height="212">
+																	<label><?php echo $rs_o->post_title ?></label>
+																	<p><?php echo get_post_meta($rs_o->ID,'_teachers_yddj',true)  ?></p>
+																	<p>少儿武术教学经验:<?php echo get_post_meta($rs_o->ID,'_teachers_sewsjljy',true)  ?></p>
+																	<p>教学风格:<?php echo get_post_meta($rs_o->ID,'_teachers_jxfg',true)  ?></p>
+																	
+																	<a href="<?php echo get_permalink($rs_o->ID) ?>"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
+																	</div>
+																	</div>
+																		<?php
+															
+															}
+															wp_reset_postdata();
+														}
+														?>
+													
                    							 </div>
                    							
 						                   	<input  type="hidden" name="jiazai_tp<?php echo $menu_i ?>" id="jiazai_tp<?php echo $menu_i ?>" value="teachers"  />
 						                    <input  type="hidden" name="jiazai_lei<?php echo $menu_i ?>" id="jiazai_lei<?php echo $menu_i ?>" value="<?php echo $value ?>"  />
-						                      <input  type="hidden" name="jiazai_page<?php echo $menu_i ?>" id="jiazai_page<?php echo $menu_i ?>" value="0"  />
+						                      <input  type="hidden" name="jiazai_page<?php echo $menu_i ?>" id="jiazai_page<?php echo $menu_i ?>" value="1"  />
 			
 												 <div style='margin-top: 0.5%;' class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="jiazai<?php echo $menu_i ?>">
 							                        <div class="row">
@@ -118,7 +159,7 @@
 												}
 												$(document).ready(function() {  
 												
-														load_page<?php echo $menu_i ?>();
+														//load_page<?php echo $menu_i ?>();
 												
 												});
 												</script>

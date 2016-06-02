@@ -158,7 +158,7 @@ if (is_home()) {
 			
 ?>
 <body <?php echo $body_css_type ?>>
-<div class="container head">
+<div class="container head" >
   <div class="row">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5 logo"> <img src="<?php echo  site_url() ?>/dist/img/logo.png"> </div>
     <div class="col-lg-8 col-md-8 col-sm-8 col-xs-7">

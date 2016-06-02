@@ -2,19 +2,32 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-8 col-sm-8">
-        <div class="address">
-          <h3>首都体育学院校区</h3>
-          <label><span>学院地址：</span>首都体育学院训练2馆2层-位于海淀北三环蓟门桥西（靠近大学生体育馆）</label>
-          <label><span>联系电话：</span>189-1163-9063 罗老师</label>
-          <label><span>乘车路线：</span>公交在"蓟门桥西"下车</label>
-          <label><span>地铁路线：</span>13号线"大钟寺"下车</label>
-        </div>
-        <div class="address">
-          <h3>海淀体育中心校区</h3>
-          <label><span>学院地址：</span>海淀体育中心内-海淀体育运动学校武术馆（靠近北京大学）</label>
-          <label><span>联系电话：</span>135-8189-4868 吴老师</label>
-          <label><span>乘车路线：</span>公交车在"海淀桥北"下车</label>
-        </div>
+      <?php 
+	      						$rs_school_info = $wpdb->get_results("select * from wp_posts where  post_status = 'publish'  and  post_type = 'school_info'   order by ID desc " );
+								if (!empty($rs_school_info)) {
+						
+									foreach ($rs_school_info as $key => $rs_school_o) {
+	      ?>
+	        <div class="address">
+	          <h3><?php echo $rs_school_o->post_title  ?></h3>
+	          <label><span>学院地址：</span><?php echo get_post_meta($rs_school_o->ID,'_school_ad',true);  ?></label>
+	          <label><span>联系电话：</span><?php echo get_post_meta($rs_school_o->ID,'_school_phone',true);  ?></label>
+	          <label><span>乘车路线：</span><?php echo get_post_meta($rs_school_o->ID,'_school_bus_line',true);  ?></label>
+	          	<?php 
+				$school_tiebus_line = get_post_meta($rs_school_o->ID,'_school_tiebus_line',true);
+				if (!empty($school_tiebus_line)) {
+					?>
+					<label><span>地铁路线：</span><?php echo  $school_tiebus_line ?></label>
+					<?php 
+	
+				}
+				?>
+	          
+	        </div>
+	        <?php 
+							}
+						}
+        ?>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
        <!--   <div class="code"> <img src="/dist/img/footer-code.jpg">

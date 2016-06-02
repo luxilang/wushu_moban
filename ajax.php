@@ -1,4 +1,5 @@
 <?php
+
 if (!empty($_POST['ajax_type'])) 
 {
 		if ($_POST['ajax_type']  == 'post') {
@@ -7,6 +8,63 @@ if (!empty($_POST['ajax_type']))
 			 	 $lei = strip_tags($_POST['jiazai_lei']);
 				 $lei1 = strip_tags($_POST['jiazai_lei1']);
 				 $page = strip_tags($_POST['jiazai_page']);
+				 
+				 //学员风采
+				 if ($jiazai_tp == 'students' ) {
+				 	
+					$page_number = 3;
+
+					if (empty($page)) {
+						$position = 0; 
+						$jiazai_page = 1;
+					}else{
+						$position = ($page_number * $page); 
+						$jiazai_page = $page+1; 
+					}
+					
+				 	
+				 	$curr_gid = $lei;
+				 	$curr_tag_str = $lei1;
+				 	
+				 	$sql = "
+					SELECT wp_ngg_gallery.name AS dirname,wp_ngg_pictures.* FROM  wp_ngg_pictures 
+					LEFT JOIN wp_ngg_gallery ON  wp_ngg_gallery.gid = wp_ngg_pictures.galleryid
+					LEFT JOIN  
+					wp_term_relationships  ON 
+					wp_term_relationships.object_id  = wp_ngg_pictures.pid
+					LEFT JOIN
+					wp_term_taxonomy
+					ON wp_term_taxonomy.term_taxonomy_id = wp_term_relationships.term_taxonomy_id
+					LEFT JOIN 
+					wp_terms 
+					ON  wp_terms.term_id = wp_term_taxonomy.term_id
+					
+					WHERE wp_term_taxonomy.taxonomy = 'ngg_tag'  AND wp_terms.name = '{$curr_tag_str}'  AND wp_ngg_pictures.galleryid = '{$curr_gid}'  limit {$position},{$page_number}
+				 	";
+				 	
+				 	$pictures = $wpdb->get_results($sql);
+				 	$rs_arr = array();
+					$rs_arr['page'] = $jiazai_page;
+					$rs_arr['rs'] = array();
+					
+				 	foreach ($pictures as $picture) {
+						$img_url = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+						$img_url_r = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+						//$img_thumbs = "/wp-content/gallery/".$picture->dirname."/thumbs/thumbs_".$picture->filename;
+						$img_thumbs = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=274&h=370".get_timthumb_cf();
+						$rs_arr['rs'][]= array(
+							'id'=>$picture->pid,
+							'title'=>$picture->alttext,
+							'img_url'=>$img_url,
+							'img_url_r'=>($img_url_r == '') ? $img_url : $img_url_r,
+							'img_thumbs'=>$img_thumbs
+						);	
+				 	}
+			
+				 	echo   json_encode($rs_arr);
+				 	exit();
+				 }
+				 
 				 
 				 //费用
 				if ($jiazai_tp == 'class_fee' ) 
@@ -21,7 +79,7 @@ if (!empty($_POST['ajax_type']))
 						$jiazai_page = $page+1; 
 					}
 					$args['offset'] = $position;
-					$args['post_type'] = $jiazai_tp;
+					
 					$args['post_type'] = 'class_fee';
 					if (!empty($lei)) {
 						if($lei == 'tao0'){
@@ -101,7 +159,7 @@ if (!empty($_POST['ajax_type']))
 				if ($jiazai_tp == 'class_env' ) 
 				{
 					$page_number = 3;
-					$args['posts_per_page'] = $page_number;
+
 					if (empty($page)) {
 						$position = 0; 
 						$jiazai_page = 1;
@@ -109,49 +167,42 @@ if (!empty($_POST['ajax_type']))
 						$position = ($page_number * $page); 
 						$jiazai_page = $page+1; 
 					}
-					$args['offset'] = $position;
-					$args['post_type'] = $jiazai_tp;
-					$args['post_type'] = 'class_env';
 					
-					if (!empty($lei)) {
-				
-						$args['tax_query'] =  array(
-								'relation' => 'AND',
-								array(
-									'taxonomy' => 'class_env_type',
-									'field'    => 'slug',
-									'terms'    => array( "$lei"),
-								),
-						);
-					}
-					
-					$query = new WP_Query( $args );
-					$rs_arr = array();
+				 	
+				 	$curr_gid = $lei;
+				 	
+
+				 	$sql = "
+					SELECT wp_ngg_gallery.name AS dirname,wp_ngg_pictures.* FROM  wp_ngg_pictures 
+					LEFT JOIN wp_ngg_gallery ON  wp_ngg_gallery.gid = wp_ngg_pictures.galleryid
+					WHERE  wp_ngg_pictures.galleryid = '{$curr_gid}'  limit {$position},{$page_number}
+				 	";
+
+				 	$pictures = $wpdb->get_results($sql);
+				 	$rs_arr = array();
 					$rs_arr['page'] = $jiazai_page;
-	
 					$rs_arr['rs'] = array();
-					if (!empty($query->posts)) {
-						
-							$rs = $query->posts;
-							
-							foreach ($rs as $rs_o) {
-								$img_url = get_post_meta($rs_o->ID,'_id_upload_env',true);
-									$rs_arr['rs'][]= array(
-										'id'=>$rs_o->ID,
-										'title'=>$rs_o->post_title,
-										'img_url'=>$img_url,
-										'permalink'=>get_permalink($rs_o->ID),
-									);		  
-							}
-					}
-					wp_reset_postdata();
-		  
-					echo   json_encode($rs_arr);
+					
+				 	foreach ($pictures as $picture) {
+						$img_url = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+						$img_url_r = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+						//$img_thumbs = "/wp-content/gallery/".$picture->dirname."/thumbs/thumbs_".$picture->filename;
+						$img_thumbs = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=274&h=220".get_timthumb_cf();
+						$rs_arr['rs'][]= array(
+							'id'=>$picture->pid,
+							'title'=>$picture->alttext,
+							'img_url'=>$img_url,
+							'img_url_r'=>($img_url_r == '') ? $img_url : $img_url_r,
+							'img_thumbs'=>$img_thumbs
+						);	
+				 	}
+			
+				 	echo   json_encode($rs_arr);
 					exit();
 				}
 				 
 				 
-				 
+				 if ($jiazai_tp == 'teachers') {
 				 
 				 
 				 $page_number = 3;
@@ -200,11 +251,11 @@ if (!empty($_POST['ajax_type']))
 							}
 		
 				}else{
-					if (!empty($lei)) {
+				
 						if ($jiazai_tp == 'teachers') {
 								$taxonomy_type = 'teachers_type';
 						}
-						
+					if (!empty($lei)) {	
 						$args['tax_query'] =  array(
 						        'relation' => 'AND',
 						        array(
@@ -243,6 +294,7 @@ if (!empty($_POST['ajax_type']))
 									);	
 								}elseif ($jiazai_tp == 'teachers'){
 									$img_url = get_post_meta($rs_o->ID,'_id_upload_teachers',true);
+									$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=212&h=212".get_timthumb_cf();
 									$rs_arr['rs'][]= array(
 										'title'=>$rs_o->post_title,
 										//'content'=>$rs_o->post_content,
@@ -260,6 +312,10 @@ if (!empty($_POST['ajax_type']))
 		
 				echo   json_encode($rs_arr);
 				exit();
+				
+				
+				}
+				 
 		}elseif ($_POST['ajax_type']  == 'single'){
 			
 				

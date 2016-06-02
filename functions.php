@@ -1,4 +1,16 @@
 <?php
+
+function get_timthumb_cf() {
+	return "&q=100&zc=2ct=1";
+}
+
+
+function uazoh_wp_upload_filter($file){
+$time=date("YmdHis");
+$file['name'] = $time."".mt_rand(1,100).".".pathinfo($file['name'] , PATHINFO_EXTENSION);
+return $file;
+}
+add_filter('wp_handle_upload_prefilter', 'uazoh_wp_upload_filter');
 add_filter('xmlrpc_enabled', '__return_false');
 function wp_hide_nag() {
 	remove_action( 'admin_notices', 'update_nag', 3 );
@@ -12,40 +24,8 @@ function annointed_admin_bar_remove() {
 add_action('wp_before_admin_bar_render', 'annointed_admin_bar_remove', 0);
 
 
-function remove_menus() {
-	global $menu;
-	$restricted = array(
-	__('Dashboard'),
-	//__('Posts'),
-	__('Media'),
-	__('Links'),
-	//__('Pages'),
-	__('Appearance'),
-	__('Tools'),
-	//__('Users'),
-	__('Settings'),
-	//__('Comments'),
-	//__('Plugins')
-	);
-	end ($menu);
-	while (prev($menu)){
-	$value = explode(' ',$menu[key($menu)][0]);
-	if(strpos($value[0], '<') === FALSE) {
-	if(in_array($value[0] != NULL ? $value[0]:"" , $restricted)){
-	unset($menu[key($menu)]);
-	}
-	}else {
-	$value2 = explode('<', $value[0]);
-	if(in_array($value2[0] != NULL ? $value2[0]:"" , $restricted)){
-	unset($menu[key($menu)]);
-	}
-	}
-	}
-}
-if (is_admin()){
-// 屏蔽左侧菜单
-add_action('admin_menu', 'remove_menus');
-}
+//add_filter('user_can_richedit','__return_false'); //屏蔽可视化
+
 function example_remove_dashboard_widgets() {
 	// Globalize the metaboxes array, this holds all the widgets for wp-admin
 	global $wp_meta_boxes;
@@ -193,7 +173,7 @@ require get_template_directory () . '/layout.php';
 require get_template_directory () . '/class_lu.php';
 require get_template_directory () . '/curl.php';
 require get_template_directory () . '/class.phpmailer.php';
-/***
+/*
 function hbns_register_p2p_relationships() {
 	if ( !function_exists( 'p2p_register_connection_type' ) )
 		return;
@@ -247,9 +227,9 @@ function hbns_register_p2p_relationships() {
 			//),
 		) );
 }
- 
-add_action( 'wp_loaded', 'hbns_register_p2p_relationships' );
  */
+//add_action( 'wp_loaded', 'hbns_register_p2p_relationships' );
+
 
 function custom_type_class_meta($post_type, $post_type_class, $meta_key) {
 	
@@ -415,4 +395,129 @@ add_action('admin_menu', 'menu_split');
 function display_menu_split() {
 	include_once ( 'menu_split.php' );
 }
+
+function remove_menus() {
+	global $menu;
+	unset($menu['27']); //学员风采
+	unset($menu['29']); //上课环境
+	$restricted = array(
+	__('Dashboard'),
+	//__('Posts'),
+	__('Media'),
+	__('Links'),
+	//__('Pages'),
+	__('Appearance'),
+	__('Tools'),
+	__('Users'),
+	__('Settings'),
+	//__('Comments'),
+	__('Plugins'),
+	);
+	end ($menu);
+	
+	while (prev($menu)){
+	$value = explode(' ',$menu[key($menu)][0]);
+	if(strpos($value[0], '<') === FALSE) {
+	if(in_array($value[0] != NULL ? $value[0]:"" , $restricted)){
+	unset($menu[key($menu)]);
+	}
+	}else {
+	$value2 = explode('<', $value[0]);
+	if(in_array($value2[0] != NULL ? $value2[0]:"" , $restricted)){
+	unset($menu[key($menu)]);
+	}
+	}
+	}
+}
+if (is_admin()){
+// 屏蔽左侧菜单
+add_action('admin_menu', 'remove_menus');
+}
+
+	function get_postimg_list($tp,$post_id,$img_tag,$thumbs_cf) {
+		global $wpdb;
+		$rs_arr = array();
+		$img_tag_w = '';
+		if (!empty($img_tag)) {
+			$img_tag_w = " and img_tag='{$img_tag}' " ;
+		}
+		$sql = "  select * from wp_post_img  where post_id = '{$post_id}' and tp='{$tp}' {$img_tag_w}  order by id desc   ";
+		
+		$wp_post_img_rs =  $wpdb->get_results($sql);
+		$galleryid_in = array();
+		if (!empty($wp_post_img_rs)) {
+		
+			foreach ($wp_post_img_rs as $value) {
+				if (!empty($value->gid)) {
+					$galleryid_in[] = $value->gid;
+				}
+				
+			}
+			$galleryid_in_str = join(",",$galleryid_in);	
+			$sql = "
+				SELECT wp_ngg_gallery.name AS dirname,wp_ngg_pictures.* 
+				FROM  wp_ngg_pictures 
+				LEFT JOIN wp_ngg_gallery ON  wp_ngg_gallery.gid = wp_ngg_pictures.galleryid			
+				WHERE  wp_ngg_pictures.galleryid IN ({$galleryid_in_str}) ORDER BY FIELD(wp_ngg_pictures.galleryid, {$galleryid_in_str}) 
+			";
+			
+			$pictures = $wpdb->get_results($sql);
+			
+			if (!empty($pictures)) {
+				foreach ($pictures as $picture) {
+					$img_url = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+					$img_url_r = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
+					//$img_thumbs = "/wp-content/gallery/".$picture->dirname."/thumbs/thumbs_".$picture->filename;
+					$img_thumbs = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url.$thumbs_cf;
+					$rs_arr[]= array(
+						'id'=>$picture->pid,
+						'title'=>$picture->alttext,
+						'img_url'=>$img_url,
+						'img_url_r'=>($img_url_r == '') ? $img_url : $img_url_r,
+						'img_thumbs'=>$img_thumbs
+					);	
+				}
+			}
+			
+		}
+		
+		return 	$rs_arr;
+	}
+
+	function jxcg_ktzs($wp_post_img_rs) {
+		$html = '';
+		if (!empty($wp_post_img_rs)) {
+				foreach ($wp_post_img_rs as $wp_post_img_rs_value) {
+      			
+                $html .= '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">';
+				$html .= '<a href="'.$wp_post_img_rs_value['img_url'].'" class="example-image-link" data-lightbox="example-set" data-title="">';
+                $html .= '<div class="picList">';
+                $html .= '<div class="b-layer" data-toggle="modal" data-target="#Modal"><i class="glyphicon glyphicon-plus"></i></div>';
+                $html .= '<img src="'.$wp_post_img_rs_value['img_thumbs'].'"> </div>';
+				$html .= '</a>';
+                $html .= '</div>';
+				
+			}
+		}
+
+		return $html;
+	}
+	function xycg($wp_post_img_rs) {
+		$html = '';
+		if (!empty($wp_post_img_rs)) {
+				foreach ($wp_post_img_rs as $wp_post_img_rs_value) {
+      			$html .= '<a href="'.$wp_post_img_rs_value['img_url'].'" class="example-image-link" data-lightbox="example-set" data-title="">';
+                $html .= '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">';
+
+                $html .= '<div class="picList">';
+                $html .= '<div class="b-layer" data-toggle="modal" data-target="#Modal"><i class="glyphicon glyphicon-plus"></i></div>';
+                $html .= '<img src="'.$wp_post_img_rs_value['img_thumbs'].'"> </div>';
+
+                $html .= '</div>';
+				$html .= '</a>';
+			}
+		}
+
+		return $html;
+	}	
 

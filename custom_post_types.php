@@ -182,6 +182,12 @@ $post_type_conf = array(
 		'post_supports'=>array( 'title','excerpt','editor',),
 		'has_taxonomy'=>false
 	),
+	array(
+		'post_code'=>'school_info',
+		'post_str'=>'分校信息管理',
+		'post_supports'=>array( 'title'),
+		'has_taxonomy'=>false
+	),
 	/*
 	array(
 		'post_code'=>'tiyan',

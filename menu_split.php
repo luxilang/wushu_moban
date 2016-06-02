@@ -3,6 +3,7 @@
 	if($_POST)
 	{
 		$wpdb->update( 'wp_article_cf', array( 'cfvalue' => $_POST['cfvalue'] ), array( 'cfname' => 'pub_num' ));
+		echo "<script>alert('更新成功！');window.history.go(-1);</script>"; 
 	}
 	
 	$split_tj_num1    = intval( $wpdb->get_var("SELECT COUNT(*) FROM  wp_posts  WHERE  flag  = 0  AND post_status = 'publish'  AND  post_type = 'post' and is_split_title = 0") );
