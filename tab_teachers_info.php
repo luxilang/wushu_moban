@@ -71,7 +71,8 @@
 															$rs = $query->posts;	
 															foreach ($rs as $rs_o) {	
 																		$img_url = get_post_meta($rs_o->ID,'_id_upload_teachers',true);
-																		$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=212&h=212".get_timthumb_cf();
+																		//$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=212&h=212".get_timthumb_cf();
+																		$img_url = my_thumb_img($img_url,"&w=212&h=212".get_timthumb_cf());
 																		?>
 																	<div class="col-lg-4 col-md-4 col-sm-4">
 																	<div class="blue-box"> <img src="<?php echo $img_url ?>" alt="<?php echo $rs_o->post_title ?>"  width="212" height="212">

@@ -80,6 +80,9 @@ if (is_home()) {
 }
 ?>
 <title><?php wp_title( '|', true, 'right' );echo $fubiaoti; echo get_bloginfo(); ?></title>
+<meta name="keywords" content="<?php wp_title( '|', true, 'right' );echo $fubiaoti; echo get_bloginfo(); ?>" />
+<meta name="description" content="<?php wp_title( '|', true, 'right' );echo $fubiaoti; echo get_bloginfo(); ?>"/>
+
 <link href="<?php echo  site_url() ?>/dist/css/bootstrap.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/media-eidt.css" rel="stylesheet" media="screen">
 <link href="<?php echo  site_url() ?>/dist/css/css.css" rel="stylesheet" media="screen">

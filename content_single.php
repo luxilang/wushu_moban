@@ -54,9 +54,44 @@ if ($is_split_title) {
 			 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"   id="inifo99" style="font-size:14px">
   	    				<?php 
 						  	    echo $neirong6 ;
-						  	    include_once 'changyan_js.php';  ?>
+						 ?>
 			</div>	 
 	  </div>
+       <div  class="row" style=""  >
+       	<?php
+        $up_wenzhang = $wpdb->get_row("select * from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1 and  is_split_title = 1  and ID > '{$post->ID}'  order by ID  ASC LIMIT 1  " );
+	
+        $down_wenzhang = $wpdb->get_row("select * from wp_posts where  post_status = 'publish'  and  post_type = 'post' and  flag = 1 and  is_split_title = 1  and ID < '{$post->ID}'  order by ID  desc LIMIT 1  " );
+		
+		
+		?>
+       <table width="100%" border="0" cellspacing="10" cellpadding="20" >
+          <tr>
+            <td height="59" align="left" style="background-color:#E8E8E8">&nbsp;&nbsp;&nbsp;&nbsp;<?php
+            	if(!empty($up_wenzhang->ID))
+				{
+			?><a href="<?php echo get_permalink($up_wenzhang->ID); ?>"><< &nbsp; 上一篇</a>
+            <?php
+				}
+			?>
+            </td>
+            <td style="background-color:#E8E8E8">&nbsp;</td>
+            <td  style="background-color:#E8E8E8"align="right"><?php
+            	if(!empty($down_wenzhang->ID))
+				{
+			?><a href="<?php echo get_permalink($down_wenzhang->ID); ?>">下一篇 &nbsp; >></a>
+            <?php
+				}
+			?>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          </tr>
+        </table>
+
+	
+       </div>
+       <div  class="row" style=""   >
+       		<?php  include_once 'changyan_js.php';   ?>
+       </div>
+       
 	<?php 
 }else{
 	

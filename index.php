@@ -76,7 +76,10 @@ get_header();
 							if (!empty($rs)) {
 								foreach ($rs as $key => $rs_o) {
 									$img_url = get_post_meta($rs_o->ID,'_id_upload_home',true);
-									$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=280&h=216&q=100&zc=1&ct=1&a=t";
+									//$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=280&h=216&q=100&zc=1&ct=1&a=t";
+									
+									$img_url = my_thumb_img($img_url,"&w=280&h=216".get_timthumb_cf());
+									
 							?>
                           <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                   <div class="box"><a  href="<?php echo get_permalink($rs_o->ID); ?>" ><img src="<?php echo $img_url ?>" width="280" height="216"></a>
@@ -179,8 +182,9 @@ get_header();
             </div>
           </div>
           <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12"> <!--<a href="/teachers.html"><img src="/dist/img/team.jpg"></a>-->
-          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="teachers">
               <tr>
+              <td>
 			  <?php
 			  			$args = array();	
                         $args['posts_per_page'] = 3;
@@ -193,9 +197,24 @@ get_header();
 							$rs = $query->posts;	
 							foreach ($rs as $rs_o) {	
 										$img_url = get_post_meta($rs_o->ID,'_id_upload_teachers',true);
-										$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=207&h=416".get_timthumb_cf();
+										
+										$img_url = my_thumb_img($img_url,"&w=100&h=100".get_timthumb_cf());
+
 										?>
-                                    	<td><a href="<?php echo get_permalink($rs_o->ID) ?>" title="<?php echo $rs_o->post_title ?>" ><img  alt="<?php echo $rs_o->post_title ?>" src="<?php echo $img_url ?>"></a></td>
+                                    	
+                                     
+									<div class="col-lg-4 col-md-4 col-sm-4" style="padding:0px; margin:0px">
+									<div class="blue-box" style="padding:5px; margin:0px"> <img src="<?php echo $img_url ?>" alt="<?php echo $rs_o->post_title ?>"  >
+									<label><?php echo $rs_o->post_title ?></label>
+									<p><?php echo get_post_meta($rs_o->ID,'_teachers_yddj',true)  ?></p>
+									<p>少儿武术教学经验:<?php echo get_post_meta($rs_o->ID,'_teachers_sewsjljy',true)  ?></p>
+									<p>教学风格:<?php echo get_post_meta($rs_o->ID,'_teachers_jxfg',true)  ?></p>
+									
+									<a href="<?php echo get_permalink($rs_o->ID) ?>"><i class="glyphicon glyphicon-menu-right"></i>查看详情</a>
+									</div>
+									</div>
+                                    	
+                                       
                                     
 										<?php
 							
@@ -203,14 +222,14 @@ get_header();
 							wp_reset_postdata();
 						}else{
 						?>
-                        <td><img src="/dist/img/team1.jpg"></td>
+<!--                        <td><img src="/dist/img/team1.jpg"></td>
                         <td><img src="/dist/img/team2.jpg"></td>
-                        <td><img src="/dist/img/team3.jpg"></td>
+                        <td><img src="/dist/img/team3.jpg"></td>-->
                         <?php	
 							
 						}
 			  ?>
-
+				</td>
               </tr>
           </table>
 

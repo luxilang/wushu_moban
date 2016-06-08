@@ -2,6 +2,20 @@
 
 function get_timthumb_cf() {
 	return "&q=100&zc=2ct=1";
+
+	
+}
+
+function my_thumb_img($imgurl,$timthumb_cf, $smallpic = 'nopic.gif') {
+	
+	$newimgpath_file  ='/uploads/timthumb/'.base64_encode($timthumb_cf).'_'.basename($imgurl);
+	$newimgpath = dirname(dirname(dirname(__FILE__))).$newimgpath_file;
+	if (!file_exists($newimgpath)) {
+		$timthumb_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$imgurl.$timthumb_cf;
+		copy($timthumb_url, $newimgpath);
+	}
+
+    return   site_url()."/wp-content".$newimgpath_file;
 }
 
 
@@ -441,18 +455,37 @@ add_action('admin_menu', 'remove_menus');
 		if (!empty($img_tag)) {
 			$img_tag_w = " and img_tag='{$img_tag}' " ;
 		}
-		$sql = "  select * from wp_post_img  where post_id = '{$post_id}' and tp='{$tp}' {$img_tag_w}  order by id desc   ";
+		$sql = "  select * from wp_post_img  where post_id = '{$post_id}' and tp='{$tp}' {$img_tag_w}  order by id desc   ";  //读取post 绑定的相册
 		
 		$wp_post_img_rs =  $wpdb->get_results($sql);
 		$galleryid_in = array();
+		$album_gid_ls = array();
 		if (!empty($wp_post_img_rs)) {
 		
-			foreach ($wp_post_img_rs as $value) {
-				if (!empty($value->gid)) {
-					$galleryid_in[] = $value->gid;
-				}
+			
+			foreach ($wp_post_img_rs as $value) { 
+
+				if ($value->userd_album == '1') {  //是用相册 时候
+					if (!empty($value->album_id)) {
+						$sql = "  select * from wp_ngg_album  where id = '{$value->album_id}' ";  //读取post 绑定的相册
+						$ngg_album =  $wpdb->get_row($sql);
+						$album_gid_ls = unserialize($ngg_album->sortorder);
+						if (!empty($album_gid_ls)) {
+							foreach ($album_gid_ls as $album_gid_ls_value) {
+								array_push($galleryid_in, $album_gid_ls_value);
+							}
+						}
+					}
+
+				}else{
+					if (!empty($value->gid)) {
+						$galleryid_in[] = $value->gid; //生成图集id
 				
+					}
+				}
 			}
+			$galleryid_in = array_flip($galleryid_in);
+			$galleryid_in = array_flip($galleryid_in);
 			$galleryid_in_str = join(",",$galleryid_in);	
 			$sql = "
 				SELECT wp_ngg_gallery.name AS dirname,wp_ngg_pictures.* 
@@ -468,7 +501,9 @@ add_action('admin_menu', 'remove_menus');
 					$img_url = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
 					$img_url_r = "/wp-content/gallery/".$picture->dirname."/".$picture->filename;
 					//$img_thumbs = "/wp-content/gallery/".$picture->dirname."/thumbs/thumbs_".$picture->filename;
-					$img_thumbs = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url.$thumbs_cf;
+					//$img_thumbs = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url.$thumbs_cf;
+					
+					$img_thumbs = my_thumb_img($img_url,$thumbs_cf);
 					$rs_arr[]= array(
 						'id'=>$picture->pid,
 						'title'=>$picture->alttext,

@@ -52,7 +52,8 @@
 			   {
 				   foreach ($rs as $key => $rs_o) {
 					   $img_url = get_post_meta($rs_o->ID,'_id_upload_home',true);
-					   $img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=280&h=216".get_timthumb_cf();
+					  // $img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=280&h=216".get_timthumb_cf();
+					  $img_url = my_thumb_img($img_url,"&w=280&h=216".get_timthumb_cf());
 			  ?>
             	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <div class="box"> 

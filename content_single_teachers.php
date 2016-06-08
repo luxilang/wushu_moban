@@ -1,7 +1,8 @@
 <?php 
 $post_id = $post->ID; 
 $img_url = get_post_meta($post_id,'_id_upload_teachers',true); 
-$img_url = site_url()."/wp-content/uploads/timthumb.php?src=".site_url().$img_url."&w=274&h=370&q=100&zc=1&ct=1&a=t";
+
+$img_url = my_thumb_img($img_url,"&w=274&h=370".get_timthumb_cf());
 ?>
 <div class="row content">
       	<div class="col-lg-12">
